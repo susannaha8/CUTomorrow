@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231028205500) do
+ActiveRecord::Schema.define(version: 20231029000334) do
 
   create_table "campus", id: false, force: :cascade do |t|
     t.string "campusCode", limit: 4
@@ -95,6 +95,14 @@ ActiveRecord::Schema.define(version: 20231028205500) do
 
   add_index "requirements", ["divisionCode"], name: "divisionCode", using: :btree
   add_index "requirements", ["major_minorID"], name: "major_minorID", using: :btree
+
+  create_table "schedules", primary_key: "schedID", force: :cascade do |t|
+    t.string  "uni",      limit: 10
+    t.integer "courseID", limit: 4
+    t.integer "reqID",    limit: 4
+    t.string  "semester", limit: 20
+    t.boolean "taken"
+  end
 
   create_table "school", id: false, force: :cascade do |t|
     t.string "schoolCode", limit: 4

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231029000334) do
+ActiveRecord::Schema.define(version: 20231029012719) do
 
   create_table "campus", id: false, force: :cascade do |t|
     t.string "campusCode", limit: 4
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20231029000334) do
   end
 
   add_index "campus", ["campusCode"], name: "campusCode", using: :btree
+
+  create_table "coursereqs", primary_key: "coursereqsID", force: :cascade do |t|
+    t.integer "reqID",    limit: 4, null: false
+    t.integer "courseID", limit: 4, null: false
+  end
+
+  add_index "coursereqs", ["courseID"], name: "courseID", using: :btree
+  add_index "coursereqs", ["reqID"], name: "reqID", using: :btree
 
   create_table "courses", primary_key: "courseID", force: :cascade do |t|
     t.string  "courseSubtitle", limit: 256
@@ -36,14 +44,6 @@ ActiveRecord::Schema.define(version: 20231029000334) do
   add_index "courses", ["divisionCode"], name: "divisionCode", using: :btree
   add_index "courses", ["prefixID"], name: "prefixID", using: :btree
   add_index "courses", ["schoolCode"], name: "schoolCode", using: :btree
-
-  create_table "courses_requirements", id: false, force: :cascade do |t|
-    t.integer "reqID",    limit: 4, null: false
-    t.integer "courseID", limit: 4, null: false
-  end
-
-  add_index "courses_requirements", ["courseID"], name: "courseID", using: :btree
-  add_index "courses_requirements", ["reqID"], name: "reqID", using: :btree
 
   create_table "department", id: false, force: :cascade do |t|
     t.string "departmentCode", limit: 4
@@ -136,12 +136,12 @@ ActiveRecord::Schema.define(version: 20231029000334) do
     t.string  "departmentCode",       limit: 4,  null: false
   end
 
+  add_foreign_key "coursereqs", "courses", column: "courseID", primary_key: "courseID", name: "coursereqs_ibfk_2"
+  add_foreign_key "coursereqs", "requirements", column: "reqID", primary_key: "reqID", name: "coursereqs_ibfk_1"
   add_foreign_key "courses", "department", column: "departmentCode", primary_key: "departmentCode", name: "courses_ibfk_2"
   add_foreign_key "courses", "division", column: "divisionCode", primary_key: "divisionCode", name: "courses_ibfk_4"
   add_foreign_key "courses", "prefix", column: "prefixID", primary_key: "prefixID", name: "courses_ibfk_1"
   add_foreign_key "courses", "school", column: "schoolCode", primary_key: "schoolCode", name: "courses_ibfk_3"
-  add_foreign_key "courses_requirements", "courses", column: "courseID", primary_key: "courseID", name: "courses_requirements_ibfk_2"
-  add_foreign_key "courses_requirements", "requirements", column: "reqID", primary_key: "reqID", name: "courses_requirements_ibfk_1"
   add_foreign_key "instructor", "department", column: "departmentCode", primary_key: "departmentCode", name: "instructor_ibfk_1"
   add_foreign_key "major_minor", "department", column: "departmentCode", primary_key: "departmentCode", name: "major_minor_ibfk_1"
   add_foreign_key "requirements", "division", column: "divisionCode", primary_key: "divisionCode", name: "requirements_ibfk_2"

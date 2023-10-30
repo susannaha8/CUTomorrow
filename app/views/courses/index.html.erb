@@ -1,4 +1,42 @@
 <!--Find me in app/views/courses/index.html.erb-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .dropbtn {
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content a {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+    .dropdown:hover .dropdown-content {display: block;}
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+
 <h1>Courses</h1>
 
 <!-- TODO: 
@@ -36,7 +74,29 @@ Search
           <%= course.courseID %>
         </td>
         <td>
-            <%= link_to 'Add Class', course_path(classes: @r_hash), id: 'title_header' %>
+            <div class="dropdown">
+                <button class="dropbtn">Add Class</button>
+                <div class="dropdown-content">
+                    <!--
+                    <a href="#">Semester 1</a>
+                    <a href="#">Semester 2</a>
+                    <a href="#">Semester 3</a>
+                    <a href="#">Semester 4</a>
+                    <a href="#">Semester 5</a>
+                    <a href="#">Semester 6</a>
+                    <a href="#">Semester 7</a>
+                    <a href="#">Semester 8</a>
+                    -->
+                    <a href="#"> <%= link_to 'Semester 1', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 2', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 3', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 4', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 5', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 6', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 7', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 8', course_path() %> </a>
+                </div>
+            </div>
         </td>
       </tr>
     <% end %>
@@ -53,6 +113,7 @@ Search
       <th>Semester</th>
       <th>Course</th>
       <th>Requirements Filled</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -69,6 +130,9 @@ Search
         </td>
         <td>
           <%= course.taken %>
+        </td>
+        <td>
+            <%= link_to 'Remove Class', course_path(), id: 'title_header' %>
         </td>
       </tr>
     <% end %>

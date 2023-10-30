@@ -8,11 +8,11 @@ Feature: add a course
 Background: courses in schedule
 
   Given the following courses are in a schedule:
-  | courseID | semester | reqID | completed |
-  | COMS | s23 | 1 | yes |
-  | 2 | f23 | 2 | no |
-  | 3 | f23 | 3 | no |
-  | 4 | s24 | 4 | no |
+  | schedID | uni | courseID | semester | reqID | taken |
+  | 1 | abc1 | 1 | S23 | 1 | True |
+  | 2 | abc2 | 2 | F23 | 2 | False |
+  | 3 | abc3 | 3 | S24 | 3 | False |
+  | 4 | abc4 | 4 | S24 | 4 | False |
 
   Then 4 seed courses should exist
 

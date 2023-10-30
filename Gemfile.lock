@@ -115,6 +115,7 @@ GEM
     minitest (5.20.0)
     multi_json (1.15.0)
     multi_test (1.1.0)
+    mysql2 (0.4.10)
     net-imap (0.3.7)
       date
       net-protocol
@@ -230,6 +231,7 @@ DEPENDENCIES
   database_cleaner (= 1.4.1)
   jquery-rails
   launchy
+  mysql2 (~> 0.4.0)
   pg
   rails (= 4.2.10)
   rspec-rails (= 3.7.2)

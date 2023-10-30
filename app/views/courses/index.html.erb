@@ -21,6 +21,32 @@ Search
 
 <br>
 
+<h2> Course Requirements </h2>
+<table class="table table-striped col-md-12" id="reqs">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requirements do |course| %>
+      <tr>
+        <td>
+          <%= course.courseID %>
+        </td>
+        <td>
+            <%= link_to 'Add Class', course_path(classes: @r_hash), id: 'title_header' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<h2> Schedule </h2>
 <table class="table table-striped col-md-12" id="courses">
   <thead>
     <tr>

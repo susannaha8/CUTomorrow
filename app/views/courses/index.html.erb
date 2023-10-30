@@ -1,2 +1,50 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<!--Find me in app/views/courses/index.html.erb-->
+<h1>Courses</h1>
+
+<!-- TODO: 
+Add search
+Add view by
+Fix table...what goes into the controllers?
+Search
+-->
+
+<ul id="details">
+  <li>
+    Major:
+    <%= @major %>
+  </li>
+  <li>
+    Requirements:
+    <%= @requirements %>
+  </li>
+</ul>
+
+<br>
+
+<table class="table table-striped col-md-12" id="courses">
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Requirements Filled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedule do |course| %>
+      <tr>
+        <td>
+          <%= course.semester %>
+        </td>
+        <td>
+          <%= course.courseID %>
+        </td>
+        <td>
+          <%= course.reqID %>
+        </td>
+        <td>
+          <%= course.taken %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

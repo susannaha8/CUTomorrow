@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root "courses#index"
-  get "/schedule", to: "courses#index", as: "schedule"
+  root "schedules#index"
+  get "/schedule", to: "schedules#index", as: "schedule"
+  get "/add_course", to: "schedules#add_course", as: "add_course"
   #get '/courses', to: "courses#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

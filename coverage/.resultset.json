@@ -1,0 +1,133 @@
+{
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/schedule.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/controllers/schedules_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/helpers/courses_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/requirement.rb": {
+        "lines": [
+          1,
+          1,
+          5,
+          null,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/course.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          5,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/coursereq.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1698793874
+  }
+}

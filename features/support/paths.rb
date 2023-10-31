@@ -17,6 +17,8 @@ module NavigationHelpers
 
     when /^the schedule page for "(.*)"$/  then
       schedule_path
+    when /^(?:|I )follow "Add Courses"$/ then
+      add_course_path
 
     when /^the Similar Movies page for "(.*)"$/ then
       p = movie_path(Movie.find_by_title($1))

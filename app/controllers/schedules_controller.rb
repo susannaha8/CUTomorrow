@@ -8,17 +8,23 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all
+    @major = 1 #will need to get this from profile
+    @uni = "sma2243" #will need to get this from profile
+    @major_name = "Computer Science"
+    @requirements = Requirement.get_requirements_by_major(@major)
+    @courses = Course.get_courses_by_requirement(2) #required courses
+    @schedule = Schedule.all
   end
 
   def new
     # default: render 'new' template
   end
 
-  def create
+  def add_course
+    @display = Schedule.where(taken:false)
     @schedule = Schedule.create!(schedule_params)
-    flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
-    redirect_to schedules_path
+    #flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
+    #redirect_to schedule_path
   end
 
   def edit
@@ -36,7 +42,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:schedID])
     @schedule.destroy
     flash[:notice] = "Schedule '#{@schedule.schedID}' deleted."
-    redirect_to schedules_path
+    redirect_to schedule_path
   end
 
   private

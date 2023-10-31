@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
     @uni = "sma2243" #will need to get this from profile
     @major_name = "Computer Science"
     @requirements = Requirement.get_requirements_by_major(@major)
-    @schedule = Schedule.find(params[:uni])
+    @courses = Course.get_courses_by_requirement(3)
+    @schedule = Schedule.all
   end
 end

@@ -68,7 +68,7 @@ Search
     </tr>
   </thead>
   <tbody>
-    <% @requirements do |course| %>
+    <% @courses.each do |course| %>
       <tr>
         <td>
           <%= course.courseID %>
@@ -87,14 +87,14 @@ Search
                     <a href="#">Semester 7</a>
                     <a href="#">Semester 8</a>
                     -->
-                    <a href="#"> <%= link_to 'Semester 1', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 2', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 3', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 4', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 5', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 6', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 7', course_path() %> </a>
-                    <a href="#"> <%= link_to 'Semester 8', course_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 1', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 2', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 3', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 4', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 5', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 6', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 7', courses_path() %> </a>
+                    <a href="#"> <%= link_to 'Semester 8', courses_path() %> </a>
                 </div>
             </div>
         </td>
@@ -117,7 +117,7 @@ Search
     </tr>
   </thead>
   <tbody>
-    <% @schedule do |course| %>
+    <% @schedule.each do |course| %>
       <tr>
         <td>
           <%= course.semester %>
@@ -132,7 +132,7 @@ Search
           <%= course.taken %>
         </td>
         <td>
-            <%= link_to 'Remove Class', course_path(), id: 'title_header' %>
+            <%= link_to 'Remove Class', courses_path(), id: 'title_header' %>
         </td>
       </tr>
     <% end %>

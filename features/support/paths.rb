@@ -15,9 +15,8 @@ module NavigationHelpers
 
     case page_name
 
-    when /^the edit page for "(.*)"$/  then
-      p = movie_path(Movie.find_by_title($1))
-      p + '/edit'
+    when /^the schedule page for "(.*)"$/  then
+      schedule_path
 
     when /^the Similar Movies page for "(.*)"$/ then
       p = movie_path(Movie.find_by_title($1))

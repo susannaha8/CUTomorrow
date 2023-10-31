@@ -1,7 +1,7 @@
 
-Given /the following movies exist/ do |movies_table|
-  movies_table.hashes.each do |movie|
-    Movie.create movie
+Given /the following courses are in a semester/ do |courses_table|
+  courses_table.hashes.each do |course|
+    Course.create movie
   end
 end
 

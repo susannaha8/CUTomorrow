@@ -7,24 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Course.create([ {
+courses = Course.create([ {
 	:courseSubtitle => "Intro to CS", :courseTitle => "Introduction to Computer Science/ Programming in Java", :courseCode => "1004", :prefixID => 1, :departmentCode => "COMS", :prefixCode => "COMS", :schoolCode => "IF"
 }])
-Schedule.create([{
-	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => F23, :taken => false
+schedule = Schedule.create([{
+	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => "F23", :taken => false
 }])
-Requirement.create([{
-	:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Math Requirement: Calculus", :courses => "MATH 1201|MATH 1202", :numCourses => 1
-}])
+requirements = Requirement.create([
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Math Requirement: Calculus", :courses => "MATH 1201|MATH 1202", :numCourses => 1},
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "CS Core - Intro to CS", :courses => "COMS 1004", :numCourses => 1}
+])
 
-Requirement.create([{
-	:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "CS Core - Intro to CS", :courses => "COMS 1004", :numCourses => 1
-}])
-
-Coursereq.create([{
-	:reqID => 2, :courseID => 1
-}])
-
-
-
-
+Coursereq.create([
+	{:reqID => 2, :courseID => 1}
+])

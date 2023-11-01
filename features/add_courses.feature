@@ -41,7 +41,7 @@ Scenario: add required course to existing schedule
 
 Scenario: delete course from existing schedule
   Given I am on the schedule page
-  And I press "delete 2" on "2"
+  And I press "delete 2" on schedule page
   Then I should not see "COMS W3157"
   And I should see "Course 'COMS W3157' removed."
 

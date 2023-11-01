@@ -54,6 +54,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I )press "([^"]*)" on "([^"]*)"$/ do |button, string|
+  save_and_open_page
   click_button(button)
 end
 

@@ -17,22 +17,10 @@ module NavigationHelpers
 
     when /^the schedule page for "(.*)"$/  then
       schedule_path
-    when /^(?:|I )follow "Add Courses"$/ then
-      add_course_path
-
-    when /^the Similar Movies page for "(.*)"$/ then
-      p = movie_path(Movie.find_by_title($1))
-      p + '/same_director'   
-
-    when /^the details page for "(.*)"$/  then
-      movie_path(Movie.find_by_title($1))
-
-    when /^the new movies page$/  then
-      '/movies/new'
-
-    when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
-
-
+    when /^I follow "Add Courses" on "(.*)"$/ then
+      semester = $1
+      add_course_path(semester: semester)  # Pass the semester as a parameter
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

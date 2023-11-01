@@ -53,7 +53,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
+When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|
   click_link(link)
 end
 

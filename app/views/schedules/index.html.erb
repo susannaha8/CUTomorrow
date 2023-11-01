@@ -59,20 +59,36 @@ Search
 <table class="table table-striped col-md-12" id="reqs">
   <thead>
     <tr>
-    <th style="border:none"> Fall 2022 </th>
-    <th style="border:none">
-      <button id="myButton" class="custom-button"><%= link_to 'Add Courses', add_course_path(semester:"f22") %></button>
-    </th>
+      <th style="border:none"> Fall 2022 </th>
+      <th style="border:none">
+        <button id="myButton" class="custom-button"><%= link_to "Add Courses", add_course_path(semester:"Fall 2022") %></button>
+      </th>
+    </tr>
+    <tr>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Requirements Filled</th>
+      <th>Taken</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <% @courses.each do |course| %>
+    <% @schedule.each do |course| %>
       <tr>
+        <td>
+          <%= course.semester %>
+        </td>
         <td>
           <%= course.courseID %>
         </td>
         <td>
-        <%# <a href="#"> <%= link_to '-', schedule_path %> </a> %>
+          <%= course.reqID %>
+        </td>
+        <td>
+          <%= course.taken %>
+        </td>
+        <td>
+            <%= link_to '-', destroy_schedule_path(:schedID => course.schedID), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
         </td>
       </tr>
     <% end %>
@@ -81,7 +97,7 @@ Search
 
 
 <br>
-
+<!--
 <h2> Schedule </h2>
 <table class="table table-striped col-md-12" id="courses">
   <thead>
@@ -115,3 +131,4 @@ Search
     <% end %>
   </tbody>
 </table>
+-->

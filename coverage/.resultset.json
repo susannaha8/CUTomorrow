@@ -25,7 +25,6 @@
           5,
           5,
           5,
-          5,
           null,
           null,
           1,
@@ -33,10 +32,19 @@
           null,
           null,
           1,
-          0,
-          0,
+          null,
+          4,
+          4,
+          4,
+          4,
+          4,
           null,
           null,
+          null,
+          1,
+          0,
+          0,
+          0,
           null,
           null,
           1,
@@ -95,15 +103,6 @@
           null
         ]
       },
-      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/requirement.rb": {
-        "lines": [
-          1,
-          1,
-          5,
-          null,
-          null
-        ]
-      },
       "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/course.rb": {
         "lines": [
           1,
@@ -126,8 +125,17 @@
           1,
           null
         ]
+      },
+      "/Users/claudialihar/Documents/GitHub/CUTomorrow/app/models/requirement.rb": {
+        "lines": [
+          1,
+          1,
+          4,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1698799461
+    "timestamp": 1698844670
   }
 }

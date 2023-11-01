@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
     @uni = "sma2243" #will need to get this from profile
     @major_name = "Computer Science"
     @courses = Course.get_courses_by_requirement(2) #required courses
-    @schedule = Schedule.where(uni: @uni)
+    @schedule = Schedule.where(uni: @uni) #schedule specific to student
   end
 
   def new
@@ -21,6 +21,7 @@ class SchedulesController < ApplicationController
 
   def add_course
    # @display = Schedule.where(taken:false)
+    @semester = params[:semester]
     @major = 1 
     @requirements = Requirement.get_requirements_by_major(@major)
     @courses_to_fulfill = {} #hash of requirements and courses to fulfill

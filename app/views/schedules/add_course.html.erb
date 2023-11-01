@@ -11,21 +11,21 @@
   </thead>
   <tbody>
     <% @courses_to_fulfill.each do |req, courses| %>
-      <tr>
+      <tr class="bg-blue" >
         <td>
           <%= req.reqLabel %>
         </td>
       </tr>
-      <tr>
         <% courses.each do |course| %>
-          <td>
-            <%= course.courseTitle %>
-          </td>
-          <td>
-            <%= button_to "+", :schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID},'data-confirm' => 'Are you sure?' %>
-          </td>
-          <% end %>
-      </tr> 
+          <tr>
+            <td>
+              <%= course.courseTitle %>
+            </td>
+            <td>
+              <%= button_to "+", :schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID},'data-confirm' => 'Are you sure?' %>
+            </td>
+          </tr>
+        <% end %>
     <% end %>
   </tbody>
 </table>

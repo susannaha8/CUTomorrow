@@ -16,7 +16,7 @@
           <%= course.courseID %>
         </td>
         <td>
-            <%= link_to 'Add Class', course(params[:schedID, :uni, :courseID, :semester, :reqID, :taken]), id: 'title_header' %>
+            <%= link_to 'Add Class', schedule(params["sma2243", course.courseID, "f22", :reqID, :taken]), id: 'title_header' %>
         </td>
       </tr>
     <% end %>

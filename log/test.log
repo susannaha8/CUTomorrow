@@ -2967,3 +2967,124 @@ Processing by SchedulesController#index as HTML
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
   [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 1], ["uni", "cn2489"], ["courseID", 1], ["semester", "S23"], ["reqID", 1], ["taken", "t"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 2], ["uni", "cn2489"], ["courseID", 2], ["semester", "F23"], ["reqID", 2], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 3], ["uni", "cn2489"], ["courseID", 3], ["semester", "S24"], ["reqID", 3], ["taken", "f"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 4], ["uni", "cn2489"], ["courseID", 4], ["semester", "S24"], ["reqID", 4], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "schedules"[0m
+Started GET "/schedule" for 127.0.0.1 at 2023-10-31 20:44:21 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = ?  [["reqID", 2]]
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/index.html.erb within layouts/application (48.0ms)
+  Rendered layouts/_flash.erb (0.6ms)
+Completed 200 OK in 304ms (Views: 263.7ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 1], ["uni", "cn2489"], ["courseID", 1], ["semester", "S23"], ["reqID", 1], ["taken", "t"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 2], ["uni", "cn2489"], ["courseID", 2], ["semester", "F23"], ["reqID", 2], ["taken", "f"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 3], ["uni", "cn2489"], ["courseID", 3], ["semester", "S24"], ["reqID", 3], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 4], ["uni", "cn2489"], ["courseID", 4], ["semester", "S24"], ["reqID", 4], ["taken", "f"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "schedules"
+Started GET "/schedule" for 127.0.0.1 at 2023-10-31 20:44:21 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = ?[0m  [["reqID", 2]]
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 1], ["uni", "cn2489"], ["courseID", 1], ["semester", "S23"], ["reqID", 1], ["taken", "t"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 2], ["uni", "cn2489"], ["courseID", 2], ["semester", "F23"], ["reqID", 2], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 3], ["uni", "cn2489"], ["courseID", 3], ["semester", "S24"], ["reqID", 3], ["taken", "f"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 4], ["uni", "cn2489"], ["courseID", 4], ["semester", "S24"], ["reqID", 4], ["taken", "f"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "schedules"[0m
+Started GET "/schedule" for 127.0.0.1 at 2023-10-31 20:44:21 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = ?  [["reqID", 2]]
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (3.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 1], ["uni", "cn2489"], ["courseID", 1], ["semester", "S23"], ["reqID", 1], ["taken", "t"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 2], ["uni", "cn2489"], ["courseID", 2], ["semester", "F23"], ["reqID", 2], ["taken", "f"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 3], ["uni", "cn2489"], ["courseID", 3], ["semester", "S24"], ["reqID", 3], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 4], ["uni", "cn2489"], ["courseID", 4], ["semester", "S24"], ["reqID", 4], ["taken", "f"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "schedules"
+Started GET "/schedule" for 127.0.0.1 at 2023-10-31 20:44:21 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = ?[0m  [["reqID", 2]]
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 1], ["uni", "cn2489"], ["courseID", 1], ["semester", "S23"], ["reqID", 1], ["taken", "t"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 2], ["uni", "cn2489"], ["courseID", 2], ["semester", "F23"], ["reqID", 2], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)  [["schedID", 3], ["uni", "cn2489"], ["courseID", 3], ["semester", "S24"], ["reqID", 3], ["taken", "f"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schedules" ("schedID", "uni", "courseID", "semester", "reqID", "taken") VALUES (?, ?, ?, ?, ?, ?)[0m  [["schedID", 4], ["uni", "cn2489"], ["courseID", 4], ["semester", "S24"], ["reqID", 4], ["taken", "f"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "schedules"[0m
+Started GET "/schedule" for 127.0.0.1 at 2023-10-31 20:44:21 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = ?  [["reqID", 2]]
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  rollback transaction

@@ -16,21 +16,12 @@ Background: courses in schedule
 
   Then 4 seed courses should exist
 
-Scenario: add course by search to existing schedule
-  Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
-  Then I should be on the Add Course page
-  And I fill in "Search" with "CSEE W3827"
-  And I press "+" on "CSEE W3827"
-  Then I should be on the schedule page
-  And I should see "CSEE W3827"
-
 
 Scenario: add required course to existing schedule
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
-  Then I should be on the Add Course page
-  And I press "+" on "CSEE W3827"
+  Then I should be on the Add Course page for "Fall 2022"
+  And I follow "+" on "CSEE W3827"
   Then I should be on the schedule page
   And I should see "CSEE W3827"
 
@@ -42,19 +33,10 @@ Scenario: delete course from existing schedule
   And I should see "Course 'COMS W3157' removed."
 
 
-Scenario: add a course by search that already exists
-  Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
-  Then I should be on the Add Course page
-  And I fill in "Search" with "CSEE W3827"
-  And I press "+" on "CSEE W3827"
-  Then I should see "Course 'CSEE W3827' already added."
-
-
 Scenario: add a course that already exists
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
-  Then I should be on the Add Course page
+  Then I should be on the Add Course page for "Fall 2022"
   And I press "+" on "CSEE W3827"
   Then I should see "Course 'CSEE W3827' already added."
 

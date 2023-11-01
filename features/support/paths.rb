@@ -20,7 +20,11 @@ module NavigationHelpers
     when /^I follow "Add Courses" on "(.*)"$/ then
       semester = $1
       add_course_path(semester: semester)  # Pass the semester as a parameter
-    
+    when /^the Add Course page for "(.*)"$/  then
+      semester = $1
+      add_course_path(semester: semester)
+    when /^I press "+" on "(.*)"$/ then
+      schedule_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

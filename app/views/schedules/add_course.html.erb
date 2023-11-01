@@ -10,15 +10,22 @@
     </tr>
   </thead>
   <tbody>
-    <% @display.each do |course| %>
+    <% @courses_to_fulfill.each do |req, courses| %>
       <tr>
         <td>
-          <%= course.courseID %>
-        </td>
-        <td>
-            <%= link_to 'Add Class', schedule(params["sma2243", course.courseID, "f22", :reqID, :taken]), id: 'title_header' %>
+          <%= req.reqLabel %>
         </td>
       </tr>
+      <tr>
+        <% courses.each do |course| %>
+          <td>
+            <%= course.courseTitle %>
+          </td>
+          <td>
+            <%= button_to "+", :schedule => { :uni => "sma2243", :courseID => course.courseID},'data-confirm' => 'Are you sure?' %>
+          </td>
+          <% end %>
+      </tr> 
     <% end %>
   </tbody>
 </table>

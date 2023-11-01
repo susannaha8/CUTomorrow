@@ -9,6 +9,8 @@
 
 courses = Course.create([ {
 	:courseSubtitle => "Intro to CS", :courseTitle => "Introduction to Computer Science/ Programming in Java", :courseCode => "1004", :prefixID => 1, :departmentCode => "COMS", :prefixCode => "COMS", :schoolCode => "IF"
+}, {
+	:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"
 }])
 schedule = Schedule.create([{
 	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => "F23", :taken => false
@@ -19,5 +21,5 @@ requirements = Requirement.create([
 ])
 
 Coursereq.create([
-	{:reqID => 2, :courseID => 1}
+	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}
 ])

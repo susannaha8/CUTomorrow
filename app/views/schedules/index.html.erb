@@ -72,7 +72,7 @@ Search
           <%= course.courseID %>
         </td>
         <td>
-          <a href="#"> <%= link_to '-', schedule_path %> </a>
+        <%# <a href="#"> <%= link_to '-', schedule_path %> </a> %>
         </td>
       </tr>
     <% end %>
@@ -109,7 +109,7 @@ Search
           <%= course.taken %>
         </td>
         <td>
-            <%= link_to 'Remove Class', schedule_path, id: 'title_header' %>
+            <%# = link_to 'Remove Class', schedule_path, id: 'title_header' %>
         </td>
       </tr>
     <% end %>

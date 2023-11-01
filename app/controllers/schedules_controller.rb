@@ -11,9 +11,8 @@ class SchedulesController < ApplicationController
     @major = 1 #will need to get this from profile
     @uni = "sma2243" #will need to get this from profile
     @major_name = "Computer Science"
-    @requirements = Requirement.get_requirements_by_major(@major)
     @courses = Course.get_courses_by_requirement(2) #required courses
-    @schedule = Schedule.all
+    @schedule = Schedule.where(uni: @uni)
   end
 
   def new
@@ -21,10 +20,18 @@ class SchedulesController < ApplicationController
   end
 
   def add_course
-    @display = Schedule.where(taken:false)
+   # @display = Schedule.where(taken:false)
+    @major = 1 
+    @requirements = Requirement.get_requirements_by_major(@major)
+    @courses_to_fulfill = {} #hash of requirements and courses to fulfill
+    @requirements.each {|i| @courses_to_fulfill[i]=(Course.get_courses_by_requirement(i))}
+    #(todo: filter through schedule table)
+  end
+
+  def create #ADDED
     @schedule = Schedule.create!(schedule_params)
-    #flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
-    #redirect_to schedule_path
+    flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
+    redirect_to schedules_path
   end
 
   def edit

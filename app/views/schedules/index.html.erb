@@ -109,7 +109,7 @@ Search
           <%= course.taken %>
         </td>
         <td>
-            <%# = link_to 'Remove Class', schedule_path, id: 'title_header' %>
+            <%= link_to 'Remove Class', destroy_schedule_path(:schedID => course.schedID), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
         </td>
       </tr>
     <% end %>

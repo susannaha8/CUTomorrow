@@ -49,7 +49,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:schedID])
     @schedule.destroy
     flash[:notice] = "Schedule '#{@schedule.schedID}' deleted."
-    redirect_to schedule_path
+    redirect_to schedules_path
   end
 
   private

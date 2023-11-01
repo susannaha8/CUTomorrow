@@ -22,7 +22,7 @@
             <%= course.courseTitle %>
           </td>
           <td>
-            <%= button_to "+", :schedule => { :uni => "sma2243", :courseID => course.courseID},'data-confirm' => 'Are you sure?' %>
+            <%= button_to "+", :schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID},'data-confirm' => 'Are you sure?' %>
           </td>
           <% end %>
       </tr> 

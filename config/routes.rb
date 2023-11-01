@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :schedules
+  #resources :schedules
 
-  root :to => redirect('/schedules')
-  #root "schedules#index"
-  #get "/schedule", to: "schedules#index", as: "schedule"
-  delete "/schedules", to: "schedules#destroy", as: "destroy_schedule"
+  #root :to => redirect('/schedules')
+  root "schedules#index"
+  get "/schedule", to: "schedules#index", as: "schedule"
+  delete "/schedule", to: "schedules#destroy", as: "destroy_schedule"
   get "/add_course", to: "schedules#add_course", as: "add_course"
   post "/add_course", to: "schedules#create", as: "create_schedule"
   #get '/courses', to: "courses#index"

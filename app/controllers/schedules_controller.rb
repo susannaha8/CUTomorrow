@@ -31,7 +31,7 @@ class SchedulesController < ApplicationController
   def create #ADDED
     @schedule = Schedule.create!(schedule_params)
     flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
-    redirect_to schedules_path
+    redirect_to schedule_path
   end
 
   def edit
@@ -49,7 +49,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:schedID])
     @schedule.destroy
     flash[:notice] = "Schedule '#{@schedule.schedID}' deleted."
-    redirect_to schedules_path
+    redirect_to schedule_path
   end
 
   private

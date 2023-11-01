@@ -54,7 +54,6 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I )press "([^"]*)" on "([^"]*)"$/ do |button, string|
-  save_and_open_page
   click_button(button)
 end
 
@@ -65,6 +64,7 @@ end
 When /^(?:|I )press "([^"]*)" on add_course$/ do |link|
   #ADDED
   find('td', text: link).click
+  visit schedule_path
 
 end
 

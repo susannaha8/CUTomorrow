@@ -3392,3 +3392,47 @@ Processing by SchedulesController#index as HTML
   Rendered schedules/index.html.erb within layouts/application (3.4ms)
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 13:59:11 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.3ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (8.0ms)
+  Rendered layouts/_flash.erb (0.4ms)
+Completed 200 OK in 294ms (Views: 276.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/add_course/Fall%202022" for ::1 at 2023-11-01 13:59:13 -0400
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.3ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5
+  [1m[36mCourse Load (1.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8[0m
+  Rendered schedules/add_course.html.erb within layouts/application (37.5ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 111ms (Views: 89.8ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/add_course/Fall%202022?id=1&schedule%5BcourseID%5D=1&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for ::1 at 2023-11-01 13:59:18 -0400
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"55Li/QBiiLz5hQTa4jkGXEzHwDD5SrIsQNbrpOl9rNpyuKdj+l88ty5OXahQsvalbU/RJgRTuc/v8XMseGe2pw==", "id"=>"1", "schedule"=>{"courseID"=>"1", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)[0m  [["uni", "sma2243"], ["courseID", 1], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/schedule
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 13:59:18 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 34.7ms | ActiveRecord: 0.2ms)

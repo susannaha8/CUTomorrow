@@ -36,12 +36,12 @@ Scenario: add required course to existing schedule
   Then I should be on the Add Course page for "Fall 2022"
   And I press "add Fundamentals" on add_course
   Then I should be on the schedule page
-  And I should see "CSEE W3827"
+  And I should see "2"
 
 
 Scenario: delete course from existing schedule
   Given I am on the schedule page
-  And I press "-" on "COMS W3157"
+  And I press "delete 2" on "2"
   Then I should not see "COMS W3157"
   And I should see "Course 'COMS W3157' removed."
 
@@ -50,7 +50,7 @@ Scenario: add a course that already exists
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "+" on "CSEE W3827"
-  Then I should see "Course 'CSEE W3827' already added."
+  And I press "add Fundamentals" on add_course
+  Then I should see "Course 'Fundamentals' already added."
 
 

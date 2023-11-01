@@ -3436,3 +3436,520 @@ Processing by SchedulesController#index as HTML
   Rendered schedules/index.html.erb within layouts/application (4.9ms)
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 36ms (Views: 34.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:32:02 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.4ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (11.4ms)
+  Rendered layouts/_flash.erb (0.5ms)
+Completed 200 OK in 338ms (Views: 315.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/?schedID=1" for ::1 at 2023-11-01 18:34:10 -0400
+
+ActionController::RoutingError (No route matches [POST] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (21.1ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.4ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (84.6ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:35:38 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (4.1ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (91.6ms)
+  Rendered layouts/_flash.erb (1.2ms)
+Completed 200 OK in 193ms (Views: 169.7ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/?method=delete&schedID=1" for ::1 at 2023-11-01 18:35:40 -0400
+
+ActionController::RoutingError (No route matches [POST] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.0ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (23.9ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:35:46 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (23.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 106ms (Views: 99.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:35:48 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.3ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 58ms (Views: 55.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/?method=delete&schedID=1" for ::1 at 2023-11-01 18:35:49 -0400
+
+ActionController::RoutingError (No route matches [POST] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.3ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.8ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:36:56 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.4ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (14.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 59ms (Views: 45.5ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/?method=delete&schedID=1" for ::1 at 2023-11-01 18:36:58 -0400
+
+ActionController::RoutingError (No route matches [POST] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.8ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:37:11 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.4ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_flash.erb (0.3ms)
+Completed 200 OK in 74ms (Views: 68.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:37:12 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (8.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/?method=delete&schedID=1" for ::1 at 2023-11-01 18:37:13 -0400
+
+ActionController::RoutingError (No route matches [POST] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.2ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.1ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:39:06 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.3ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (16.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 245ms (Views: 224.8ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/" for ::1 at 2023-11-01 18:39:07 -0400
+
+ActionController::RoutingError (No route matches [DELETE] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.1ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:39:33 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.4ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (20.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 62ms (Views: 47.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/" for ::1 at 2023-11-01 18:39:34 -0400
+
+ActionController::RoutingError (No route matches [DELETE] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.8ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:40:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.4ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (33.5ms)
+  Rendered layouts/_flash.erb (0.3ms)
+Completed 200 OK in 379ms (Views: 353.0ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/" for ::1 at 2023-11-01 18:40:36 -0400
+
+ActionController::RoutingError (No route matches [DELETE] "/"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.5ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.7ms)
+
+
+Started GET "/" for ::1 at 2023-11-01 18:41:25 -0400
+
+ArgumentError (Invalid route name, already in use: 'root' 
+You may have defined two routes with the same name using the `:as` option, or you may be overriding a route already defined by a resource with the same naming. For the latter, you can restrict the routes created with `resources` as explained here: 
+http://guides.rubyonrails.org/routing.html#restricting-the-routes-created):
+  config/routes.rb:5:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.4ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:41:41 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.3ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (12.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 38.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:41:43 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.7ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (19.9ms)
+  Rendered layouts/_flash.erb (0.3ms)
+Completed 200 OK in 65ms (Views: 61.7ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/schedule" for ::1 at 2023-11-01 18:41:44 -0400
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QIugbMPXCmQSHrwYzgdo+AIiOU/pT4ser2KQqaA6qwLVoeXyOeq+b8XV5Wp8jJgBI6ooWRRWgP0ARQghMSCxfw=="}
+  [1m[36mSchedule Load (0.5ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 14ms (ActiveRecord: 0.5ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.3ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:43:57 -0400
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.4ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (11.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 34.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/add_course/Fall%202022" for ::1 at 2023-11-01 18:44:01 -0400
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.7ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4[0m
+  [1m[35mCourse Load (0.0ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5
+  [1m[36mCourse Load (0.0ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8[0m
+  Rendered schedules/add_course.html.erb within layouts/application (50.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 148ms (Views: 101.4ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/add_course/Fall%202022?id=1&schedule%5BcourseID%5D=1&schedule%5Bid%5D=1&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for ::1 at 2023-11-01 18:44:02 -0400
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"vM2blogRC5OlBQz08qRZsFaOr/xPXRqoEL29GoKM7AYp594Iciy/mHLOVYZAL6lJdwa+6rJEEUu/miWSE5b2ew==", "id"=>"1", "schedule"=>{"courseID"=>"1", "id"=>"1", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+Unpermitted parameter: id
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)[0m  [["uni", "sma2243"], ["courseID", 1], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/schedule
+Completed 302 Found in 14ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:44:02 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (14.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule" for ::1 at 2023-11-01 18:44:06 -0400
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IxLZ7jC5g6zh7My22p0Q1aKFzdR7Cmsw+vj8Z5PJTpO2OJxwyoQ3pzYnlcRoFuAsgw3cwoYTYNNV32TvAtNU7g=="}
+  [1m[35mSchedule Load (0.7ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 8ms (ActiveRecord: 0.7ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.2ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:46:05 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.5ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (17.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 48.9ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/schedule" for ::1 at 2023-11-01 18:46:08 -0400
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jnlBtLPuordnmPqVoF9ACcr/33erjPzRIyVNXvhF91wbUwQqSdMWvLBTo+cS1LDw63fOYVaV9zKMAtXWaV/tIQ=="}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.7ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-01 18:46:45 -0400
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.3ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (13.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 44.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/schedule" for ::1 at 2023-11-01 18:46:46 -0400
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SVULqkaQATAL35haZF/TR2U+wpSj/uS/HnLzlesHE6Xcf040vK21O9wUwSjW1CO+RLbTgl7n71yxVWsdeh0J2A=="}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.3ms)

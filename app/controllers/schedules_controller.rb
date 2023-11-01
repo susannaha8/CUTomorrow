@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    @schedule = Schedule.find params[:schedID]
+    @schedule = Schedule.find(params[:schedID])
     @schedule.update_attributes!(schedule_params)
     flash[:notice] = "Schedule #{@schedule.schedID} was successfully updated."
     redirect_to schedule_path(@schedule)

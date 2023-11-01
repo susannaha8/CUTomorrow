@@ -3,29 +3,20 @@
 
 <h2> Unfulfilled Requirements for <em><%= @semester %></em></h2>
 <table class="table table-striped col-md-12" id="courses">
-  <thead>
-    <tr>
+    <tr id = "test">
       <th>Course</th>
       <th>Action</th>
     </tr>
-  </thead>
-  <tbody>
     <% @courses_to_fulfill.each do |req, courses| %>
-      <tr class="bg-blue" >
-        <td>
-          <%= req.reqLabel %>
-        </td>
-      </tr>
         <% courses.each do |course| %>
           <tr>
             <td>
               <%= course.courseTitle %>
             </td>
             <td>
-              <%= button_to "+", :schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID},'data-confirm' => 'Are you sure?' %>
+              <%= link_to "add #{course.courseTitle}", create_schedule_path(:schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID}, :id => course.courseID), :name => course.courseID, 'data-method' => 'create', 'data-confirm' => 'Are you sure?' %>
             </td>
           </tr>
         <% end %>
     <% end %>
-  </tbody>
 </table>

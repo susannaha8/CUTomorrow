@@ -16,12 +16,25 @@ Background: courses in schedule
 
   Then 4 seed courses should exist
 
+  Given the following requirements are in the requirements table
+  | reqID | reqLabel | major_minorID |
+  | 1     | firstReq | 1             |
+
+  Given the following courses are in the course directory
+  | courseID| courseTitle | courseCode |
+  |    1    | Intro to CS | 1004       |
+  |    2    | Fundamentals | 3827      |
+
+  Given the following pairs are in coursereqs
+  |coursereqsID | reqID | courseID |
+  | 1           |   1   |     1     |
+  | 2           |   1   |     2     |
 
 Scenario: add required course to existing schedule
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I follow "+" on "CSEE W3827"
+  And I press "add Fundamentals" on add_course
   Then I should be on the schedule page
   And I should see "CSEE W3827"
 

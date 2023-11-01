@@ -61,6 +61,13 @@ When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|
   click_link(link)
 end
 
+When /^(?:|I )press "([^"]*)" on add_course$/ do |link|
+  #ADDED
+  find('td', text: link).click
+
+end
+
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end

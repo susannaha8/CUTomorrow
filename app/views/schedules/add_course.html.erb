@@ -1,0 +1,22 @@
+<!--Find me in app/views/courses/add_course.html.erb-->
+<h1> Add Course </h1>
+
+<h2> Unfulfilled Requirements for <em><%= @semester %></em></h2>
+<table class="table table-striped col-md-12" id="courses">
+    <tr id = "test">
+      <th>Course</th>
+      <th>Action</th>
+    </tr>
+    <% @courses_to_fulfill.each do |req, courses| %>
+        <% courses.each do |course| %>
+          <tr>
+            <td>
+              <%= course.courseTitle %>
+            </td>
+            <td>
+              <%= button_to "add #{course.courseTitle}", :schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID, :id => course.courseID}, :id => course.courseID %>
+            </td>
+          </tr>
+        <% end %>
+    <% end %>
+</table>

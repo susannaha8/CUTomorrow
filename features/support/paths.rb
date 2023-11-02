@@ -15,23 +15,16 @@ module NavigationHelpers
 
     case page_name
 
-    when /^the edit page for "(.*)"$/  then
-      p = movie_path(Movie.find_by_title($1))
-      p + '/edit'
-
-    when /^the Similar Movies page for "(.*)"$/ then
-      p = movie_path(Movie.find_by_title($1))
-      p + '/same_director'   
-
-    when /^the details page for "(.*)"$/  then
-      movie_path(Movie.find_by_title($1))
-
-    when /^the new movies page$/  then
-      '/movies/new'
-
-    when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
-
-
+    when /^the schedule page for "(.*)"$/  then
+      schedule_path
+    when /^I follow "Add Courses" on "(.*)"$/ then
+      semester = $1
+      add_course_path(semester: semester)  # Pass the semester as a parameter
+    when /^the Add Course page for "(.*)"$/  then
+      semester = $1
+      add_course_path(semester: semester)
+    when /^I follow "+" on "(.*)"$/ then
+      schedule_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

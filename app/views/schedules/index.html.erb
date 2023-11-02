@@ -1,0 +1,134 @@
+<!--Find me in app/views/courses/index.html.erb-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .dropbtn {
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content a {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+    .dropdown:hover .dropdown-content {display: block;}
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+
+<h1>Courses</h1>
+
+<!-- TODO: 
+Add search
+Add view by
+Fix table...what goes into the controllers?
+Search
+-->
+
+<ul id="details">
+  <li>
+    Major:
+    <%= @major_name %>
+  </li>
+</ul>
+
+<br>
+
+<h2> 2022-2023 </h2>
+<table class="table table-striped col-md-12" id="reqs">
+  <thead>
+    <tr>
+      <th style="border:none"> Fall 2022 </th>
+      <th style="border:none">
+        <button id="myButton" ><%= link_to "Add Courses", add_course_path(semester:"Fall 2022") %></button>
+      </th>
+    </tr>
+    <tr>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Requirements Filled</th>
+      <th>Taken</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedule.each do |course| %>
+      <tr>
+        <td>
+          <%= course.semester %>
+        </td>
+        <td>
+          <%= course.courseID %>
+        </td>
+        <td>
+          <%= course.reqID %>
+        </td>
+        <td>
+          <%= course.taken %>
+        </td>
+        <td>
+            <%= button_to "delete #{course.courseID}", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+<!--
+<h2> Schedule </h2>
+<table class="table table-striped col-md-12" id="courses">
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Requirements Filled</th>
+      <th>Taken</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedule.each do |course| %>
+      <tr>
+        <td>
+          <%= course.semester %>
+        </td>
+        <td>
+          <%= course.courseID %>
+        </td>
+        <td>
+          <%= course.reqID %>
+        </td>
+        <td>
+          <%= course.taken %>
+        </td>
+        <td>
+            <%= link_to 'Remove Class', destroy_schedule_path(:schedID => course.schedID), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+-->

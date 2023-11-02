@@ -53,9 +53,29 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
+When /^(?:|I )press "([^"]*)" on "([^"]*)"$/ do |button, string|
+  click_button(button)
+end
+
+When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|
   click_link(link)
 end
+
+When /^(?:|I )press "([^"]*)" on add_course$/ do |link|
+  #ADDED
+  click_button(link)
+  #visit schedule_path
+
+end
+
+When /^(?:|I )press "([^"]*)" on schedule page$/ do |link|
+  #ADDED
+#   save_and_open_page
+  click_button(link)
+  #visit schedule_path
+
+end
+
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)

@@ -5,6 +5,24 @@ Given /the following courses are in a schedule/ do |schedule_table|
   end
 end
 
+Given /the following courses are in the course directory/ do |course_table|
+  course_table.hashes.each do |course|
+    Course.create course
+  end
+end
+
+Given /the following requirements are in the requirements table/ do |requirement_table|
+  requirement_table.hashes.each do |req|
+    Requirement.create req
+  end
+end
+
+Given /the following pairs are in coursereqs/ do |course_table|
+  course_table.hashes.each do |course|
+    Coursereq.create course
+  end
+end
+
 Then /(.*) seed courses should exist/ do | n_seeds |
   expect(Schedule.count).to eq n_seeds.to_i
 end

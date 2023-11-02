@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CUTomorrow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="/assets/application-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" />
+    <script src="/assets/application-000ff64a8997782bfc7ec5c4d37b767080d3ead506cf586324e8c6d1f8a284d6.js"></script>
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+      <h1 class="title">CUTomorrow!</h1>
+    </nav>
+    <div class="container">
+      
+      <main id="main">
+        <!--Find me in app/views/courses/index.html.erb-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .dropbtn {
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content a {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+    .dropdown:hover .dropdown-content {display: block;}
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+
+<h1>Courses</h1>
+
+<!-- TODO: 
+Add search
+Add view by
+Fix table...what goes into the controllers?
+Search
+-->
+
+<ul id="details">
+  <li>
+    Major:
+    Computer Science
+  </li>
+</ul>
+
+<br>
+
+<h2> 2022-2023 </h2>
+<table class="table table-striped col-md-12" id="reqs">
+  <thead>
+    <tr>
+      <th style="border:none"> Fall 2022 </th>
+      <th style="border:none">
+        <button id="myButton" ><a href="/add_course/Fall%202022">Add Courses</a></button>
+      </th>
+    </tr>
+    <tr>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Requirements Filled</th>
+      <th>Taken</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
+<br>
+<!--
+<h2> Schedule </h2>
+<table class="table table-striped col-md-12" id="courses">
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Requirements Filled</th>
+      <th>Taken</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+-->
+      </main>
+    </div>
+  </body>
+</html>

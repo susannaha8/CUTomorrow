@@ -88,7 +88,7 @@ Search
           <%= course.taken %>
         </td>
         <td>
-            <%= button_to "delete #{course.courseID}", @delete, method: :delete, :schedID => course.schedID %>
+            <%= button_to "delete #{course.courseID}", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID %>
         </td>
       </tr>
     <% end %>

@@ -3953,3 +3953,923 @@ ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
   Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
   Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
   Rendered /Users/claudialihar/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.3ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-01 23:09:29 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mRequirement Load (0.2ms)[0m  SELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?  [["major_minorID", 1]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8
+  Rendered schedules/add_course.html.erb within layouts/application (27.6ms)
+  Rendered layouts/_flash.erb (0.4ms)
+Completed 200 OK in 548ms (Views: 515.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 160.39.125.229 at 2023-11-01 23:09:44 +0000
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:09:44 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:09:53 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uxDgrgk6fuo8lutg+30XXXjnuKPQFi8d3KgJ110YW8mzOR/LCsfeyibveUljMQOsF8Vi6vhOFRGykrkH+3cPlA=="}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (21.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.8ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:14:58 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uxDgrgk6fuo8lutg+30XXXjnuKPQFi8d3KgJ110YW8mzOR/LCsfeyibveUljMQOsF8Vi6vhOFRGykrkH+3cPlA=="}
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.9ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:15:02 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uxDgrgk6fuo8lutg+30XXXjnuKPQFi8d3KgJ110YW8mzOR/LCsfeyibveUljMQOsF8Vi6vhOFRGykrkH+3cPlA=="}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.2ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:16:17 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/schedule" for 160.39.125.229 at 2023-11-01 23:16:19 +0000
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (33.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.9ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:25:13 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 49.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:33:34 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:33:38 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VDlx9jolsJ7xHdDlGAnKrUd4OzERmSihJRmIleprvHBcEI6TOdgQvutkQsyARd5cKFrheDnBEq1LIzhFTAToLQ=="}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:50:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.7ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:40:21 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.5ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 31.9ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:40:23 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DeLnxrEqAzrM6azWJg/brp+f/G1Xg/DAC9yyWmxJJf8FyxijstejGtaQPv++Q89f8L0mJH/bysxl5gKKyiZxog=="}
+  [1m[35mSchedule Load (0.3ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:52:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.1ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:43:00 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 32ms (Views: 23.4ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:43:01 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0rp4aMkOauogPkBPFc2pMESngMsLZzTCLDGiCcDU6NPak4cNyvPKyjpH0maNgb3BK4VagiM/Ds5CCxLZZru8jg=="}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `id' for #<SchedulesController:0x00007fdd714443e0>
+Did you mean?  @id):
+  app/controllers/schedules_controller.rb:52:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.4ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:43:57 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 32ms (Views: 24.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:43:58 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"a3y/IkxO1V8kMui6cWAa9emAljCDIf4kFknSer/mPlZjVUBHT7N1fz5LepPpLA4EhqJMeat5xCh4c2KqGYlqCw=="}
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:52:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.2ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:45:14 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"a3y/IkxO1V8kMui6cWAa9emAljCDIf4kFknSer/mPlZjVUBHT7N1fz5LepPpLA4EhqJMeat5xCh4c2KqGYlqCw=="}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:52:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (17.5ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:52:20 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.3ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 38ms (Views: 28.5ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:52:22 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Vzs6ELglIbs1dTwi/zv9dIOsjZX0qpMOXDIiYRjbyhlfEsV1u9iBmy8Mrgtnd+mF7I5X3NzyqQIyCJKxvrSeRA=="}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:53:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (15.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.9ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:53:38 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Vzs6ELglIbs1dTwi/zv9dIOsjZX0qpMOXDIiYRjbyhlfEsV1u9iBmy8Mrgtnd+mF7I5X3NzyqQIyCJKxvrSeRA=="}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.7ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:53:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (17.2ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:53:58 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 38ms (Views: 33.2ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:53:59 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wMCUmDc35wcmvJtPm4ssVV27DvOYkcbZn2ypN+iWRZ3I6Wv9NMpHJzzFCWYDxzikMpnUurDJ/NXxVhnnTvkRwA=="}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:53:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.0ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:55:41 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wMCUmDc35wcmvJtPm4ssVV27DvOYkcbZn2ypN+iWRZ3I6Wv9NMpHJzzFCWYDxzikMpnUurDJ/NXxVhnnTvkRwA=="}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", nil]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:53:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.0ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:55:45 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-01 23:55:50 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mRequirement Load (0.2ms)[0m  SELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?  [["major_minorID", 1]]
+  [1m[36mCourse Load (5.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1[0m
+  [1m[35mCourse Load (8.5ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8
+  Rendered schedules/add_course.html.erb within layouts/application (26.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 24.9ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/add_course/Fall%202022?id=4&schedule%5BcourseID%5D=4&schedule%5Bid%5D=4&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for 160.39.125.229 at 2023-11-01 23:55:54 +0000
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"F4l6M0L7OW8xBabfAoaUCQfsgCOgwujI6nej8fjcT58foIVWQQaZTyt8NPaayoD4aM5aaoia0sSETRMhXrMbwg==", "id"=>"4", "schedule"=>{"courseID"=>"4", "id"=>"4", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.6ms)[0m  INSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)  [["uni", "sma2243"], ["courseID", 4], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[36m (76.9ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 87ms (ActiveRecord: 80.6ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-01 23:55:54 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule" for 160.39.125.229 at 2023-11-01 23:55:58 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RWidxQ8318Jm/+Dul8XI00WpiKoiyKYG9V8kLEX7kdRNQWKgDMp34nyGcscPidwiKotS4wqQnAqbZZT845TFiQ=="}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:53:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.9ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:09:04 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.3ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (33.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 61ms (Views: 59.0ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/schedule?schedID=1" for 160.39.125.229 at 2023-11-02 00:09:05 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JcAaKCnHltjy6tjxxyDOihqevJxBQNlZ1tQqwTqzMAwt6eVNKjo2+OiTSthfbNp7dbxm1WkY41W47poRnNxkUQ==", "schedID"=>"1"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=):
+  app/controllers/schedules_controller.rb:53:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.8ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.6ms)
+
+
+Started DELETE "/schedule?schedID=1" for 160.39.125.229 at 2023-11-02 00:10:34 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JcAaKCnHltjy6tjxxyDOihqevJxBQNlZ1tQqwTqzMAwt6eVNKjo2+OiTSthfbNp7dbxm1WkY41W47poRnNxkUQ==", "schedID"=>"1"}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 1]]
+  [1m[36m (80.3ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 91ms (ActiveRecord: 81.7ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:10:35 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.3ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 38ms (Views: 28.5ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/schedule?schedID=7" for 160.39.125.229 at 2023-11-02 00:10:39 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tf+04gj3Ztgma4xVrqEzIqYSnwIRyTHPAFbuihdSdTa91kuHCwrG+DwSHnw27SfTyTBFSzmRC8NubF5asT0haw==", "schedID"=>"7"}
+  [1m[36mSchedule Load (0.3ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 7]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schedules" WHERE "schedules"."schedID" = ?[0m  [["schedID", 7]]
+  [1m[35m (78.7ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 84ms (ActiveRecord: 79.4ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:10:39 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule?schedID=15" for 160.39.125.229 at 2023-11-02 00:10:44 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"A/PnwXOR4FNTQxh18JxV25AeldqRlIoGlxvDWgIrfs0L2hikcGxAc0k6ilxo0EEq/zxPk7nMsAr5IXOKpEQqkA==", "schedID"=>"15"}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 15]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 15]]
+  [1m[36m (74.8ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 78ms (ActiveRecord: 75.3ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:10:44 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule?schedID=14" for 160.39.125.229 at 2023-11-02 00:12:36 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NjiJAYB8JT2mMM8x31mH3nqzD3E+NAE/F/ae1M9+Wsw+EXZkg4GFHbxJXRhHFZMvFZHVOBZsOzN5zC4EaREOkQ==", "schedID"=>"14"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 14]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "schedules" WHERE "schedules"."schedID" = ?[0m  [["schedID", 14]]
+  [1m[35m (86.7ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 93ms (ActiveRecord: 87.3ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:12:36 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 34.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule?schedID=13" for 160.39.125.229 at 2023-11-02 00:12:38 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PxOy9OLbhXlTwFg9+t72sylvpfhQGVx/8pUC+tqTukw3Ok2R4SYlWUm5yhRikuJCRk1/sXhBZnOcr7IqfPzuEQ==", "schedID"=>"13"}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 13]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 13]]
+  [1m[36m (85.6ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 98ms (ActiveRecord: 86.5ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:12:38 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:29:01 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 20.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-02 00:29:08 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mRequirement Load (10.2ms)[0m  SELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?  [["major_minorID", 1]]
+  [1m[36mCourse Load (2.5ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1[0m
+  [1m[35mCourse Load (0.9ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8
+  Rendered schedules/add_course.html.erb within layouts/application (14.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 46ms (Views: 22.0ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-02 00:46:04 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.2ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6[0m
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8[0m
+  Rendered schedules/add_course.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 56ms (Views: 40.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:08 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (3.9ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (11.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 28ms (Views: 20.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:10 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-02 00:46:13 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mRequirement Load (0.2ms)[0m  SELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?  [["major_minorID", 1]]
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4
+  [1m[36mCourse Load (1.6ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8
+  Rendered schedules/add_course.html.erb within layouts/application (19.6ms)
+  Rendered layouts/_flash.erb (0.5ms)
+Completed 200 OK in 71ms (Views: 62.2ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/add_course/Fall%202022?id=1&schedule%5BcourseID%5D=1&schedule%5Bid%5D=1&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for 160.39.125.229 at 2023-11-02 00:46:15 +0000
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"Gpx3omkdByJFzknk1PZWSIjdQE5/x+jOJf3Nu4Glz20StYjHauCnAl+3281MukK55/+aB1ef0sJLx31rJ8qbMA==", "id"=>"1", "schedule"=>{"courseID"=>"1", "id"=>"1", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+  [1m[36m (0.2ms)[0m  [1mSELECT "schedules"."courseID" FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (4.3ms)[0m  [1mINSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)[0m  [["uni", "sma2243"], ["courseID", 1], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[35m (84.7ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 98ms (ActiveRecord: 89.3ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:15 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 47.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule?schedID=8" for 160.39.125.229 at 2023-11-02 00:46:23 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"i7VID8lR4fP38W/8MqWMiWD4UwqIFLwAWOvUcYqwxoCDnLdqyqxB0+2I/dWq6Zh4D9qJQ6BMhgw20WShLN+S3Q==", "schedID"=>"8"}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 8]]
+  [1m[36m (70.7ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 76ms (ActiveRecord: 71.5ms)
+
+
+Started DELETE "/schedule?schedID=8" for 160.39.125.229 at 2023-11-02 00:46:23 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"i7VID8lR4fP38W/8MqWMiWD4UwqIFLwAWOvUcYqwxoCDnLdqyqxB0+2I/dWq6Zh4D9qJQ6BMhgw20WShLN+S3Q==", "schedID"=>"8"}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 8]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=8):
+  app/controllers/schedules_controller.rb:66:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.2ms)
+
+
+Started DELETE "/schedule?schedID=8" for 160.39.125.229 at 2023-11-02 00:46:24 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"i7VID8lR4fP38W/8MqWMiWD4UwqIFLwAWOvUcYqwxoCDnLdqyqxB0+2I/dWq6Zh4D9qJQ6BMhgw20WShLN+S3Q==", "schedID"=>"8"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 8]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=8):
+  app/controllers/schedules_controller.rb:66:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.2ms)
+
+
+Started DELETE "/schedule?schedID=8" for 160.39.125.229 at 2023-11-02 00:46:24 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"i7VID8lR4fP38W/8MqWMiWD4UwqIFLwAWOvUcYqwxoCDnLdqyqxB0+2I/dWq6Zh4D9qJQ6BMhgw20WShLN+S3Q==", "schedID"=>"8"}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 8]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Schedule with 'schedID'=8):
+  app/controllers/schedules_controller.rb:66:in `destroy'
+
+
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/codio/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.9ms)
+
+
+Started DELETE "/schedule?schedID=2" for 160.39.125.229 at 2023-11-02 00:46:30 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"i7VID8lR4fP38W/8MqWMiWD4UwqIFLwAWOvUcYqwxoCDnLdqyqxB0+2I/dWq6Zh4D9qJQ6BMhgw20WShLN+S3Q==", "schedID"=>"2"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schedules" WHERE "schedules"."schedID" = ?[0m  [["schedID", 2]]
+  [1m[35m (78.7ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 84ms (ActiveRecord: 79.1ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:31 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule?schedID=3" for 160.39.125.229 at 2023-11-02 00:46:35 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"O1T49UkQyJKxegAvJtezB0v320KyJcAwu+Tzr1SlhQEzfQeQSu1osqsDkga+m6f2JNUBC5p9+jzV3kN/8srRXA==", "schedID"=>"3"}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 3]]
+  [1m[36m (71.6ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 75ms (ActiveRecord: 72.2ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:35 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule?schedID=4" for 160.39.125.229 at 2023-11-02 00:46:36 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5F0dnQfrSuYvK94WxeEAFaUYQhZ5VJzKCWLof6p/k7/sdOL4BBbqxjVSTD9drRTkyjqYX1EMpsZnWFivDBDH4g==", "schedID"=>"4"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 4]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schedules" WHERE "schedules"."schedID" = ?[0m  [["schedID", 4]]
+  [1m[35m (83.3ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 86ms (ActiveRecord: 83.6ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:36 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/schedule?schedID=9" for 160.39.125.229 at 2023-11-02 00:46:37 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YEuZvE8YNy/EldEYJdFr9jFxH/pm3Gn7B2+xjQvkN1poYmbZTOWXD97sQzG9nX8HXlPFs06EU/dpVQFdrYtjBw==", "schedID"=>"9"}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 9]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 9]]
+  [1m[36m (79.4ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 82ms (ActiveRecord: 80.0ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:37 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule?schedID=10" for 160.39.125.229 at 2023-11-02 00:46:38 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xLgpsMg+K/LeeJApMuXddWE7xNn7PtrEjl4w9FxCGxTMkdbVy8OL0sQBAgCqqcmEDhkekNNm4MjgZIAk+i1PSQ==", "schedID"=>"10"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 10]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schedules" WHERE "schedules"."schedID" = ?[0m  [["schedID", 10]]
+  [1m[35m (75.3ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 78ms (ActiveRecord: 75.8ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:38 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule?schedID=11" for 160.39.125.229 at 2023-11-02 00:46:39 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"cheetIBJc6TSCd3DR5rzc2TXArSNHXpajR9pYMgfdRx6PmHRg7TThMhwT+rf1ueCC/XY/aVFQFbjJdmwbnAhQQ==", "schedID"=>"11"}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 11]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 11]]
+  [1m[36m (69.3ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 72ms (ActiveRecord: 69.8ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:39 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule?schedID=12" for 160.39.125.229 at 2023-11-02 00:46:41 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"v1hhT9+2NvZKwC9HoGIHjsJosp+9lzhT/kfuMoSbexC3cZ4q3EuW1lC5vW44LhN/rUpo1pXPAl+QfV7iIvQvTQ==", "schedID"=>"12"}
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1[0m  [["schedID", 12]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "schedules" WHERE "schedules"."schedID" = ?[0m  [["schedID", 12]]
+  [1m[35m (69.5ms)[0m  commit transaction
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 72ms (ActiveRecord: 70.0ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:41 +0000
+Processing by SchedulesController#index as HTML
+  [1m[36mSchedule Load (0.1ms)[0m  [1mSELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/schedule?schedID=16" for 160.39.125.229 at 2023-11-02 00:46:42 +0000
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vkXXpx8tBkgUcR+wBd2/crFdilU0BI1QUWH2gSiof7S2bCjCHNCmaA4IjZmdkauD3n9QHBxct1w/W0ZRjscr6Q==", "schedID"=>"16"}
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT  "schedules".* FROM "schedules" WHERE "schedules"."schedID" = ? LIMIT 1  [["schedID", 16]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "schedules" WHERE "schedules"."schedID" = ?  [["schedID", 16]]
+  [1m[36m (71.4ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 76ms (ActiveRecord: 72.3ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:42 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-02 00:46:44 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.2ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8[0m
+  Rendered schedules/add_course.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 23.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/add_course/Fall%202022?id=1&schedule%5BcourseID%5D=1&schedule%5Bid%5D=1&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for 160.39.125.229 at 2023-11-02 00:46:45 +0000
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"4/3e9j9BfwYBgcea1ZZ9g7y8Oa7YmY8jLVCG1sSx9Z3r1CGTPLzfJhv4VbNN2mly057j5/DBtS9DajYGYt6hwA==", "id"=>"1", "schedule"=>{"courseID"=>"1", "id"=>"1", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+  [1m[35m (0.1ms)[0m  SELECT "schedules"."courseID" FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)  [["uni", "sma2243"], ["courseID", 1], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[36m (71.9ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 81ms (ActiveRecord: 76.0ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:45 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-02 00:46:46 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.1ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8[0m
+  Rendered schedules/add_course.html.erb within layouts/application (9.7ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 30ms (Views: 24.9ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/add_course/Fall%202022?id=2&schedule%5BcourseID%5D=2&schedule%5Bid%5D=2&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for 160.39.125.229 at 2023-11-02 00:46:47 +0000
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"eR6GBTyGzr0EH6+RMxk27eKjyFQkcvxdz8zMkmDwXoNxN3lgP3tunR5mPbirVSIcjYESHQwqxlGh9nxCxp8K3g==", "id"=>"2", "schedule"=>{"courseID"=>"2", "id"=>"2", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+  [1m[35m (0.1ms)[0m  SELECT "schedules"."courseID" FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)  [["uni", "sma2243"], ["courseID", 2], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[36m (70.2ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 75ms (ActiveRecord: 70.9ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:47 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/add_course/Fall%202022" for 160.39.125.229 at 2023-11-02 00:46:49 +0000
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.3ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 3
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 4[0m
+  [1m[35mCourse Load (0.3ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 5
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 6[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 7
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."coursereqsID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 8[0m
+  Rendered schedules/add_course.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 32ms (Views: 24.4ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/add_course/Fall%202022?id=1&schedule%5BcourseID%5D=1&schedule%5Bid%5D=1&schedule%5BreqID%5D=2&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for 160.39.125.229 at 2023-11-02 00:46:50 +0000
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"SUctdy1g4KDUEBmyPuHQ9Elfr4J53ZucR8MAujDXCMdBbtISLp1AgM5pi5umrcQFJn11y1GFoZAp+bBqlrhcmg==", "id"=>"1", "schedule"=>{"courseID"=>"1", "id"=>"1", "reqID"=>"2", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+  [1m[35m (0.1ms)[0m  SELECT "schedules"."courseID" FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)  [["uni", "sma2243"], ["courseID", 1], ["semester", "Fall 2022"], ["reqID", 2]]
+  [1m[36m (68.7ms)[0m  [1mcommit transaction[0m
+Redirected to https://sloganlittle-martinvirgo-3000.codio.io/schedule
+Completed 302 Found in 74ms (ActiveRecord: 69.6ms)
+
+
+Started GET "/schedule" for 160.39.125.229 at 2023-11-02 00:46:51 +0000
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.1ms)

@@ -70,6 +70,7 @@ end
 
 When /^(?:|I )press "([^"]*)" on schedule page$/ do |link|
   #ADDED
+#   save_and_open_page
   click_button(link)
   #visit schedule_path
 

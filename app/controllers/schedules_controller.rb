@@ -1,11 +1,11 @@
 class SchedulesController < ApplicationController
 
   # THIS IS WHERE WE STARTED
-  def show
-    id = params[:schedID] # retrieve schedID from URI route
-    @schedule = Schedule.find(id) # look up schedule by unique ID
-    # will render app/views/schedules/show.<extension> by default
-  end
+#   def show
+#     id = params[:schedID] # retrieve schedID from URI route
+#     @schedule = Schedule.find(id) # look up schedule by unique ID
+#     # will render app/views/schedules/show.<extension> by default
+#   end
 
   def index
     @major = 1 #will need to get this from profile
@@ -15,9 +15,9 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.where(uni: @uni) #schedule specific to student
   end
 
-  def new
-    # default: render 'new' template
-  end
+#   def new
+#     # default: render 'new' template
+#   end
 
   def add_course
    # @display = Schedule.where(taken:false)
@@ -29,37 +29,31 @@ class SchedulesController < ApplicationController
     #(todo: filter through schedule table)
   end
 
-  def create #ADDED
-    # @schedule = Schedule.create!(schedule_params)
-    # flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
-    # redirect_to schedule_path
+  def create
     @uni = "sma2243"
     @my_courses = Schedule.where(uni: @uni)
-    @course_ids = @my_courses.pluck(:courseID)
-    @course_id_to_check = schedule_params[:courseID]
-
+    @course_ids = @my_courses.pluck(:courseID).map(&:to_s)
+    @course_id_to_check = schedule_params[:courseID].to_s
     if @course_ids.include?(@course_id_to_check)
-      puts "HELLO NOT CREATED"
       flash[:notice] = "Course '#{@course_id_to_check}' already added."
-    # end
+      redirect_to add_course_path
     else
-      puts "HELLO CREATED"
       @schedule = Schedule.create!(schedule_params)
       flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
       redirect_to schedule_path
     end
   end
 
-  def edit
-    @schedule = Schedule.find params[:schedID]
-  end
+#   def edit
+#     @schedule = Schedule.find params[:schedID]
+#   end
 
-  def update
-    @schedule = Schedule.find(params[:schedID])
-    @schedule.update_attributes!(schedule_params)
-    flash[:notice] = "Schedule #{@schedule.schedID} was successfully updated."
-    redirect_to schedule_path(@schedule)
-  end
+#   def update
+#     @schedule = Schedule.find(params[:schedID])
+#     @schedule.update_attributes!(schedule_params)
+#     flash[:notice] = "Schedule #{@schedule.schedID} was successfully updated."
+#     redirect_to schedule_path(@schedule)
+#   end
 
   def destroy
     @id = params[:schedID]

@@ -8,9 +8,10 @@
 
 ## Instructions to Run & Test
 
-### On Heroku:
-Follow the deployment link:
+### Through Heroku:
+**Note**: We were having issues with the repository, so the Heroku link does not include the version that includes our Rspec tests, but they are located in the Github - please contact us if this causes any issues or if you have any questions. 
 
+Follow the deployment link: https://cryptic-crag-96223-0df98d544074.herokuapp.com/schedule
 
 ### Through Github:
 Note: We are using Ruby version 2.6.6 (you can install this with `rbenv install 2.6.6`)

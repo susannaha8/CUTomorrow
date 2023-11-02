@@ -24,6 +24,27 @@ describe SchedulesController, type: :controller do
     #         expect(response).to render_template("index")
     #     end
     # end
+
+
+    describe "DELETE destroy" do
+        @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})
+        @requirement1 = Requirement.create!({:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Math Requirement: Calculus", :courses => "MATH 1201|MATH 1202", :numCourses => 1})
+        @coursereq1 = Coursereq.create!({:reqID => 1, :courseID => 1})
+        @schedule1 = Schedule.create!({:uni => "sma2243", :courseID => 1, :semester => "Fall 2022", :reqID => 1, :taken => false})
+        it "deletes a schedule and redirects to schedule_path with a flash message" do
+            # Ensure that the schedule exists in the database
+            expect { Schedule.find(1) }.not_to raise_error(ActiveRecord::RecordNotFound)
+      
+            delete :destroy, { schedID: 1 }
+      
+            # Ensure that the schedule has been deleted from the database
+            expect { Schedule.find(1) }.to raise_error(ActiveRecord::RecordNotFound)
+      
+            expect(response).to redirect_to(schedule_path)
+            expect(flash[:notice]).to match(/Schedule '#{1}' deleted./)
+          end
+
+      end
     
 end
 

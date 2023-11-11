@@ -11,7 +11,6 @@ class SchedulesController < ApplicationController
     @major = 1 #will need to get this from profile
     @uni = "sma2243" #will need to get this from profile
     @major_name = "Computer Science"
-    @courses = Course.get_courses_by_requirement(2) #required courses
     @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
   end
 

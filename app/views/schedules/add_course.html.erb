@@ -8,9 +8,14 @@
       <th>Action</th>
     </tr>
     <% @courses_to_fulfill.each do |req, courses| %>
+        <tr>
+          <td class="req">
+            <%= req.reqLabel %>
+          </td>
+        </td>
         <% courses.each do |course| %>
           <tr>
-            <td>
+            <td class="course">
               <%= course.courseTitle %>
             </td>
             <td>

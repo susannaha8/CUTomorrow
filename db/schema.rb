@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231029012719) do
+ActiveRecord::Schema.define(version: 20231111125859) do
+
+  create_table "add_required_courses_triggers", force: :cascade do |t|
+  end
 
   create_table "coursereqs", primary_key: "coursereqsID", force: :cascade do |t|
     t.integer "reqID"

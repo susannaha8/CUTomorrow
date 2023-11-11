@@ -10,8 +10,12 @@
   </head>
   <body>
     <%# These classes come from the Bootstrap CSS framework. %>
-    <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    <nav class="navbar navbar-expand-lg bg-white mb-3">
       <h1 class="title">CUTomorrow!</h1>
+        <div style="justify-content: right; align-items: right;">
+            <button class="nav-button" ><%= link_to "Schedule", schedule_path(semester:"Fall 2022") %></button>
+            <button class="nav-button" ><%= link_to "Profile", schedule_path(semester:"Fall 2022") %></button>
+        </div>
     </nav>
     <div class="container">
       <%# Render "flash" messages in our application. This loads _flash.erb %>

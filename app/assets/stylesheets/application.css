@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ .nav-button {
+    border: none;
+    color: black !important;
+    background-color: transparent;
+ }
+
+ .navbar {
+    position: relative;
+ }

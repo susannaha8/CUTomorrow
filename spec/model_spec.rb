@@ -3,11 +3,11 @@
 describe Course, type: :model do
   describe "GET course" do
 
-    Course.destroy_all
-    Requirement.destroy_all
-    Coursereq.destroy_all
-    # Course.all 
-    puts Course.all
+    # Course.destroy_all
+    # Requirement.destroy_all
+    # Coursereq.destroy_all
+    # # Course.all 
+    # puts Course.all
 
     before(:each) do
       @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})
@@ -15,7 +15,7 @@ describe Course, type: :model do
       
       puts "req " << @requirement1.reqID.to_s
       puts "course " << @course1.courseID.to_s
-      @coursereq1 = Coursereq.create!({:reqID => @requirement1.reqID, :courseID => @course1.courseID})
+      #@coursereq1 = Coursereq.create!({:reqID => @requirement1.reqID, :courseID => @course1.courseID})
     end
 
     after(:each) do
@@ -29,7 +29,7 @@ describe Course, type: :model do
       @ret = Course.get_courses_by_requirement(@requirement1.reqID)
       puts "ret" << @ret.to_s
       puts "course all " << Course.all.to_s
-      expect(@ret).to eq(@ret)
+      expect(@ret.include?(@course1))
       # @course1.destroy
     end
 

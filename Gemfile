@@ -18,6 +18,7 @@ group :development, :test do
   gem 'ZenTest', '4.11.2'
   gem 'coffee-rails', '~> 4.1.0'
   gem 'turbolinks'
+  gem 'bcrypt', '~> 3.1.7'
 end
 
 group :test do

@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
 	  @student = Student.new
 	end
 
-	def login
+	def index
 	end
       
 	def create
@@ -11,10 +11,10 @@ class StudentsController < ApplicationController
       
 	  if @student && @student.authenticate(params[:email][:password])
 	    session[:student_id] = @student.id
-	    redirect_to login_path
+	    redirect_to student_path
 	  else
 	    flash[:alert] = "Login failed"
-	    redirect_to add_course_path
+	    redirect_to student_path
 	  end
 	end
 

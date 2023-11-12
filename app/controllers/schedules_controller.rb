@@ -1,11 +1,15 @@
 class SchedulesController < ApplicationController
 
   # THIS IS WHERE WE STARTED
-#   def show
-#     id = params[:schedID] # retrieve schedID from URI route
-#     @schedule = Schedule.find(id) # look up schedule by unique ID
-#     # will render app/views/schedules/show.<extension> by default
-#   end
+   def profile
+     id = params[:schedID] # retrieve schedID from URI route
+     @schedule = Schedule.find(id) # look up schedule by unique ID
+     # will render app/views/schedules/show.<extension> by default
+   end
+
+   def edit_profile
+    @schedule = Schedule.find params[:schedID]
+  end
 
   def index
     @major = 1 #will need to get this from profile
@@ -42,10 +46,6 @@ class SchedulesController < ApplicationController
       redirect_to schedule_path
     end
   end
-
-#   def edit
-#     @schedule = Schedule.find params[:schedID]
-#   end
 
 #   def update
 #     @schedule = Schedule.find(params[:schedID])

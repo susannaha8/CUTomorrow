@@ -5273,3 +5273,4 @@ Processing by SchedulesController#index as HTML
   Rendered schedules/index.html.erb within layouts/application (2.5ms)
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.1ms)
+  [1m[36mSchedule Load (4.2ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m

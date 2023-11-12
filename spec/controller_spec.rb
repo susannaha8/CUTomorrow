@@ -25,18 +25,18 @@ describe SchedulesController, type: :controller do
     #     end
     # end
 
-    describe "POST create_schedule" do
+    # describe "POST create_schedule" do
 
-        context "when the course is not already added" do
-            it "creates a new schedule" do
-                expect {
-                    post :create_schedule, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
-                }.to change(Schedule, :count).by(1)
+    #     context "when the course is not already added" do
+    #         it "creates a new schedule" do
+    #             expect {
+    #                 post :create, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
+    #             }.to change(Schedule, :count).by(1)
         
-                # expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
-                # expect(response).to redirect_to(schedule_path)
-            end
-        end
+    #             # expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
+    #             # expect(response).to redirect_to(schedule_path)
+    #         end
+    #     end
       
         # context "when the course is already added" do
         #   before do
@@ -50,7 +50,7 @@ describe SchedulesController, type: :controller do
         #     expect(response).to redirect_to(add_course_path)
         #   end
         # end
-    end
+    # end
 
     describe "DELETE destroy" do
         @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231029012719) do
+ActiveRecord::Schema.define(version: 20231111125859) do
+
+  create_table "add_required_courses_triggers", force: :cascade do |t|
+  end
 
   create_table "coursereqs", primary_key: "coursereqsID", force: :cascade do |t|
     t.integer "reqID"
@@ -48,5 +51,25 @@ ActiveRecord::Schema.define(version: 20231029012719) do
     t.string  "semester", limit: 20
     t.boolean "taken"
   end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "email"
+    t.string   "uni"
+    t.integer  "major1"
+    t.integer  "major2"
+    t.integer  "major3"
+    t.integer  "minor1"
+    t.integer  "minor2"
+    t.integer  "minor3"
+    t.integer  "minor4"
+    t.string   "firstName"
+    t.string   "lastName"
+    t.string   "standing"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "students", ["email"], name: "index_students_on_email", unique: true
 
 end

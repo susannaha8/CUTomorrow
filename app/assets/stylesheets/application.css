@@ -23,3 +23,10 @@
  .navbar {
     position: relative;
  }
+.req {
+	background-color: lightblue;
+}
+
+.course {
+	background-color: lightgray;
+}

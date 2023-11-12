@@ -15,14 +15,14 @@ courses = Course.create([ {
 {
 	:courseSubtitle => "Calculus IV", :courseTitle => "Calculus IV", :courseCode => "1202", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"
 }])
-schedule = Schedule.create([{
-	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => "F23", :taken => false
-}])
+#schedule = Schedule.create([{
+#	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => "F23", :taken => false
+#}])
 requirements = Requirement.create([
 	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Math Requirement: Calculus", :courses => "MATH 1201|MATH 1202", :numCourses => 1},
 	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "CS Core - Intro to CS", :courses => "COMS 1004", :numCourses => 1}
 ])
 
-Coursereq.create([
-	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}, {:reqID => 1, :courseID => 3}
-])
+#Coursereq.create([
+#	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}, {:reqID => 1, :courseID => 3}
+#])

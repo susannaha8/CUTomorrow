@@ -25,6 +25,32 @@ describe SchedulesController, type: :controller do
     #     end
     # end
 
+    # describe "POST create_schedule" do
+
+    #     context "when the course is not already added" do
+    #         it "creates a new schedule" do
+    #             expect {
+    #                 post :create, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
+    #             }.to change(Schedule, :count).by(1)
+        
+    #             # expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
+    #             # expect(response).to redirect_to(schedule_path)
+    #         end
+    #     end
+      
+        # context "when the course is already added" do
+        #   before do
+        #     Schedule.create!(uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1)
+        #   end
+      
+        #   it "redirects to add_course_path with a flash notice" do
+        #     post :create_schedule, params: { schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
+      
+        #     expect(flash[:notice]).to eq("Course '1' already added.")
+        #     expect(response).to redirect_to(add_course_path)
+        #   end
+        # end
+    # end
 
     describe "DELETE destroy" do
         @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})
@@ -47,33 +73,3 @@ describe SchedulesController, type: :controller do
       end
     
 end
-
-#     describe "GET same_director" do
-
-#     before :each do
-#       @movie1 = Movie.create!({:title => "first movie", :director => "Abrams"})
-#       @movie2 = Movie.create!({:title => "second movie", :director => "Abrams"})
-#       @movie3 = Movie.create!({:title => "third movie"})
-#       @movies = [@movie1, @movie2, @movie3]
-#     end
-
-#     context "When the specified movie has a director" do
-#      it "renders the same_director template" do
-#         get :same_director, {id: @movie2.id}
-#         expect(response).to render_template("same_director")
-#      end
-#     end 
-#     context "When the specified movie has no director" do
-#       before :each do 
-#         get :same_director, {id: @movie3.id}
-#       end
-#       it "redirects to the home page" do
-#         expect(response).to redirect_to(movies_path) 
-#       end
-#       it "flashes the correct error message" do
-#         expect(flash[:notice]).to match(/'#{@movie3.title}' has no director info*/)
-#       end
-
-#     end
-#   end
-# end

@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.req {
+	background-color: lightblue;
+}
+
+.course {
+	background-color: lightgray;
+}

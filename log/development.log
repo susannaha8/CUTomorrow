@@ -5274,6 +5274,40 @@ Processing by SchedulesController#index as HTML
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.1ms)
   [1m[36mSchedule Load (4.2ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+<<<<<<< HEAD
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateRequirements (20231028204631)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "requirements" ("reqID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "major_minorID" integer(4), "divisionCode" varchar(4), "reqType" varchar(6), "reqLabel" varchar(255), "reqDesc" text(65535), "courses" varchar(5000), "numCourses" integer(4), "creditLim" integer(4)) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231028204631"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateCourses (20231028205500)
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "courses" ("courseID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "courseSubtitle" varchar(256), "courseTitle" varchar(256), "courseCode" varchar(4), "typeName" varchar(64), "prefixID" integer(4), "departmentCode" varchar(4), "schoolCode" varchar(4), "divisionCode" varchar(4), "prefixCode" varchar(4)) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231028205500"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateSchedules (20231029000334)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schedules" ("schedID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uni" varchar(10), "courseID" integer, "reqID" integer, "semester" varchar(20), "taken" boolean) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231029000334"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Migrating to CreateCoursereqs (20231029012719)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "coursereqs" ("coursereqsID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reqID" integer, "courseID" integer) 
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231029012719"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to CreateStudents (20231110012543)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "uni" varchar, "major1" integer, "major2" integer, "major3" integer, "minor1" integer, "minor2" integer, "minor3" integer, "minor4" integer, "firstName" varchar, "lastName" varchar, "standing" varchar, "password_digest" varchar) 
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20231110012543"]]
+  [1m[35m (6.3ms)[0m  commit transaction
+Migrating to CreateAddRequiredCoursesTrigger (20231111125859)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m          CREATE TRIGGER add_required_courses AFTER INSERT ON requirements
+=======
 
 
 Started GET "/" for ::1 at 2023-11-11 21:16:21 -0500
@@ -5356,6 +5390,7 @@ Migrating to CreateStudents (20231110012543)
 Migrating to CreateAddRequiredCoursesTrigger (20231111125859)
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35m (0.2ms)[0m          CREATE TRIGGER add_required_courses AFTER INSERT ON requirements
+>>>>>>> 0ff402a90c64ec8d801724c2b1f30703a7d292f7
         FOR EACH ROW
         BEGIN
           INSERT INTO coursereqs (reqID, courseID)
@@ -5363,6 +5398,114 @@ Migrating to CreateAddRequiredCoursesTrigger (20231111125859)
           where prefixCode || ' ' || courseCode REGEXP NEW.courses;
         end;
 
+<<<<<<< HEAD
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "add_required_courses_triggers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20231111125859"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.3ms)[0m  [1mINSERT INTO "courses" ("courseSubtitle", "courseTitle", "courseCode", "prefixID", "departmentCode", "prefixCode", "schoolCode") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["courseSubtitle", "Intro to CS"], ["courseTitle", "Introduction to Computer Science/ Programming in Java"], ["courseCode", "1004"], ["prefixID", 1], ["departmentCode", "COMS"], ["prefixCode", "COMS"], ["schoolCode", "IF"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "courses" ("courseSubtitle", "courseTitle", "courseCode", "prefixID", "departmentCode", "prefixCode", "schoolCode") VALUES (?, ?, ?, ?, ?, ?, ?)  [["courseSubtitle", "Calculus III"], ["courseTitle", "Calculus III"], ["courseCode", "1201"], ["prefixID", 2], ["departmentCode", "MATH"], ["prefixCode", "MATH"], ["schoolCode", "IF"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "courses" ("courseSubtitle", "courseTitle", "courseCode", "prefixID", "departmentCode", "prefixCode", "schoolCode") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["courseSubtitle", "Calculus IV"], ["courseTitle", "Calculus IV"], ["courseCode", "1202"], ["prefixID", 2], ["departmentCode", "MATH"], ["prefixCode", "MATH"], ["schoolCode", "IF"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "requirements" ("major_minorID", "divisionCode", "reqType", "reqLabel", "courses", "numCourses") VALUES (?, ?, ?, ?, ?, ?)  [["major_minorID", 1], ["divisionCode", "CC"], ["reqType", "major"], ["reqLabel", "Math Requirement: Calculus"], ["courses", "MATH 1201|MATH 1202"], ["numCourses", 1]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "requirements" ("major_minorID", "divisionCode", "reqType", "reqLabel", "courses", "numCourses") VALUES (?, ?, ?, ?, ?, ?)[0m  [["major_minorID", 1], ["divisionCode", "CC"], ["reqType", "major"], ["reqLabel", "CS Core - Intro to CS"], ["courses", "COMS 1004"], ["numCourses", 1]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/schedule?semester=Fall+2022" for ::1 at 2023-11-11 20:30:35 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#index as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mSchedule Load (0.7ms)[0m  SELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (38.4ms)
+  Rendered layouts/_flash.erb (0.7ms)
+Completed 200 OK in 1551ms (Views: 1517.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/add_course/Fall%202022" for ::1 at 2023-11-11 20:30:40 -0500
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mRequirement Load (0.6ms)[0m  [1mSELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?[0m  [["major_minorID", 1]]
+  [1m[35mCourse Load (0.9ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."courseID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1
+  [1m[36mCourse Load (0.5ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."courseID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2[0m
+  Rendered schedules/add_course.html.erb within layouts/application (29.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 83ms (Views: 60.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/schedule?semester=Fall+2022" for ::1 at 2023-11-11 20:30:43 -0500
+Processing by SchedulesController#index as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mSchedule Load (0.2ms)[0m  SELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "students" ("email", "password_digest", "uni") VALUES (?, ?, ?)  [["email", "sma2243@columbia.edu"], ["password_digest", "$2a$12$t9tCAvng/x1VoTeXKu/TXu9ZzwHgqlDUXqblaxjNZf0.zLswq87MK"], ["uni", "sma2243"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/schedule?semester=Fall+2022" for ::1 at 2023-11-11 20:55:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#index as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mSchedule Load (0.9ms)[0m  SELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (35.2ms)
+  Rendered layouts/_flash.erb (0.5ms)
+Completed 200 OK in 570ms (Views: 532.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/schedule?semester=Fall+2022" for ::1 at 2023-11-11 20:55:19 -0500
+Processing by SchedulesController#index as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[36mSchedule Load (3.9ms)[0m  [1mSELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 51ms (Views: 45.0ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/schedule?semester=Fall+2022" for ::1 at 2023-11-11 20:56:40 -0500
+
+SyntaxError (/Users/susannahabrams/cs4152/CUTomorrow/config/routes.rb:7: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+  post "/login", to "students#index", as "index"
+                    ^
+/Users/susannahabrams/cs4152/CUTomorrow/config/routes.rb:7: syntax error, unexpected ',', expecting end
+... "/login", to "students#index", as "index"
+...                              ^
+/Users/susannahabrams/cs4152/CUTomorrow/config/routes.rb:67: syntax error, unexpected end, expecting end-of-input):
+  config/routes.rb:7: syntax error, unexpected tSTRING_BEG, expecting do or '{' or '('
+  config/routes.rb:7: syntax error, unexpected ',', expecting end
+  config/routes.rb:67: syntax error, unexpected end, expecting end-of-input
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (141.7ms)
+
+
+Started GET "/schedule?semester=Fall+2022" for ::1 at 2023-11-11 20:57:09 -0500
+Processing by SchedulesController#index as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mSchedule Load (2.5ms)[0m  SELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (25.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 84ms (Views: 72.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 20:57:17 -0500
+=======
   [1m[36m (0.1ms)[0m  [1mCREATE TABLE "add_required_courses_triggers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) [0m
   [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20231111125859"]]
   [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
@@ -5401,6 +5544,7 @@ Started GET "/assets/application.self-1ddb95f317e329df105b43983c6f803798d61160aa
 
 
 Started GET "/login" for ::1 at 2023-11-11 21:17:15 -0500
+>>>>>>> 0ff402a90c64ec8d801724c2b1f30703a7d292f7
 
 ActionController::RoutingError (No route matches [GET] "/login"):
   actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
@@ -5423,6 +5567,70 @@ ActionController::RoutingError (No route matches [GET] "/login"):
   rack (1.6.13) lib/rack/lock.rb:17:in `call'
   rack (1.6.13) lib/rack/content_length.rb:15:in `call'
   rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+<<<<<<< HEAD
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (34.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (89.8ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 20:57:36 -0500
+
+SyntaxError (/Users/susannahabrams/cs4152/CUTomorrow/app/controllers/students_controller.rb:22: syntax error, unexpected end, expecting end-of-input):
+  app/controllers/students_controller.rb:22: syntax error, unexpected end, expecting end-of-input
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (42.5ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 20:58:02 -0500
+
+LoadError (Unable to autoload constant StudentsController, expected /Users/susannahabrams/cs4152/CUTomorrow/app/controllers/students_controller.rb to define it):
+  activesupport (4.2.10) lib/active_support/dependencies.rb:495:in `load_missing_constant'
+  activesupport (4.2.10) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.2.10) lib/active_support/inflector/methods.rb:261:in `const_get'
+  activesupport (4.2.10) lib/active_support/inflector/methods.rb:261:in `block in constantize'
+  activesupport (4.2.10) lib/active_support/inflector/methods.rb:259:in `each'
+  activesupport (4.2.10) lib/active_support/inflector/methods.rb:259:in `inject'
+  activesupport (4.2.10) lib/active_support/inflector/methods.rb:259:in `constantize'
+  activesupport (4.2.10) lib/active_support/dependencies.rb:566:in `get'
+  activesupport (4.2.10) lib/active_support/dependencies.rb:597:in `constantize'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:70:in `controller_reference'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:60:in `controller'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:39:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.13) lib/rack/etag.rb:24:in `call'
+  rack (1.6.13) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.13) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:252:in `context'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:247:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.10) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+=======
   /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
   /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
   /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
@@ -5438,6 +5646,398 @@ ActionController::RoutingError (No route matches [GET] "/login"):
 Started GET "/schedule/lign" for ::1 at 2023-11-11 21:17:22 -0500
 
 ActionController::RoutingError (No route matches [GET] "/schedule/lign"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+>>>>>>> 0ff402a90c64ec8d801724c2b1f30703a7d292f7
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+<<<<<<< HEAD
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.2ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.8ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.2ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 20:58:58 -0500
+Processing by StudentsController#index as HTML
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template students/index, application/index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee]}. Searched in:
+  * "/Users/susannahabrams/cs4152/CUTomorrow/app/views"
+):
+  actionview (4.2.10) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.10) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.10) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.10) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.10) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.10) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.10) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.10) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.10) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.10) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.10) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.10) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.10) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.10) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.10) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.13) lib/rack/etag.rb:24:in `call'
+  rack (1.6.13) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.13) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:252:in `context'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:247:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.10) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (30.3ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 20:59:43 -0500
+Processing by StudentsController#login as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template students/login, application/login with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee]}. Searched in:
+  * "/Users/susannahabrams/cs4152/CUTomorrow/app/views"
+):
+  actionview (4.2.10) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.10) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.10) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.10) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.10) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.10) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.10) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.10) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.10) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.10) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.10) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.10) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.10) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.10) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.10) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.13) lib/rack/etag.rb:24:in `call'
+  rack (1.6.13) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.13) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:252:in `context'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:247:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.10) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (25.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (59.1ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 20:59:52 -0500
+Processing by StudentsController#login as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template students/login, application/login with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee]}. Searched in:
+  * "/Users/susannahabrams/cs4152/CUTomorrow/app/views"
+):
+  actionview (4.2.10) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.10) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.10) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.10) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.10) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.10) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.10) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.10) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.10) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.10) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.10) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.10) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.10) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.10) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.10) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.10) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.10) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.10) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.10) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.10) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.10) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.10) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.10) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.10) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.10) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.10) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.10) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.10) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.10) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.10) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.10) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.10) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.13) lib/rack/etag.rb:24:in `call'
+  rack (1.6.13) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.13) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:252:in `context'
+  rack (1.6.13) lib/rack/session/abstract/id.rb:247:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.10) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.10) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.10) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.10) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.10) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (99.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (144.9ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 21:00:29 -0500
+Processing by StudentsController#login as HTML
+  Rendered students/login.html.erb within layouts/application (125.5ms)
+Completed 500 Internal Server Error in 132ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `logout_path' for #<#<Class:0x00007fe61d1f8be0>:0x00007fe619c4a548>
+Did you mean?  root_path):
+     8:   <%= text_field :student, 'password', :class => 'form-control' %>
+     9:   <br/>
+    10:   <%= submit_tag 'Login', :class => 'btn btn-primary' %>
+    11:   <%= link_to 'Cancel', logout_path, :class => 'btn btn-secondary' %>
+    12: <% end %>
+  app/views/students/login.html.erb:11:in `block in _app_views_students_login_html_erb__1036381549798334080_70313125747940'
+  app/views/students/login.html.erb:4:in `_app_views_students_login_html_erb__1036381549798334080_70313125747940'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.7ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 21:00:53 -0500
+Processing by StudentsController#login as HTML
+  Rendered students/login.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_flash.erb (0.4ms)
+Completed 200 OK in 59ms (Views: 58.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:01:13 -0500
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
   actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
   actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
   railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
@@ -5458,6 +6058,680 @@ ActionController::RoutingError (No route matches [GET] "/schedule/lign"):
   rack (1.6.13) lib/rack/lock.rb:17:in `call'
   rack (1.6.13) lib/rack/content_length.rb:15:in `call'
   rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (35.9ms)
+
+
+Started GET "/login" for ::1 at 2023-11-11 21:02:05 -0500
+Processing by StudentsController#login as HTML
+  Rendered students/login.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 97ms (Views: 96.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:02:15 -0500
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.0ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:02:34 -0500
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.0ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:03:03 -0500
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.6ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.7ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:09:02 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (32.6ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (17.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (88.7ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:09:41 -0500
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (32.7ms)
+
+
+Started POST "/schedule" for ::1 at 2023-11-11 21:09:50 -0500
+
+ActionController::RoutingError (No route matches [POST] "/schedule"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.13) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.13) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.13) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.13) lib/rack/lock.rb:17:in `call'
+  rack (1.6.13) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.13) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (41.1ms)
+
+
+Started GET "/" for ::1 at 2023-11-13 09:48:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/schedule" for ::1 at 2023-11-13 09:48:11 -0500
+Processing by SchedulesController#index as HTML
+  [1m[35mSchedule Load (1.1ms)[0m  SELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (71.0ms)
+  Rendered layouts/_flash.erb (0.8ms)
+Completed 200 OK in 600ms (Views: 545.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2023-11-13 09:48:12 -0500
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:48:19 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (66.3ms)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `password_text_field' for #<#<Class:0x00007fe84956bb00>:0x00007fe849c846f8>
+Did you mean?  password_field):
+     5:   <%= label :student, :email, 'email', :class => 'col-form-label' %>
+     6:   <%= text_field :student, 'email', :class => 'form-control' %>
+     7:   <%= label :student, :password, 'password', :class => 'col-form-label' %>
+     8:   <%= password_text_field :student, 'password', :class => 'form-control' %>
+     9:   <br/>
+    10:   <%= submit_tag 'Login', :class => 'btn btn-primary' %>
+    11:   <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary' %>
+  app/views/sessions/login.html.erb:8:in `block in _app_views_sessions_login_html_erb___2960698651564236945_70317823520240'
+  app/views/sessions/login.html.erb:4:in `_app_views_sessions_login_html_erb___2960698651564236945_70317823520240'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (30.2ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (61.1ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:48:38 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (57.6ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `password_text_field' for #<#<Class:0x00007fe849dfc2b0>:0x00007fe849e3cbd0>
+Did you mean?  password_field):
+     5:   <%= label :student, :email, 'email', :class => 'col-form-label' %>
+     6:   <%= text_field :student, 'email', :class => 'form-control' %>
+     7:   <%= label :student, :password, 'password', :class => 'col-form-label' %>
+     8:   <%= password_text_field :student, 'password', :class => 'form-control' %>
+     9:   <br/>
+    10:   <%= submit_tag 'Login', :class => 'btn btn-primary' %>
+    11:   <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary' %>
+  app/views/sessions/login.html.erb:8:in `block in _app_views_sessions_login_html_erb___2960698651564236945_70317823520240'
+  app/views/sessions/login.html.erb:4:in `_app_views_sessions_login_html_erb___2960698651564236945_70317823520240'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.3ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:48:55 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 49.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:49:03 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"256qKbyIMGznititH0MuQtnEZr6ijB/G5TVwEfPymYNnUuE+Inw2g4flKij6yJaoOixzd9nBf1WebM/peDFguw==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `student' for #<SessionsController:0x00007fe849f1fd90>):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.1ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:49:36 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"256qKbyIMGznititH0MuQtnEZr6ijB/G5TVwEfPymYNnUuE+Inw2g4flKij6yJaoOixzd9nBf1WebM/peDFguw==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (2.9ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 3.2ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"add_course", :controller=>"schedules"} missing required keys: [:semester]):
+  app/controllers/sessions_controller.rb:15:in `create'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:49:57 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"256qKbyIMGznititH0MuQtnEZr6ijB/G5TVwEfPymYNnUuE+Inw2g4flKij6yJaoOixzd9nBf1WebM/peDFguw==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mStudent Load (0.5ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:49:57 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 37ms (Views: 36.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:50:30 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NWZCAe1zLvO628VG2O/OU4SYDET8Fv12NSExQn44tsWJqgkWc4coHNq0N8M9ZHa5Z3AZjYdbneVOeI669ftP/Q==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.7ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:50:30 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 33.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:50:54 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 31ms (Views: 30.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:51:02 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/Ib5tbgrSx9gc9ySQwimvq17jesoRdi3DL71i80FajFASrKiJt9N8AAcLhemgx5UTpOYIlMIuCR350pzRsaTCQ==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mStudent Load (1.0ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 11ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:51:02 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:51:22 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 38ms (Views: 37.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:51:32 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2sHTyccqJFlRnJ1mN4zqPlEaEY/Cs81E7I8vwWUbr/hmDZjeWd4itjHzb+PSB1LUsvIERrn+rdeX1pA57thWwA==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.8ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 9ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:51:32 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 31ms (Views: 30.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:51:42 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 31ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:51:55 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:52:00 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (1.9ms)
+Completed 200 OK in 46ms (Views: 44.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:52:07 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BLDCZYzkLVFDMri1ld0YHd4MkKKicsjE6f0Fp1EuTMS4fIlyEhArviNdSjBwVqD3PeSFa9k/qFeSpLpf2u21/A==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mStudent Load (0.8ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 10ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:52:07 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 65ms (Views: 63.7ms | ActiveRecord: 0.0ms)
+  [1m[36mStudent Load (3.7ms)[0m  [1mSELECT "students".* FROM "students"[0m
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:53:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8QZi6Fh0A2awk+pxEWd0lBKC/GbfpD0QOIT4HMQIugRNyin/xoAFidD8GPT07Mx+8Wrpr6TpXYND3UfkT8tDPA==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mStudent Load (0.4ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 26ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:53:49 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (19.7ms)
+  Rendered layouts/_flash.erb (0.8ms)
+Completed 200 OK in 399ms (Views: 398.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:54:06 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 55ms (Views: 53.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:54:13 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyp/cXaD6DE4HflBZ3yVumNNOY37dbyyrFwwn7j0m/o/5jRm6Hfu3lhyC8SC9y1QgKUsRIA43CHXBY9nMzdiwg==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.9ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:54:13 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:54:49 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mn7eofXiZlaVghbXAzO+cPriN5u4Cf+5IwDCEEEDlOomspW2axZgufXt5FLmuAaaGQoiUsNEnypYWX3oysBt0g==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mStudent Load (0.4ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 12ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:54:49 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 47ms (Views: 46.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:55:11 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:55:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UR+FrZEgXKxaGZUo7FaZ8paCRw1hjstccjra/WvJawTt0866D9RaQzp2Z60J3SEYdWpSxBrDq88JY2UF4AqSPA==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.8ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:55:18 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 09:59:10 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (19.9ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 74ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 09:59:24 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YKTuYqVy1vZDnJ3welC1QfmLQGewvzTFBdCW/Iu9YeHcaKV1O4bQGSPzb3Wf2w2rGmNVrsvyVFZ+iSkEAH6Y2Q==", "email"=>{"{:class=>\"form-control\"}"=>"sma2243@columbia.edu"}, "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[35mStudent Load (0.8ms)[0m  SELECT  "students".* FROM "students" WHERE "email"."{:class=>""form-control""}" = 'sma2243@columbia.edu' LIMIT 1
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.0ms)
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: email.{:class=>"form-control"}: SELECT  "students".* FROM "students" WHERE "email"."{:class=>""form-control""}" = 'sma2243@columbia.edu' LIMIT 1):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.4ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:00:30 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 58ms (Views: 57.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 10:00:49 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/qQ4GkEZ3wBkTBoOGgjimLeu0IlxdzFpgRowIjgMqGRCaHMN3+3Z7wQj6Iv/g1pyVEbFQAo6Ufr6Q4/as89RXA==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.4ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:00:49 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 52.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 10:03:29 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x+9MoZ+3fR6QUEaud2qBULOQerMczP0DJf43LavNSkd7Iwe2AUN78fA/tCuS4Tm6UHhvemeBnZBep4jVIA6zfw==", "student"=>{"email"=>"myemail", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mStudent Load (0.7ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 22ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:03:29 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 77ms (Views: 76.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:04:39 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (5.6ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 2..3)):
+    3: 
+    4: <%= form_tag login_path, :method => :post do %>
+    5:   <%= label :email, 'email' %>
+    6:   <%= text_field :email %>
+    7:   <%= label :password, 'password' %>
+    8:   <%= text_field :password %>
+    9:   <br/>
+  app/views/sessions/login.html.erb:6:in `block in _app_views_sessions_login_html_erb__2228111841192585603_70204590907300'
+  app/views/sessions/login.html.erb:4:in `_app_views_sessions_login_html_erb__2228111841192585603_70204590907300'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.5ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:07:33 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2023-11-13 10:07:41 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WHi/Cgfic/+wmJMW7tfFP9dNZ+/Iu3k97scCzthc1Y3ktPQdmRZ1END3YZMLXH3VNKVyJrP2Ga6Vnr02U58stQ==", "student"=>{"email"=>"sma2243@columbia.edu", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.9ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."email" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:07:41 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_flash.erb (6.7ms)
+Completed 200 OK in 37ms (Views: 36.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:09:43 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (14.3ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `text_field' for nil:NilClass):
+    2: 
+    3: 
+    4: <%= form_tag login_path, :method => :post do|f|%>
+    5:   <%= f.text_field :email %>
+    6:   <%= f.password_field :password %>
+    7:   <br/>
+    8:   <%= f.submit 'Login', :class => 'btn btn-primary' %>
+  app/views/sessions/login.html.erb:5:in `block in _app_views_sessions_login_html_erb__2228111841192585603_70204612768400'
+  app/views/sessions/login.html.erb:4:in `_app_views_sessions_login_html_erb__2228111841192585603_70204612768400'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.3ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.2ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (37.7ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:09:57 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `text_field' for nil:NilClass):
+    2: 
+    3: 
+    4: <%= form_tag login_path, :method => :post do |f|%>
+    5:   <%= f.text_field :email %>
+    6:   <%= f.password_field :password %>
+    7:   <br/>
+    8:   <%= f.submit 'Login', :class => 'btn btn-primary' %>
+  app/views/sessions/login.html.erb:5:in `block in _app_views_sessions_login_html_erb__2228111841192585603_70204621857920'
+  app/views/sessions/login.html.erb:4:in `_app_views_sessions_login_html_erb__2228111841192585603_70204621857920'
+
+
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/susannahabrams/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.7ms)
+
+
+Started GET "/login" for ::1 at 2023-11-13 10:10:20 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (8.2ms)
+  Rendered layouts/_flash.erb (0.4ms)
+Completed 200 OK in 62ms (Views: 58.5ms | ActiveRecord: 0.0ms)
+=======
   /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
   /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
   /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
@@ -6098,3 +7372,4 @@ NameError (undefined local variable or method `student' for #<StudentsController
   Rendered /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
   Rendered /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
   Rendered /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.9ms)
+>>>>>>> 0ff402a90c64ec8d801724c2b1f30703a7d292f7

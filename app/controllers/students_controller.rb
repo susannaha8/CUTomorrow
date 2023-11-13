@@ -1,21 +1,17 @@
 class StudentsController < ApplicationController
-	def new
-	  @student = Student.new
+ 
+	
+	def new #goes with view for signup page
+		@student = Student.new
 	end
 
-	def index
-	end
-      
 	def create
-	  @student = student.find_by(email: params[:email])
-      
-	  if @student && @student.authenticate(params[:email][:password])
-	    session[:student_id] = @student.id
-	    redirect_to student_path
-	  else
-	    flash[:alert] = "Login failed"
-	    redirect_to student_path
-	  end
+		#@student = Student.new(student_params)
+
+	end
+
+	def show #goes with view for profile page
+
 	end
 
 	# For profile pages

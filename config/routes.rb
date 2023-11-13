@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root :to => redirect('/schedule')
   #root "schedules#index"
-  get "/login", to: "students#index", as: "student"
-  post "/login", to: "students#create", as: "create"
+  get "/login", to: "sessions#login"
+  post "/login", to: "sessions#create"
 
   get "/profile", to: "students#profile", as: "profile"
   get "/edit_profile", to: "students#edit_profile", as: "edit_profile"

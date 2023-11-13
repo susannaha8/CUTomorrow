@@ -1,14 +1,22 @@
 class StudentsController < ApplicationController
  
-	
-	def new #goes with view for signup page
-		# @student = Student.new
+	before_action :authorized, only: [:profile, :edit_profile]
+
+	def new
+		@student = Student.new
 	end
 
-	def create
-		# @student = Student.new(student_params)
 
-		# redirect_to sign_up
+	def create
+		@student = Student.new(student_params)
+		if @student.save
+			flash[:notice] = " New Student: #{@student.error}"
+			redirect_to login_path
+		else
+			flash[:notice] = " New Student: #{student_params}"
+			#flash[:notice] = " Error Messages: #{@student.errors.messages}"
+			redirect_to sign_up_path
+		end
 	end
 
 	def show #goes with view for profile page

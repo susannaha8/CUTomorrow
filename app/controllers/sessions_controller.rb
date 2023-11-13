@@ -3,16 +3,16 @@ class SessionsController < ApplicationController
 	def login
 	end
 
-	# def sign_up
-	# end
+	def logout 
+		session.delete(:student_id)
+		redirect_to login_path
+	end
 
 	def create
 	  #flash[:notice] = " Email: #{params[:email]}"
 	  @student = Student.find_by(email: params[:email])
-	  @id = @student.id
-	  @password = params[:password]
       
-	  if @student && @student.authenticate(@password)
+	  if @student && @student.authenticate(params[:password])
 	    session[:student_id] = @student.id
 	    redirect_to schedule_path
 	  else

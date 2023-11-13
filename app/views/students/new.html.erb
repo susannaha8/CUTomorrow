@@ -1,0 +1,18 @@
+<h1> Sign Up <h1>
+
+
+<%= form_for sign_up_path do |f| %>
+  <%= f.label :firstName, 'First Name', :class => 'col-form-label' %>
+  <%= f.text_field :firstName, class: 'form-control'  %>
+  <%= f.label :lastName, 'Last Name', :class => 'col-form-label' %>
+  <%= f.text_field :lastName, class: 'form-control'  %>
+  <%= f.label :uni, 'uni', :class => 'col-form-label' %>
+  <%= f.text_field :uni, class: 'form-control'  %>
+  <%= f.label :email, 'email', :class => 'col-form-label' %>
+  <%= f.text_field :email, class: 'form-control'  %>
+  <%= f.label :password, 'password', :class => 'col-form-label' %>
+  <%= f.password_field :password, class: 'form-control'  %>
+  <br/>
+  <%= submit_tag 'Sign Up', :class => 'btn btn-primary' %>
+  <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary' %>
+<% end %>

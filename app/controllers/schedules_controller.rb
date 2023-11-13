@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
 
+  before_action :authorized, only: [:index, :add_course]
   # THIS IS WHERE WE STARTED
 
   def index

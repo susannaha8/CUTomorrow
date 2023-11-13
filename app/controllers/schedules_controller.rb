@@ -1,15 +1,6 @@
 class SchedulesController < ApplicationController
 
   # THIS IS WHERE WE STARTED
-   def profile
-     id = params[:schedID] # retrieve schedID from URI route
-     @schedule = Schedule.find(id) # look up schedule by unique ID
-     # will render app/views/schedules/show.<extension> by default
-   end
-
-   def edit_profile
-    @schedule = Schedule.find params[:schedID]
-  end
 
   def index
     @major = 1 #will need to get this from profile

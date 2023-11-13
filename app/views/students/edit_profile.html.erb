@@ -1,6 +1,6 @@
 <h2>Edit Profile</h2>
 <h3>Name: <%= @student.id%>
-<%= form_tag edit_profile_path, :method => :put do %>
+<%= form_for @student, url: edited_profile_path, method: :put do |f| %>
   <%= label :student, :standing, 'Standing', :class => 'col-form-label' %>
   <%= text_field :student, 'standing', :class => 'form-control' %>
   <%= label :student, :major1, 'Major 1', :class => 'col-form-label' %>

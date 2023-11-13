@@ -1,0 +1,11 @@
+<h1> Login <h1>
+
+<%= form_tag login_path, :method => :post do %>
+  <%= label :student, :email, 'email', :class => 'col-form-label' %>
+  <%= text_field :student, :email, :class => 'form-control' %>
+  <%= label :student, :password, 'password', :class => 'col-form-label' %>
+  <%= password_field :student, :password, :class => 'form-control' %>
+  <br/>
+  <%= submit_tag 'Login', :class => 'btn btn-primary' %>
+  <%= link_to 'Cancel', student_path, :class => 'btn btn-secondary' %>
+<% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #resources :schedules
 
-  root :to => redirect('/schedule')
+  root :to => redirect('/student')
   #root "schedules#index"
 
   get "/login", to: "sessions#login"

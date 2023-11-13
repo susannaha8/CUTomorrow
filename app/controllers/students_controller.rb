@@ -1,22 +1,30 @@
 class StudentsController < ApplicationController
-	def new
-	  @student = Student.new
+ 
+	
+	def new #goes with view for signup page
+		@student = Student.new
 	end
 
-	def login
-	end
-      
 	def create
-	  @student = student.find_by(email: params[:email])
-      
-	  if @student && @student.authenticate(params[:email][:password])
-	    session[:student_id] = @student.id
-	    redirect_to login_path
-	  else
-	    flash[:alert] = "Login failed"
-	    redirect_to add_course_path
-	  end
+		#@student = Student.new(student_params)
+
 	end
+
+	def show #goes with view for profile page
+
+	end
+
+	def edit
+
+	end
+
+
+	#private
+	#def student_params
+	#	params.require(:student).permit()
+	#end
 
 
 end
+
+#https://dev.to/kjdowns/creating-a-user-login-system-ruby-on-rails-2kl2 

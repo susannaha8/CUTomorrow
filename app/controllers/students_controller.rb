@@ -2,12 +2,13 @@ class StudentsController < ApplicationController
  
 	
 	def new #goes with view for signup page
-		@student = Student.new
+		# @student = Student.new
 	end
 
 	def create
-		#@student = Student.new(student_params)
+		# @student = Student.new(student_params)
 
+		# redirect_to sign_up
 	end
 
 	def show #goes with view for profile page
@@ -17,12 +18,12 @@ class StudentsController < ApplicationController
 	# For profile pages
 	def profile
 		# id = params[:schedID] # retrieve schedID from URI route
-		@student = Student.find(3) # look up schedule by unique ID
+		@student = Student.find(session[:student_id]) # look up schedule by unique ID
 		# will render app/views/schedules/show.<extension> by default
 	  end
    
 	  def edit_profile
-		@student = Student.find(3)
+		@student = Student.find(session[:student_id])
 	  
 		if request.put?
 		  if @student.update(student_params)

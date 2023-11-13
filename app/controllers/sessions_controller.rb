@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
 	def login
 	end
 
+	# def sign_up
+	# end
+
 	def create
 	  #flash[:notice] = " Email: #{params[:email]}"
 	  @student = Student.find_by(email: params[:email])

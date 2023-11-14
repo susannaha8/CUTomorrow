@@ -5,11 +5,11 @@ Feature: add a course
   I want to add and remove courses from my schedule
 
 
-Background: courses in schedule
+Background: courses in schedule, login
 
   Given the following schedules are in a Schedule table:
   | schedID |   uni   | courseID | semester | reqID | taken |
-  |    1    | sma2243 |    1     |   S23    |   1   | true  |
+  |    1    | sma2243 |    1     |   S23    |   2   | true  |
   |    2    | sma2243 |    5     |   F23    |   2   | false |
   |    3    | sma2243 |    3     |   S24    |   3   | false |
   |    4    | sma2243 |    4     |   S24    |   4   | false |
@@ -28,7 +28,12 @@ Background: courses in schedule
   Given the following requirements are in a Requirement table
   | reqID | reqLabel | major_minorID | courses   |
   | 1     | firstReq | 1             | COMS 3827 |
-  | 2     | secondReq | 1            | COMS 1004 |
+  | 2     | secondReq | 1             | COMS 1004 |
+
+  Given the following pairs are in a Coursereq table
+  | coursereqsID | reqID | courseID |
+  | 1            | 1      | 2       |
+  | 2            | 2      | 1       |
 
   Given the following students are in a Student table
   | id | uni     | email                | password| major1 |

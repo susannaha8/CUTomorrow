@@ -22,6 +22,9 @@ Given /the following (?:.*)s are in a (.*) table/ do |object_name, object_table|
     if (object_name == "Student")
       Student.create x
     end
+    if (object_name == "Coursereq")
+      Coursereq.create x
+    end
   end
 end
 

@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless logged_in?
   end
 
+  def op_authorized
+    redirect_to schedule_path unless !logged_in?
+  end
+  
 end
 
 

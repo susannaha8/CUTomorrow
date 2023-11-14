@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+	before_action :op_authorized, only: [:login]
       
 	def login
 	end

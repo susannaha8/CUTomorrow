@@ -26,6 +26,8 @@ requirements = Requirement.create([
 
 majors = Major.create({:name => "Computer Science", :mtype => "major"})
 
-#Coursereq.create([
-#	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}, {:reqID => 1, :courseID => 3}
-#])
+student = Student.create({:uni => "sma2243", :email => "sma2243@columbia.edu", :password => "test"})
+
+# Coursereq.create([
+# 	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}, {:reqID => 1, :courseID => 3}
+# ])

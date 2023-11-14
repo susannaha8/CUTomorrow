@@ -10,10 +10,9 @@ class StudentsController < ApplicationController
 	def create
 		@student = Student.new(student_params)
 		if @student.save
-			flash[:notice] = " New Student: #{@student.error}"
 			redirect_to login_path
 		else
-			flash[:notice] = " New Student: #{student_params}"
+			#flash[:notice] = " New Student: #{student_params}"
 			#flash[:notice] = " Error Messages: #{@student.errors.messages}"
 			redirect_to sign_up_path
 		end

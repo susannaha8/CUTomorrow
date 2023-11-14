@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   #resources :schedules
 
-  root :to => redirect('/schedule')
+  root :to => redirect('/login')
   #root "schedules#index"
   get "/login", to: "sessions#login"
   post "/login", to: "sessions#create"
 
-  get "/sign_up", to: "students#new", as: "sign_up"
-  post "/sign_up", to: "students#create"
+  get "/sign_up", to: "students#new"
+  post "/sign_up", to: "students#create", as: "students"
 
   get "/logout", to: "sessions#logout"
   

@@ -9,20 +9,23 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%# These classes come from the Bootstrap CSS framework. %>
-    <nav class="navbar navbar-expand-lg bg-white mb-3">
-      <h1 class="title">CUTomorrow!</h1>
-        <div style="justify-content: right; align-items: right;">
-          <%= link_to 'Schedules', schedule_path%>
-          <button class="nav-button" ><%= link_to "Profile", profile_path %></button>
-        </div>
-    </nav>
-    <div class="container">
-      <%# Render "flash" messages in our application. This loads _flash.erb %>
-      <%= render 'layouts/flash' %>
-      <main id="main">
-        <%= yield %>
-      </main>
-    </div>
+
+      <%# These classes come from the Bootstrap CSS framework. %>
+      <nav class="navbar navbar-expand-lg bg-white mb-3">
+        <h1 class="title">CUTomorrow!</h1>
+          <div style="justify-content: right; align-items: right;">
+            <%= link_to 'Schedules', schedule_path%>
+            <button class="nav-button" ><%= link_to "Profile", profile_path %></button>
+            <button class="nav-button" ><%= link_to "Logout", logout_path %></button>
+          </div>
+      </nav>
+
+      <div class="container">
+        <%# Render "flash" messages in our application. This loads _flash.erb %>
+        <%= render 'layouts/flash' %>
+        <main id="main">
+          <%= yield %>
+        </main>
+      </div>
   </body>
 </html>

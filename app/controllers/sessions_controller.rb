@@ -1,23 +1,32 @@
 class SessionsController < ApplicationController
+
+	before_action :op_authorized, only: [:login]
       
 	def login
 	end
 
-	# def sign_up
-	# end
+	def logout 
+		session.delete(:student_id)
+		redirect_to login_path
+	end
 
 	def create
 	  #flash[:notice] = " Email: #{params[:email]}"
 	  @student = Student.find_by(email: params[:email])
-	  @id = @student.id
-	  @password = params[:password]
+	  
       
-	  if @student && @student.authenticate(@password)
-	    session[:student_id] = @student.id
-	    redirect_to schedule_path
+	  if !@student
+		flash[:notice] = "invalid email"
+		redirect_to login_path
 	  else
-	    flash[:notice] = "Login failed"
-	    redirect_to login_path
+		@auth = @student.authenticate(params[:password])
+		if !@auth
+			flash[:notice] = "incorrect password"
+			redirect_to login_path
+		else
+			session[:student_id] = @student.id
+			redirect_to schedule_path
+		end
 	  end
 	end
 

@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#login"
   post "/login", to: "sessions#create"
 
-  # get "/sign_up", to: "sessions#sign_up", as: "sign_up_path"
-  # post "/sign_up", to: "students#new"
+  get "/sign_up", to: "students#new", as: "sign_up"
+  post "/sign_up", to: "students#create"
 
+  get "/logout", to: "sessions#logout"
+  
   get "/profile", to: "students#profile", as: "profile"
   get "/edit_profile", to: "students#edit_profile", as: "edit_profile"
   put "/edit_profile", to: "students#edit_profile", as: "edited_profile"

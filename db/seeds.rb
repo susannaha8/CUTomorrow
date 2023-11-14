@@ -23,6 +23,9 @@ requirements = Requirement.create([
 	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "CS Core - Intro to CS", :courses => "COMS 1004", :numCourses => 1}
 ])
 
+
+majors = Major.create({:name => "Computer Science", :mtype => "major"})
+
 #Coursereq.create([
 #	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}, {:reqID => 1, :courseID => 3}
 #])

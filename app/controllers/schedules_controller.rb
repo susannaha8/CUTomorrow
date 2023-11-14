@@ -4,9 +4,10 @@ class SchedulesController < ApplicationController
   # THIS IS WHERE WE STARTED
 
   def index
-    @major = (Student.find_by_id(session[:student_id])).major1 
-    @uni = (Student.find_by_id(session[:student_id])).uni 
-    @major_name = Major.find_by_major_minorID(@major).name
+    @majorID = (Student.find_by_id(session[:student_id])).major1 
+    @uni = (Student.find_by_id(session[:student_id])).uni
+    @major = Major.find_by_major_minorID(@majorID)
+    @major_name = @majorID ? @major.name : ""
     @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
   end
 

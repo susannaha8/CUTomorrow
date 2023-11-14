@@ -19,20 +19,8 @@
         <%= @student.major1 %> <!-- get the user's major, get the major name-->
   </li>
   <li>
-    Major 2:
-        <%= @student.major2 %> 
-  </li>
-  <li>
     Minor 1:
         <%= @student.minor1 %> 
-  </li>
-  <li>
-    Minor 2:
-        <%= @student.minor2 %> 
-  </li>
-  <li>
-    Minor 3:
-        <%= @student.minor3 %> 
   </li>
 
 </ul>
@@ -41,5 +29,5 @@
 
 <div class="row">
   <%= link_to 'Edit Profile', edit_profile_path, :class => 'btn btn-secondary' %>
-  <%= link_to 'Back to Schedules', add_course_path(semester:"Fall 2022"), :class => 'btn btn-primary col-2' %>
+  <%= link_to 'Back to Schedules', schedule_path, :class => 'btn btn-primary col-2' %>
 </div>

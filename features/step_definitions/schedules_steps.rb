@@ -1,27 +1,42 @@
 
-Given /the following courses are in a schedule/ do |schedule_table|
-  schedule_table.hashes.each do |schedule|
-    Schedule.create schedule
+# Given /the following schedules are in a Schedule table/ do |schedule_table|
+#   schedule_table.hashes.each do |schedule|
+#     Schedule.create schedule
+#   end
+# end
+
+Given /the following (?:.*)s are in a (.*) table/ do |object_name, object_table|
+  object_table.hashes.each do |x|
+    if (object_name == "Schedule")
+      Schedule.create x
+    end
+    if (object_name == "Course")
+      Course.create x
+    end
+    if (object_name == "Major")
+      Major.create x
+    end
+    if (object_name == "Requirement")
+      Requirement.create x
+    end
+    if (object_name == "Student")
+      Student.create x
+    end
   end
 end
 
-Given /the following courses are in the course directory/ do |course_table|
-  course_table.hashes.each do |course|
-    Course.create course
-  end
+Given /I login with email (.*) and password (.*)/ do |email, password|
+  visit("/login")
+  fill_in("email", :with => email)
+  fill_in("password", :with => password)
+  click_button("Login")
 end
 
-Given /the following requirements are in the requirements table/ do |requirement_table|
-  requirement_table.hashes.each do |req|
-    Requirement.create req
-  end
-end
-
-Given /the following pairs are in coursereqs/ do |course_table|
-  course_table.hashes.each do |course|
-    Coursereq.create course
-  end
-end
+# Given /the following requirements are in the requirements table/ do |requirement_table|
+#   requirement_table.hashes.each do |req|
+#     Requirement.create req
+#   end
+# end
 
 Then /(.*) seed courses should exist/ do | n_seeds |
   expect(Schedule.count).to eq n_seeds.to_i

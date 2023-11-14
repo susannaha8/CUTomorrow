@@ -7,7 +7,7 @@ Feature: add a course
 
 Background: courses in schedule
 
-  Given the following courses are in a schedule:
+  Given the following schedules are in a Schedule table:
   | schedID |   uni   | courseID | semester | reqID | taken |
   |    1    | sma2243 |    1     |   S23    |   1   | true  |
   |    2    | sma2243 |    5     |   F23    |   2   | false |
@@ -16,19 +16,25 @@ Background: courses in schedule
 
   Then 4 seed courses should exist
 
-  Given the following requirements are in the requirements table
-  | reqID | reqLabel | major_minorID |
-  | 1     | firstReq | 1             |
+  Given the following majors are in a Major table
+  | major_minorID | name            | mtype |
+  |1              | Computer Science| major |
 
-  Given the following courses are in the course directory
-  | courseID| courseTitle | courseCode |
-  |    1    | Intro to CS | 1004       |
-  |    2    | Fundamentals | 3827      |
+  Given the following courses are in a Course table
+  | courseID| courseTitle | courseCode | prefixCode |
+  |    1    | Intro to CS | 1004       | COMS       |
+  |    2    | Fundamentals | 3827      | COMS       |
 
-  Given the following pairs are in coursereqs
-  |coursereqsID | reqID | courseID |
-  | 1           |   1   |     1     |
-  | 2           |   1   |     2     |
+  Given the following requirements are in a Requirement table
+  | reqID | reqLabel | major_minorID | courses   |
+  | 1     | firstReq | 1             | COMS 3827 |
+  | 2     | secondReq | 1            | COMS 1004 |
+
+  Given the following students are in a Student table
+  | id | uni     | email                | password| major1 |
+  | 1  | sma2243 | sma2243@columbia.edu | test    | 1      |
+
+  Given I login with email sma2243@columbia.edu and password test
 
 Scenario: add required course to existing schedule
   Given I am on the schedule page

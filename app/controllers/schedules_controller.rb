@@ -4,9 +4,9 @@ class SchedulesController < ApplicationController
   # THIS IS WHERE WE STARTED
 
   def index
-    @major = 1 #will need to get this from profile
-    @uni = "sma2243" #will need to get this from profile
-    @major_name = "Computer Science"
+    @major = (Student.find_by_id(session[:student_id])).major1 
+    @uni = (Student.find_by_id(session[:student_id])).uni 
+    @major_name = Major.find_by_major_minorID(@major).name
     @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
   end
 
@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
   def add_course
    # @display = Schedule.where(taken:false)
     @semester = params[:semester]
-    @major = 1 
+    @major = (Student.find_by_id(session[:student_id])).major1
     @requirements = Requirement.get_requirements_by_major(@major)
     @courses_to_fulfill = {} #hash of requirements and courses to fulfill
     @requirements.each {|i| @courses_to_fulfill[i]=(Course.get_courses_by_requirement(i))}
@@ -25,7 +25,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @uni = "sma2243"
+    @uni = (Student.find_by_id(session[:student_id])).uni
     @my_courses = Schedule.where(uni: @uni)
     @course_ids = @my_courses.pluck(:courseID).map(&:to_s)
     @course_id_to_check = schedule_params[:courseID].to_s

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231111125859) do
+ActiveRecord::Schema.define(version: 20231114010709) do
 
   create_table "add_required_courses_triggers", force: :cascade do |t|
   end
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20231111125859) do
     t.string  "schoolCode",     limit: 4
     t.string  "divisionCode",   limit: 4
     t.string  "prefixCode",     limit: 4
+  end
+
+  create_table "majors", primary_key: "major_minorID", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "type",       limit: 20
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "requirements", primary_key: "reqID", force: :cascade do |t|

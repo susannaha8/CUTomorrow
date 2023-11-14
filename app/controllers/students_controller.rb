@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 	def create
 		@student = Student.new(student_params)
 		if @student.save
+			flash[:notice] = " Profile created."
 			redirect_to login_path
 		else
 			#flash[:notice] = " New Student: #{student_params}"
@@ -46,6 +47,6 @@ class StudentsController < ApplicationController
 	  private
 	  
 	  def student_params
-		params.require(:student).permit(:standing, :major1, :major2, :minor1, :minor2, :minor3)
+		params.require(:student).permit(:uni, :email, :firstName, :lastName, :standing, :major1, :major2, :minor1, :minor2, :minor3, :password)
 	  end
 end

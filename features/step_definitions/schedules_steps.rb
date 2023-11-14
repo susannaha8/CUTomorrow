@@ -18,12 +18,12 @@ Given /the following (?:.*)s are in a (.*) table/ do |object_name, object_table|
     end
     if (object_name == "Requirement")
       Requirement.create x
-      #puts Requirement.find(1).courses
-      Coursereq.all.each { |i| puts i.coursereqsID}
-      #puts Coursereq.first()
     end
     if (object_name == "Student")
       Student.create x
+    end
+    if (object_name == "Coursereq")
+      Coursereq.create x
     end
   end
 end

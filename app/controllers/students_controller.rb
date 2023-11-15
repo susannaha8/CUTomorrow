@@ -39,12 +39,30 @@ class StudentsController < ApplicationController
 		# id = params[:schedID] # retrieve schedID from URI route
 		@student = Student.find(session[:student_id]) # look up schedule by unique ID
 		@major1 = Major.find(@student.major1).name
-		# @major1 = "test"
-		# puts @major1
-		# will render app/views/schedules/show.<extension> by default
-	  end
+		if @student.major2.present?
+			@major2 = Major.find(@student.major2).name
+		else
+			@major2 = ""  
+		end
+		if @student.minor1.present?
+			@minor1 = Major.find(@student.minor1).name
+		else
+			@minor1 = ""  
+		end
+		if @student.minor2.present?
+			@minor2 = Major.find(@student.minor2).name
+		else
+			@minor2 = ""  
+		end
+		if @student.minor3.present?
+			@minor3 = Major.find(@student.minor3).name
+		else
+			@minor3 = ""  
+		end
+		
+	end
    
-	  def edit_profile
+	def edit_profile
 		@student = Student.find(session[:student_id])
 		@categories = [
 			{ id: 1, name: 'Fall 2021' },
@@ -93,11 +111,11 @@ class StudentsController < ApplicationController
 			render :edit_profile
 		  end
 		end
-	  end
+	end
 	  
-	  private
-	  
-	  def student_params
+	private
+	
+	def student_params
 		params.require(:student).permit(:uni, :email, :firstName, :lastName, :standing, :major1, :major2, :minor1, :minor2, :minor3, :password)
-	  end
+	end
 end

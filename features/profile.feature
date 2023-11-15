@@ -26,7 +26,7 @@ Scenario: navigate to schedule page from nav bar
   Then I should be on the profile page
   And I should see "Uni: sma2243"
   And I should see "Standing: Fall 2023"
-  And I should see "Major 1: 1"
+  And I should see "Major 1: Computer Science"
 
 Scenario: update profile
   Given I am on the profile page
@@ -34,12 +34,12 @@ Scenario: update profile
   Then I should be on the edit profile page
   And I select "Spring 2024" from "Standing"
   And I select "English" from "Major 2"
-  And I select Mathematics from "Minor 1"
+  And I select "Mathematics" from "Minor 1"
   And I press "Update Profile"
-  Then I should be on the Profile page
+  Then I should be on the profile page
   And I should see "Profile was successfully updated."
   And I should see "Uni: sma2243"
-  And I should see "Standing: Fall 2023"
+  And I should see "Standing: Spring 2024"
   And I should see "Major 1: Computer Science"
   And I should see "Major 2: English"
   And I should see "Minor 1: Mathematics"
@@ -50,7 +50,7 @@ Scenario: cancel updates
   Then I should be on the profile page
   And I should see "Uni: sma2243"
   And I should see "Standing: Fall 2023"
-  And I should see "Major 1: 1"
+  And I should see "Major 1: Computer Science"
 
 Scenario: move back to schedules page
   Given I am on the profile page

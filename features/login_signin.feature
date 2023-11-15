@@ -24,7 +24,6 @@ Scenario: log in with correct email and password
   Then I should be on the schedule page
   And I should see "Add Courses"
 
-
 Scenario: log in with incorrect email
   Given I am on the login page
   And I fill in "email" with "cn2489@columbia.edu"
@@ -32,7 +31,6 @@ Scenario: log in with incorrect email
   And I press "Login"
   Then I should be on the login page
   And I should see "invalid email"
-
 
 Scenario: log in with incorrect password
   Given I am on the login page
@@ -42,12 +40,10 @@ Scenario: log in with incorrect password
   Then I should be on the login page
   And I should see "incorrect password"
 
-
 Scenario: navigate to other pages while being logged in
   Given I login with email sma2243@columbia.edu and password test
   And I go to the login page
   Then I should be on the schedule page
-
 
 Scenario: navigate to other pages while not being logged in
   Given I am on the login page
@@ -60,48 +56,46 @@ Scenario: logging out
   And I follow "Logout"
   Then I should be on the login page
 
-
 Scenario: signing up with existing email
-
+  Given I am on the login page
+  And I follow "Sign Up"
+  Then I should be on the sign up page
+  And I fill in "email" with "sma2243@columbia.edu"
+  And I fill in "password" with "test"
+  And I press "Sign Up"
+  Then I should see "Email already exists!"
 
 Scenario: signing up with existing uni
-
+  Given I am on the login page
+  And I follow "Sign Up"
+  Then I should be on the sign up page
+  And I fill in "uni" with "sma2243"
+  And I fill in "email" with "edc2147@columbia.edu"
+  And I fill in "password" with "test"
+  And I press "Sign Up"
+  Then I should see "UNI already exists!"
 
 Scenario: signing up with correct information and then logging in
-
+  Given I am on the login page
+  And I follow "Sign Up"
+  Then I should be on the sign up page
+  And I fill in "uni" with "cn2489"
+  And I fill in "email" with "cn2489@columbia.edu"
+  And I fill in "password" with "test"
+  And I press "Sign Up"
+  Then I should be on the login page
+  Then I should see "Profile created."
 
 Scenario: signing up with incomplete information
-
+  Given I am on the login page
+  And I follow "Sign Up"
+  Then I should be on the sign up page
+  And I fill in "uni" with "cn2489"
+  And I fill in "email" with "cn2489@columbia.edu"
+  And I press "Sign Up"
+  Then I should be on the sign up page
+  Then I should see "Error! Information incomplete!"
 
 
 Scenario: (optional) log in and log out and check the persisting courses
-
-
-
-
-
-
-Scenario: add required course to existing schedule
-  Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
-  Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Fundamentals" on add_course
-  Then I should be on the schedule page
-  And I should see "2"
-
-
-Scenario: delete course from existing schedule
-  Given I am on the schedule page
-  And I press "delete 1" on schedule page
-  Then I should not see "delete 1"
-  And I should see "Schedule '1' deleted."
-
-
-Scenario: add a course that already exists
-  Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
-  Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Intro to CS" on add_course
-  Then I should see "Course '1' already added."
-
 

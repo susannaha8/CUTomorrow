@@ -1,4 +1,4 @@
-tmp/
-log/
-db/development.sqlite3
-db/test.sqlite3
+CUTomorrow/.bundle/
+CUTomorrow/tmp/
+CUTomorrow/log/
+CUTomorrow/db/*.sqlite3

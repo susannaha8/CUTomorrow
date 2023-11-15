@@ -7373,3 +7373,106 @@ NameError (undefined local variable or method `student' for #<StudentsController
   Rendered /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
   Rendered /Users/elizabethcommisso/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.9ms)
 >>>>>>> 0ff402a90c64ec8d801724c2b1f30703a7d292f7
+
+
+Started GET "/" for ::1 at 2023-11-15 17:08:21 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/login" for ::1 at 2023-11-15 17:08:21 -0500
+Processing by SessionsController#login as HTML
+  [1m[35mStudent Load (0.8ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/schedule
+Filter chain halted as :op_authorized rendered or redirected
+Completed 302 Found in 37ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-15 17:08:21 -0500
+Processing by SchedulesController#index as HTML
+  [1m[36mStudent Load (0.3ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMajor Load (0.7ms)[0m  SELECT  "majors".* FROM "majors" WHERE "majors"."major_minorID" = ? LIMIT 1  [["major_minorID", 1]]
+  [1m[36mSchedule Load (0.9ms)[0m  [1mSELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (37.6ms)
+  Rendered layouts/_flash.erb (1.7ms)
+Completed 200 OK in 1560ms (Views: 1536.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2023-11-15 17:08:23 -0500
+
+
+Started GET "/profile" for ::1 at 2023-11-15 17:08:26 -0500
+Processing by StudentsController#profile as HTML
+  [1m[35mStudent Load (0.2ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMajor Load (0.2ms)[0m  SELECT  "majors".* FROM "majors" WHERE "majors"."major_minorID" = ? LIMIT 1  [["major_minorID", 1]]
+  Rendered students/profile.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 44ms (Views: 37.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-15 17:08:29 -0500
+Processing by SchedulesController#index as HTML
+  [1m[36mStudent Load (0.3ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMajor Load (0.2ms)[0m  SELECT  "majors".* FROM "majors" WHERE "majors"."major_minorID" = ? LIMIT 1  [["major_minorID", 1]]
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 81ms (Views: 75.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/add_course/Fall%202022" for ::1 at 2023-11-15 17:08:30 -0500
+Processing by SchedulesController#add_course as HTML
+  Parameters: {"semester"=>"Fall 2022"}
+  [1m[35mStudent Load (3.2ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRequirement Load (0.7ms)[0m  SELECT "requirements".* FROM "requirements" WHERE "requirements"."major_minorID" = ?  [["major_minorID", 1]]
+  [1m[36mCourse Load (2.8ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."courseID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 1[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" INNER JOIN "coursereqs" ON "coursereqs"."courseID" = "courses"."courseID" WHERE "coursereqs"."reqID" = 2
+  Rendered schedules/add_course.html.erb within layouts/application (46.5ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 144ms (Views: 72.1ms | ActiveRecord: 7.8ms)
+
+
+Started POST "/add_course/Fall%202022?id=2&schedule%5BcourseID%5D=2&schedule%5Bid%5D=2&schedule%5BreqID%5D=1&schedule%5Bsemester%5D=Fall+2022&schedule%5Buni%5D=sma2243" for ::1 at 2023-11-15 17:08:32 -0500
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"O1OV+zGZmcos/HqUHEjMmeTV/EE1m/HZtmSNn3hjyihTCSbDJymp1fIapBqAU1EBUcukejJlxKkdtgxlWiqrrw==", "id"=>"2", "schedule"=>{"courseID"=>"2", "id"=>"2", "reqID"=>"1", "semester"=>"Fall 2022", "uni"=>"sma2243"}, "semester"=>"Fall 2022"}
+  [1m[36mStudent Load (0.2ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT "schedules"."courseID" FROM "schedules" WHERE "schedules"."uni" = ?  [["uni", "sma2243"]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schedules" ("uni", "courseID", "semester", "reqID") VALUES (?, ?, ?, ?)  [["uni", "sma2243"], ["courseID", 2], ["semester", "Fall 2022"], ["reqID", 1]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Unpermitted parameter: id
+  [1m[35mCourse Load (0.3ms)[0m  SELECT  "courses".* FROM "courses" WHERE "courses"."courseID" = ? LIMIT 1  [["courseID", 2]]
+Redirected to http://localhost:3000/schedule
+Completed 302 Found in 29ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/schedule" for ::1 at 2023-11-15 17:08:32 -0500
+Processing by SchedulesController#index as HTML
+  [1m[36mStudent Load (0.2ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMajor Load (0.2ms)[0m  SELECT  "majors".* FROM "majors" WHERE "majors"."major_minorID" = ? LIMIT 1  [["major_minorID", 1]]
+  [1m[36mSchedule Load (0.2ms)[0m  [1mSELECT schedules.* , courses.*, requirements.* FROM "schedules" INNER JOIN "courses" ON "courses"."courseID" = "schedules"."courseID" INNER JOIN "requirements" ON "requirements"."reqID" = "schedules"."reqID" WHERE "schedules"."uni" = ?[0m  [["uni", "sma2243"]]
+  Rendered schedules/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 37ms (Views: 33.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/logout" for ::1 at 2023-11-15 17:08:40 -0500
+Processing by SessionsController#logout as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 30ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2023-11-15 17:08:40 -0500
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (20.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 57ms (Views: 56.2ms | ActiveRecord: 0.0ms)

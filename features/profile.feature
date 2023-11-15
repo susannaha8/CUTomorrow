@@ -7,15 +7,16 @@ Feature: edit my profile
 
 Background: data in profile
 
-  Given the following data is in a profile:
-  |   uni   |  standing  |        major1         | major2 | minor1 | minor2 | minor3 |
-  | sma2243 |  Fall 2023 |   Computer Science    |        |        |        |        |
 
  Given the following majors are in the major table
   | major_minorID |       name       |  mtype |
   |       1       | Computer Science | Major  |
   |       2       |     English      | Major  |
   |       3       |    Mathematics   | Minor  |
+
+  Given the following students are in a Student table
+  | id | uni     | email                | password| major1 | standing  |
+  | 1  | sma2243 | sma2243@columbia.edu | test    | 1      | Fall 2023 |
 
  Given I login with email sma2243@columbia.edu and password test
 
@@ -25,7 +26,7 @@ Scenario: navigate to schedule page from nav bar
   Then I should be on the profile page
   And I should see "Uni: sma2243"
   And I should see "Standing: Fall 2023"
-  And I should see "Major 1: Computer Science"
+  And I should see "Major 1: 1"
 
 Scenario: update profile
   Given I am on the Profile page

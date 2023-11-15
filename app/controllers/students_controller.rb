@@ -46,10 +46,47 @@ class StudentsController < ApplicationController
    
 	  def edit_profile
 		@student = Student.find(session[:student_id])
-	  
+		@categories = [
+			{ id: 1, name: 'Fall 2021' },
+			{ id: 2, name: 'Spring 2022' },
+			{ id: 3, name: 'Summer 2022' },
+			{ id: 4, name: 'Fall 2022' },
+			{ id: 5, name: 'Spring 2023' },
+			{ id: 6, name: 'Summer 2023' },
+			{ id: 7, name: 'Fall 2023' },
+			{ id: 8, name: 'Spring 2024' },
+			{ id: 9, name: 'Summer 2024' },
+			{ id: 10, name: 'Fall 2024' },
+			{ id: 11, name: 'Spring 2025' },
+			{ id: 12, name: 'Summer 2025' },
+			{ id: 13, name: 'Fall 2025' },
+			{ id: 14, name: 'Spring 2026' },
+			{ id: 15, name: 'Summer 2026' },
+		]
+		@season = [
+			{ id: 1, name: 'Fall' },
+			{ id: 2, name: 'Spring' },
+			{ id: 3, name: 'Summer' }
+		]
+		@year = [
+			{ id: 1, name: '2017' },
+			{ id: 2, name: '2018' },
+			{ id: 3, name: '2019' },
+			{ id: 4, name: '2020' },
+			{ id: 5, name: '2021' },
+			{ id: 6, name: '2022' },
+			{ id: 7, name: '2023' },
+			{ id: 8, name: '2024' },
+			{ id: 9, name: '2025' },
+			{ id: 10, name: '2026' },
+			{ id: 11, name: '2027' },
+			{ id: 12, name: '2028' }
+		]
+		@major_minor_options = Major.all
 		if request.put?
 		  if @student.update(student_params)
 			flash[:notice] = "Profile was successfully updated."
+			puts @student.standing
 			redirect_to profile_path
 		  else
 			flash[:error] = "Error updating profile."

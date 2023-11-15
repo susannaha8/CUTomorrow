@@ -4,7 +4,7 @@
 <ul id="profile" style="list-style-type: none">
   <li>
     Name:
-    <%= @student.firstName%>
+    <%= @student.firstName%> <%=@student.lastName %>
   </li>
   <li>
     Uni:
@@ -16,7 +16,7 @@
   </li>
   <li>
     Major 1:
-        <%= @student.major1 %> <!-- get the user's major, get the major name-->
+        <%= @major1 %> <!-- get the user's major, get the major name-->
   </li>
   <li>
     Minor 1:

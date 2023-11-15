@@ -31,11 +31,11 @@ class SchedulesController < ApplicationController
     @course_ids = @my_courses.pluck(:courseID).map(&:to_s)
     @course_id_to_check = schedule_params[:courseID].to_s
     if @course_ids.include?(@course_id_to_check)
-      flash[:notice] = "Course '#{@course_id_to_check}' already added."
+      flash[:notice] = "Course '#{Course.find(@course_id_to_check).courseTitle}' already added."
       redirect_to add_course_path
     else
       @schedule = Schedule.create!(schedule_params)
-      flash[:notice] = "Schedule #{@schedule.schedID} was successfully created."
+      flash[:notice] = "Course #{Course.find(schedule_params[:courseID]).courseTitle} was successfully added."
       redirect_to schedule_path
     end
   end
@@ -50,8 +50,9 @@ class SchedulesController < ApplicationController
   def destroy
     @id = params[:schedID]
     @schedule = Schedule.find(@id)
+    @course_id = @schedule.courseID
     @schedule.destroy
-    flash[:notice] = "Schedule '#{@schedule.schedID}' deleted."
+    flash[:notice] = "Course '#{Course.find(@course_id).courseTitle}' deleted."
     redirect_to schedule_path
   end
 

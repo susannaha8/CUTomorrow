@@ -38,6 +38,9 @@ class StudentsController < ApplicationController
 	def profile
 		# id = params[:schedID] # retrieve schedID from URI route
 		@student = Student.find(session[:student_id]) # look up schedule by unique ID
+		@major1 = Major.find(@student.major1).name
+		# @major1 = "test"
+		# puts @major1
 		# will render app/views/schedules/show.<extension> by default
 	  end
    

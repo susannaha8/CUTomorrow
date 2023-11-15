@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 describe SchedulesController, type: :controller do
+    let(:student) do
+        Student.create!(
+          uni: 'sma2243',
+          email: 'sma2243@columbia.edu',
+          password: 'test',
+          major1: 1
+        )
+    end
+
+    let!(:computer_science_major) do
+        Major.create!(
+          major_minorID: 1,
+          name: 'Computer Science',
+          mtype: 'major'
+        )
+    end
+
+    before do
+    # Manually log in the user by setting the user_id in the session
+        session[:student_id] = student.id
+    end
 
     describe "GET index" do
         it "renders the index template" do
@@ -25,18 +46,18 @@ describe SchedulesController, type: :controller do
     #     end
     # end
 
-    # describe "POST create_schedule" do
+    describe "POST create_schedule" do
 
-    #     context "when the course is not already added" do
-    #         it "creates a new schedule" do
-    #             expect {
-    #                 post :create, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
-    #             }.to change(Schedule, :count).by(1)
+        # context "when the course is not already added" do
+        #     it "creates a new schedule" do
+        #         expect {
+        #             post :create, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
+        #         }.to change(Schedule, :count).by(1)
         
-    #             # expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
-    #             # expect(response).to redirect_to(schedule_path)
-    #         end
-    #     end
+        #         expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
+        #         expect(response).to redirect_to(schedule_path)
+        #     end
+        # end
       
         # context "when the course is already added" do
         #   before do
@@ -50,7 +71,7 @@ describe SchedulesController, type: :controller do
         #     expect(response).to redirect_to(add_course_path)
         #   end
         # end
-    # end
+    end
 
     describe "DELETE destroy" do
         @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})
@@ -67,7 +88,7 @@ describe SchedulesController, type: :controller do
             expect { Schedule.find(1) }.to raise_error(ActiveRecord::RecordNotFound)
       
             expect(response).to redirect_to(schedule_path)
-            expect(flash[:notice]).to match(/Schedule '#{1}' deleted./)
+            expect(flash[:notice]).to match(/Course 'Calculus III' deleted./)
           end
 
       end

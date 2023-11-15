@@ -17,12 +17,13 @@ class StudentsController < ApplicationController
 			redirect_to sign_up_path
 		else
 			@student = Student.new(student_params)
-			if @student.save
+			if !student_params[:email].empty? && @student.save
 				flash[:notice] = "Profile created."
 				redirect_to login_path
 			else
 				#flash[:notice] = " New Student: #{student_params}"
-				#flash[:notice] = " Error Messages: #{@student.errors.messages}"
+				# flash[:notice] = " Error Messages: #{@student.errors.messages}"
+				flash[:notice] = "Error! Information incomplete!"
 				redirect_to sign_up_path
 			end
 		end

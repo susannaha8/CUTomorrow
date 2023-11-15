@@ -12,15 +12,17 @@ Background: data in profile
   | sma2243 |  Fall 2023 |   Computer Science    |        |        |        |        |
 
  Given the following majors are in the major table
-  | major_minorID |       name       |  type  |
+  | major_minorID |       name       |  mtype |
   |       1       | Computer Science | Major  |
   |       2       |     English      | Major  |
   |       3       |    Mathematics   | Minor  |
 
+ Given I login with email sma2243@columbia.edu and password test
+
 Scenario: navigate to schedule page from nav bar
   Given I am on the schedule page
-  And I follow "Profile"
-  Then I should be on the Profile page
+  And I follow "Profile" on "schedule page"
+  Then I should be on the profile page
   And I should see "Uni: sma2243"
   And I should see "Standing: Fall 2023"
   And I should see "Major 1: Computer Science"

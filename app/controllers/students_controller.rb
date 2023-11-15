@@ -8,15 +8,25 @@ class StudentsController < ApplicationController
 
 
 	def create
-		@student = Student.new(student_params)
-		if @student.save
-			flash[:notice] = " Profile created."
-			redirect_to login_path
-		else
-			#flash[:notice] = " New Student: #{student_params}"
-			#flash[:notice] = " Error Messages: #{@student.errors.messages}"
+
+		if Student.find_by_email(student_params[:email])
+			flash[:notice] = "Email already exists!"
 			redirect_to sign_up_path
+		elsif Student.find_by_uni(student_params[:uni])
+			flash[:notice] = "UNI already exists!"
+			redirect_to sign_up_path
+		else
+			@student = Student.new(student_params)
+			if @student.save
+				flash[:notice] = "Profile created."
+				redirect_to login_path
+			else
+				#flash[:notice] = " New Student: #{student_params}"
+				#flash[:notice] = " Error Messages: #{@student.errors.messages}"
+				redirect_to sign_up_path
+			end
 		end
+
 	end
 
 	def show #goes with view for profile page

@@ -15,5 +15,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string :standing
       t.string :password_digest
     end
+    add_index :students, [:email, :uni], unique: true
   end
 end

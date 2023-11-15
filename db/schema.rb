@@ -75,4 +75,6 @@ ActiveRecord::Schema.define(version: 20231114010709) do
     t.string  "password_digest"
   end
 
+  add_index "students", ["email", "uni"], name: "index_students_on_email_and_uni", unique: true
+
 end

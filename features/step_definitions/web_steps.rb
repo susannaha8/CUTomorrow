@@ -61,6 +61,10 @@ When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|
   click_link(link)
 end
 
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+    click_link(link)
+end
+
 When /^(?:|I )press "([^"]*)" on add_course$/ do |link|
 #   save_and_open_page
   #ADDED

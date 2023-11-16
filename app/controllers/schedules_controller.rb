@@ -17,6 +17,7 @@ class SchedulesController < ApplicationController
 
   def add_course
    # @display = Schedule.where(taken:false)
+    @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
     @major = (Student.find_by_id(session[:student_id])).major1
     @requirements = Requirement.get_requirements_by_major(@major)
@@ -26,6 +27,8 @@ class SchedulesController < ApplicationController
   end
 
   def create
+    # puts "Ello " << session[:student_id].to_s
+
     @uni = (Student.find_by_id(session[:student_id])).uni
     @my_courses = Schedule.where(uni: @uni)
     @course_ids = @my_courses.pluck(:courseID).map(&:to_s)
@@ -35,6 +38,7 @@ class SchedulesController < ApplicationController
       redirect_to add_course_path
     else
       @schedule = Schedule.create!(schedule_params)
+      # puts "ELLOOOOOO!!!!! " << schedule_params.to_s
       flash[:notice] = "Course #{Course.find(schedule_params[:courseID]).courseTitle} was successfully added."
       redirect_to schedule_path
     end

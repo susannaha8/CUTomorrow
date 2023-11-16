@@ -42,10 +42,10 @@ If you are running it on codio, run:
 ```
   rails server -b 0.0.0.0
 ```
+* Our database seed includes a test student. Feel free to login with email: sma2243@columbia.edu and password: test, or sign up with your own email. If you choose to sign up, once logged in, go to the profile page to add your major-- this will allow courses to appear by requirement on the "Add Courses" page. 
+
 To run our Cucumber tests:
 ```
   bundle exec cucumber
 ```
-## Further Notes
-We use a MySQL database for our courses in this application, which we will deploy in our second project iteration. 
-Please contact us if you have any questions or concerns.
+

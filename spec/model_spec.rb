@@ -13,8 +13,8 @@ describe Course, type: :model do
       @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})
       @requirement1 = Requirement.create!({:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Math Requirement: Calculus", :courses => "MATH 1201|MATH 1202", :numCourses => 1})
       
-      puts "req " << @requirement1.reqID.to_s
-      puts "course " << @course1.courseID.to_s
+      # puts "req " << @requirement1.reqID.to_s
+      # puts "course " << @course1.courseID.to_s
       #@coursereq1 = Coursereq.create!({:reqID => @requirement1.reqID, :courseID => @course1.courseID})
     end
 
@@ -27,8 +27,8 @@ describe Course, type: :model do
     it "should return courses that fulfill a requirement" do
       
       @ret = Course.get_courses_by_requirement(@requirement1.reqID)
-      puts "ret" << @ret.to_s
-      puts "course all " << Course.all.to_s
+      # puts "ret" << @ret.to_s
+      # puts "course all " << Course.all.to_s
       expect(@ret.include?(@course1))
       # @course1.destroy
     end

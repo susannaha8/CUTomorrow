@@ -37,6 +37,28 @@ describe SchedulesController, type: :controller do
 
     before do
     # Manually log in the user by setting the user_id in the session
+        
+        # @student1 = Student.create!(
+        #     uni: 'sma2243',
+        #     email: 'sma2243@columbia.edu',
+        #     password: 'test',
+        #     major1: 1
+        #   )
+
+        # @major1 = Major.create!(
+        #     major_minorID: 1,
+        #     name: 'Computer Science',
+        #     mtype: 'major'
+        #   )
+
+        
+        # @course1 = Course.create!(
+        #     courseTitle: 'Intro to CS',
+        #     courseCode: '1004',
+        #     prefixCode: 'COMS'
+        #   )
+
+
         session[:student_id] = student.id
     end
 
@@ -63,62 +85,106 @@ describe SchedulesController, type: :controller do
     #     end
     # end
 
-    describe "POST create_schedule" do
-        context "when the course is not already added" do
-            it "creates a new schedule and shows a success flash" do
-                # post :create, params: { semester: 'Fall 2022', schedule: { uni: 'sma2243', courseID: 1, reqID: 1 } }
-                    # expect {
-                #     post :create, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
-                # }.to change(Schedule, :count).by(1)
+    # describe "POST create" do
+    #     # let(:student) { create(:student, uni: "sma2243") }
+    #     # let(:course) { create(:course, courseTitle: "Intro to CS") }
+    #     # let(:semester) { "Fall 2022" }
+    #     # student, course, sem alr created
+    
+    #     before do
+    #       session[:student_id] = student.id
+    #     end
+    
+    #     context "when the course is not already added" do
+    #       it "creates a new schedule and shows a success flash" do
+    #         post :create, params: {:semester: semester, :schedule: { uni: student.uni, courseID: course.id, reqID: 1 } }
+    
+    #         # Expectations for the created schedule
+    #         expect(Schedule.count).to eq(1)
+    #         expect(Schedule.first.uni).to eq(student.uni)
+    #         expect(Schedule.first.courseID).to eq(course.id)
+    #         expect(Schedule.first.semester).to eq(semester)
+    #         expect(Schedule.first.reqID).to eq(1)
+    
+    #         # Expectations for the flash message
+    #         expect(flash[:notice]).to eq("Course '#{course.courseTitle}' was successfully added.")
+    #         expect(response).to redirect_to(schedule_path)
+    #       end
+    #     end
+    
+    #     context "when the course is already added" do
+    #       before do
+    #         Schedule.create!(uni: student.uni, courseID: course.id, semester: semester, reqID: 1)
+    #       end
+    
+    #       it "redirects to add_course_path with a flash notice" do
+    #         post :create, params: { semester: semester, schedule: { uni: student.uni, courseID: course.id, reqID: 1 } }
+    
+    #         # Expectations for the flash message
+    #         expect(flash[:notice]).to eq("Course '#{course.courseTitle}' already added.")
+    #         expect(response).to redirect_to(add_course_path(semester: semester))
+    #       end
+    #     end
+    #   end
+
+
+    # describe "POST create_schedule" do
+    #     context "when the course is not already added" do
+    #         it "creates a new schedule and shows a success flash" do
+    #             # post :create, params: { semester: 'Fall 2022', schedule: { uni: 'sma2243', courseID: 1, reqID: 1 } }
+    #                 # expect {
+    #             #     post :create, {schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
+    #             # }.to change(Schedule, :count).by(1)
         
-                # expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
-                # expect(response).to redirect_to(schedule_path)
-                # post "/add_course/Fall%202022", params: { schedule: { uni: 'sma2243', courseID: 1, reqID: 1 } }
+    #             # expect(flash[:notice]).to eq("Schedule #{Schedule.last.schedID} was successfully created.")
+    #             # expect(response).to redirect_to(schedule_path)
+    #             # post "/add_course/Fall%202022", params: { schedule: { uni: 'sma2243', courseID: 1, reqID: 1 } }
 
-                        # Assuming you have a valid reqID and taken value
-                # req_id = 1
-                # taken = false
+    #                     # Assuming you have a valid reqID and taken value
+    #             # req_id = 1
+    #             # taken = false
 
-                # # Create a Schedule record directly in the test
-                # @schedule1 = Schedule.create!(
-                # uni: 'sma2243',
-                # courseID: 1,
-                # semester: 'Fall 2022',
-                # reqID: req_id,
-                # taken: taken
-                # )
+    #             # # Create a Schedule record directly in the test
+    #             # @schedule1 = Schedule.create!(
+    #             # uni: 'sma2243',
+    #             # courseID: 1,
+    #             # semester: 'Fall 2022',
+    #             # reqID: req_id,
+    #             # taken: taken
+    #             # )
 
-                req_id = 1
+    #             req_id = 1
 
-                post "/add_course/Fall%202022", params: { schedule: { uni: 'sma2243', courseID: 1, reqID: req_id } }
-        
+    #             # post "/add_course/Fall%202022", params: { schedule: { uni: 'sma2243', courseID: 1, reqID: req_id } }
+    #             post :create_schedule, params: { schedule: { uni: 'sma2243', courseID: 1, reqID: req_id, semester: 'Fall 2022' } }
 
-                # Expectations for the created schedule
-                expect(Schedule.count).to eq(1)
-                expect(Schedule.first.uni).to eq('sma2243')
-                expect(Schedule.first.courseID).to eq(1)
-                expect(Schedule.first.semester).to eq('Fall 2022')
-                expect(Schedule.first.reqID).to eq(1)
 
-                # Expectations for the flash message
-                expect(flash[:success]).to eq("Course 'Intro to CS' was successfully added.")
+    #             # Expectations for the created schedule
+    #             expect(Schedule.count).to eq(1)
+    #             expect(Schedule.first.uni).to eq('sma2243')
+    #             expect(Schedule.first.courseID).to eq(1)
+    #             expect(Schedule.first.semester).to eq('Fall 2022')
+    #             expect(Schedule.first.reqID).to eq(1)
 
-            end
-        end
+    #             # Expectations for the flash message
+    #             expect(flash[:success]).to eq("Course 'Intro to CS' was successfully added.")
+
+    #         end
+    #     end
       
-        # context "when the course is already added" do
-        #   before do
-        #     Schedule.create!(uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1)
-        #   end
+    #     # context "when the course is already added" do
+    #     #   before do
+    #     #     Schedule.create!(uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1)
+    #     #   end
       
-        #   it "redirects to add_course_path with a flash notice" do
-        #     post :create_schedule, params: { schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
+    #     #   it "redirects to add_course_path with a flash notice" do
+    #     #     post :create_schedule, params: { schedule: { uni: "sma2243", courseID: 1, semester: "Fall 2022", reqID: 1 } }
       
-        #     expect(flash[:notice]).to eq("Course '1' already added.")
-        #     expect(response).to redirect_to(add_course_path)
-        #   end
-        # end
-    end
+    #     #     expect(flash[:notice]).to eq("Course '1' already added.")
+    #     #     expect(response).to redirect_to(add_course_path)
+    #     #   end
+    #     # end
+    # end
 
     describe "DELETE destroy" do
         @course1 = Course.create!({:courseSubtitle => "Calculus III", :courseTitle => "Calculus III", :courseCode => "1201", :prefixID => 2, :departmentCode => "MATH", :prefixCode => "MATH", :schoolCode => "IF"})

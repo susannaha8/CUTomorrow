@@ -41,11 +41,12 @@ If you are running it on codio, run:
 
 ```
   rails server -b 0.0.0.0
+
+Our database seed includes a test student. Feel free to sign up with an email and password, or login with email: sma2243@columbia.edu and password: test
+
 ```
 To run our Cucumber tests:
 ```
   bundle exec cucumber
 ```
-## Further Notes
-We use a MySQL database for our courses in this application, which we will deploy in our second project iteration. 
-Please contact us if you have any questions or concerns.
+

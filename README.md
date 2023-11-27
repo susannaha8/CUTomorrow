@@ -27,6 +27,9 @@ Note: We are using Ruby version 2.6.6 (you can install this with `rbenv install 
 ```
 Now, to set up the databases:
 ```
+  rake db:drop
+```
+```
   rake db:migrate
 ```
 ```
@@ -48,4 +51,9 @@ To run our Cucumber tests:
 ```
   bundle exec cucumber
 ```
+To run our rspec tests:
+```
+  bundle exec rspec
+```
 
+*Note: do not rake db:drop after you have already signed up and signed in-- the session is still set and the app will attempt to sign you in when your user does not exist in the database.

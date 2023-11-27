@@ -19,7 +19,7 @@
               <%= course.courseTitle %>
             </td>
             <td>
-              <%= button_to "add #{course.courseTitle}", :schedule => { :uni => "sma2243", :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID, :id => course.courseID}, :id => course.courseID %>
+              <%= button_to "add #{course.courseTitle}", :schedule => { :uni => @uni, :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID, :id => course.courseID}, :id => course.courseID %>
             </td>
           </tr>
         <% end %>

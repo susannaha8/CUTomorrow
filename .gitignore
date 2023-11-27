@@ -1,4 +1,4 @@
-CUTomorrow/.bundle/
-CUTomorrow/tmp/
-CUTomorrow/log/
-CUTomorrow/db/*.sqlite3
+.bundle/
+tmp/
+log/
+db/*.sqlite3

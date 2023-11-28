@@ -59,58 +59,129 @@ Search
 
 <br>
 
+
 <!-- for each academic year -->
 <h2 class="a-year-title"> 2022 - 2023 </h2>
-<!-- for each semester in that academic year -->
-<table class="table col-md-6" id="reqs">
-  <thead>
-    
-    <tr>
-      <th colspan="5" style="text-align: left; border: none;">
-        <div class="table-title">
-          <div>
-            <h3 class="sem-title" style="margin: 0;">Fall 2022</h3>
-          </div>
-          <div style="margin-left: auto;">
-            <button id="myButton" class="add-course-button">
-              <%= link_to "Add Courses", add_course_path(semester: "Fall 2022") %>
-            </button>
-          </div>
-        </div>
-      </th>
-    </tr>
-    
-    <tr class="body-text">
-      <!-- <th>Semester</th> -->
-      <th>Course</th>
-      <th>Requirements</th>
-      <!-- <th>Taken</th> -->
-      <th>Action</th>
-    </tr>
 
-  </thead>
-  <tbody class="body-text">
-    <% @schedule.each do |course| %>
-      <tr>
-        <!-- <td>
-          <%= course.semester %>
-        </td> -->
-        <td>
-          <%= course.courseTitle %>
-        </td>
-        <td>
-          <%= course.reqLabel %>
-        </td>
-        <!-- <td>
-          <%= course.taken %>
-        </td> -->
-        <td> <!-- #{course.courseTitle}-->
-              <%= button_to "delete", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID, class: 'delete-button' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div style="margin-left: auto;">
+  <button id="myButton" class="add-semester-button">
+  <%= link_to "Add Semester" %>
+</div> 
+
+<div class="semester-tables-container">
+
+  <div class="d-flex justify-content-between">
+
+    <!-- <table class="table col-md-6" id="reqs"> -->
+    <table class="table fall-table col-md-5">
+      <thead>
+        <tr>
+          <th colspan="5" style="text-align: left; border: none;">
+            <div class="table-title">
+              <div>
+                <h3 class="sem-title" style="margin: 0;">Fall 2022</h3>
+              </div>
+              <div style="margin-left: auto;">
+                <button id="myButton" class="add-course-button">
+                  <%= link_to "Add Courses", add_course_path(semester: "Fall 2022") %>
+                </button>
+              </div>
+            </div>
+          </th>
+        </tr>
+        
+        <tr class="body-text">
+          <!-- <th>Semester</th> -->
+          <th>Course</th>
+          <th>Requirements</th>
+          <!-- <th>Taken</th> -->
+          <th>Action</th>
+        </tr>
+
+      </thead>
+      <tbody class="body-text">
+        <% @schedule.each do |course| %>
+          <% if course.semester == "Fall 2022" %>
+            <tr>
+              <!-- <td>
+                <%= course.semester %>
+              </td> -->
+              <td>
+                <%= course.courseTitle %>
+              </td>
+              <td>
+                <%= course.reqLabel %>
+              </td>
+              <!-- <td>
+                <%= course.taken %>
+              </td> -->
+              <td> <!-- #{course.courseTitle}-->
+                    <%= button_to "delete", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID, class: 'delete-button' %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+
+    </table>
+
+
+    <!-- spring table -->
+    <table class="table spring-table col-md-5">
+      <thead>
+        
+        <tr>
+          <th colspan="5" style="text-align: left; border: none;">
+            <div class="table-title">
+              <div>
+                <h3 class="sem-title" style="margin: 0;">Spring 2023</h3>
+              </div>
+              <div style="margin-left: auto;">
+                <button id="myButton" class="add-course-button">
+                  <%= link_to "Add Courses", add_course_path(semester: "Spring 2023") %>
+                </button>
+              </div>
+            </div>
+          </th>
+        </tr>
+        
+        <tr class="body-text">
+          <!-- <th>Semester</th> -->
+          <th>Course</th>
+          <th>Requirements</th>
+          <!-- <th>Taken</th> -->
+          <th>Action</th>
+        </tr>
+
+      </thead>
+      <tbody class="body-text">
+        <% @schedule.each do |course| %>
+            <% if course.semester == "Spring 2023" %>
+              <tr>
+                <!-- <td>
+                  <%= course.semester %>
+                </td> -->
+                <td>
+                  <%= course.courseTitle %>
+                </td>
+                <td>
+                  <%= course.reqLabel %>
+                </td>
+                <!-- <td>
+                  <%= course.taken %>
+                </td> -->
+                <td> <!-- #{course.courseTitle}-->
+                      <%= button_to "delete", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID, class: 'delete-button' %>
+                </td>
+              </tr>
+            <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
 
 
 <br>

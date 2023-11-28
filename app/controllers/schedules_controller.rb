@@ -19,6 +19,9 @@ class SchedulesController < ApplicationController
    # @display = Schedule.where(taken:false)
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
+    # puts "SEM!!!! " << @semester
+    # so the sem is marked by whichever one you click on in the view. correct
+
     @major = (Student.find_by_id(session[:student_id])).major1
     @requirements = Requirement.get_requirements_by_major(@major)
     @courses_to_fulfill = {} #hash of requirements and courses to fulfill
@@ -37,8 +40,9 @@ class SchedulesController < ApplicationController
       flash[:notice] = "Course '#{Course.find(@course_id_to_check).courseTitle}' already added."
       redirect_to add_course_path
     else
+      puts "111111111111 Create action params: #{schedule_params}"
       @schedule = Schedule.create!(schedule_params)
-      # puts "ELLOOOOOO!!!!! " << schedule_params.to_s
+      puts "2222 ELLOOOOOO!!!!! " << schedule_params.to_s
       flash[:notice] = "Course #{Course.find(schedule_params[:courseID]).courseTitle} was successfully added."
       redirect_to schedule_path
     end

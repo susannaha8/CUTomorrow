@@ -14,13 +14,13 @@
           </td>
         </tr>
         <% courses.each do |course| %>
-          <tr>
+          <tr id="<%=course.courseTitle%>">
             <td class="course">
               <%= course.courseTitle %>
             </td>
             <td class="course">
               <!-- <%= button_to "add #{course.courseTitle}", :schedule => { :uni => @uni, :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID, :id => course.courseID}, :id => course.courseID, class: 'add-button' %> -->
-              <%= button_to "add #{course.courseTitle}", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: req.reqID, id: course.courseID }, id: course.courseID }, class: 'add-button' %>
+              <%= button_to "add", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: req.reqID, id: course.courseID }, id: course.courseID }, class: 'add-button' %>
             </td>
           </tr>
         <% end %>

@@ -23,8 +23,11 @@ end
 #	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => "F23", :taken => false
 #}])
 requirements = Requirement.create([
-	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Math Requirement: Calculus", :courses => "MATH 1201|MATH 1202", :numCourses => 1},
-	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "CS Core - Intro to CS", :courses => "COMS 1004", :numCourses => 1}
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Calculus 3/ Multivariable Calculus", :courses => "MATH 1201|MATH 1205|APMA 2000", :numCourses => 1},
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Linear Algebra", :courses => "COMS 3251|APMA 3101|APMA 2101|MATH 2010|MATH 2015", :numCourses => 1},
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Probability", :courses => "STAT 1201|STAT 4001|IEOR 3658|MATH 2015", :numCourses => 1},
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "CS Core", :courses => "COMS 1004|COMS 3134|COMS 3157|COMS 3203|COMS 3261|CSEE 3827", :numCourses => 6},
+	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Area Foundation Courses", :courses => "COMS 4111|COMS 4113|COMS 4115|COMS 4118|CSEE 4119|COMS 4152|COMS 4156|COMS 4160|COMS 4167|COMS 4170|COMS 4181|CSOR 4231|COMS 4236|COMS 4701|COMS 4705|COMS 4731|COMS 4733|CBMF 4761|COMS 4771|CSEE 4824|CSEE 4868", :numCourses => 3}
 ])
 
 

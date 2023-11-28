@@ -1,5 +1,7 @@
-<h2>Edit Profile</h2>
-<h3>Name: <%= @student.id%>
+
+<h1 class="page-title"> Edit Profile </h1>
+
+<h3 class="profile-name" style="font-size: 20pt">Name: <%=@student.firstName%> <%=@student.lastName %></h3>
 <!--
 <%= form_for @student, url: edited_profile_path, method: :put do |f| %>
   <%= label :student, :standing, 'Standing', :class => 'col-form-label' %>
@@ -19,9 +21,9 @@
   <%= link_to 'Cancel', profile_path, :class => 'btn btn-secondary' %>
 <% end %>
 -->
-
+<div style="text-align: center">
 <%= form_for @student, url: edited_profile_path, method: :put do |f| %>
-  <%= label :student, :standing, 'Standing', :class => 'col-form-label' %>
+  <%= label :student, :standing, 'Standing: ', :class => 'col-form-label profile-name md-font-size' %>
   <select name='student[standing]' id="Standing">
     <% @categories.each do |category| %>
       <option value="<%= category[:name] %>"><%= category[:name] %></option>
@@ -29,7 +31,7 @@
   </select>
   <br>
 
-  <%= label :student, :major1, 'Major 1', :class => 'col-form-label' %>
+  <%= label :student, :major1, 'Major 1: ', :class => 'col-form-label profile-name md-font-size' %>
   <select name='student[major1]' id="Major 1">
     <% @major_minor_options.each do |major| %>
       <option value="<%= major[:id] %>"><%= major[:name] %></option>
@@ -37,7 +39,7 @@
   </select>
   <br>
 
-  <%= label :student, :major2, 'Major 2', :class => 'col-form-label'  %>
+  <%= label :student, :major2, 'Major 2: ', :class => 'col-form-label profile-name md-font-size'  %>
   <select name='student[major2]' id="Major 2">
   <option value="<%= "" %>"><%= "" %></option>
     <% @major_minor_options.each do |major| %>
@@ -46,7 +48,7 @@
   </select>
   <br>
 
-  <%= label :student, :minor1, 'Minor 1', :class => 'col-form-label'  %>
+  <%= label :student, :minor1, 'Minor 1: ', :class => 'col-form-label profile-name md-font-size'  %>
   <select name='student[minor1]' id="Minor 1">
   <option value="<%= "" %>"><%= "" %></option>
     <% @major_minor_options.each do |minor| %>
@@ -55,7 +57,7 @@
   </select>
   <br>
 
-  <%= label :student, :minor2, 'Minor 2', :class => 'col-form-label'  %>
+  <%= label :student, :minor2, 'Minor 2: ', :class => 'col-form-label profile-name md-font-size'  %>
   <select name='student[minor2]' id="Minor 2">
   <option value="<%= "" %>"><%= "" %></option>
     <% @major_minor_options.each do |minor| %>
@@ -64,7 +66,7 @@
   </select>
   <br>
 
-  <%= label :student, :minor3, 'Minor 3', :class => 'col-form-label'  %>
+  <%= label :student, :minor3, 'Minor 3: ', :class => 'col-form-label profile-name md-font-size'  %>
   <select name='student[minor3]' id="Minor 3">
   <option value="<%= "" %>"><%= "" %></option>
     <% @major_minor_options.each do |minor| %>
@@ -72,6 +74,14 @@
     <% end %>
   </select>
   <br/>
-  <%= submit_tag 'Update Profile', :class => 'btn btn-primary' %>
-  <%= link_to 'Cancel', profile_path, :class => 'btn btn-secondary' %>
+  <div class="profile-button d-flex justify-content-center">
+    <div class="profile-button">
+      <%= submit_tag 'Update Profile', :class => 'btn btn-primary profile-back' %>
+    </div>
+    <div class="profile-button">
+      <%= link_to 'Cancel', profile_path, :class => 'btn btn-secondary profile-edit' %>
+    </div>
+  </div>
 <% end %>
+
+</div>

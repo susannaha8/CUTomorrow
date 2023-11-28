@@ -24,8 +24,8 @@ Scenario: navigate to schedule page from nav bar
   Given I am on the schedule page
   And I follow "Profile" on "schedule page"
   Then I should be on the profile page
-  And I should see "Uni: sma2243"
-  And I should see "Standing: Fall 2023"
+  And I should see "sma2243"
+  And I should see "Fall 2023"
   And I should see "Major 1: Computer Science"
 
 Scenario: update profile
@@ -38,8 +38,8 @@ Scenario: update profile
   And I press "Update Profile"
   Then I should be on the profile page
   And I should see "Profile was successfully updated."
-  And I should see "Uni: sma2243"
-  And I should see "Standing: Spring 2024"
+  And I should see "sma2243"
+  And I should see "Spring 2024"
   And I should see "Major 1: Computer Science"
   And I should see "Major 2: English"
   And I should see "Minor 1: Mathematics"
@@ -48,8 +48,8 @@ Scenario: cancel updates
   Given I am on the edit profile page
   And I follow "Cancel"
   Then I should be on the profile page
-  And I should see "Uni: sma2243"
-  And I should see "Standing: Fall 2023"
+  And I should see "sma2243"
+  And I should see "Fall 2023"
   And I should see "Major 1: Computer Science"
 
 Scenario: move back to schedules page

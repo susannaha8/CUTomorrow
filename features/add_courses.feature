@@ -52,8 +52,7 @@ Scenario: add required course to existing schedule
 
 Scenario: delete course from existing schedule
   Given I am on the schedule page
-  And I press "delete Intro to CS" on schedule page
-  Then I should not see "delete Intro to CS"
+  And I press "delete" on "Intro to CS"
   And I should see "Course 'Intro to CS' deleted."
 
 

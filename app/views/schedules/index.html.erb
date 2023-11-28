@@ -36,15 +36,18 @@
     </style>
 </head>
 
+<h1 class="page-title">My Courses</h1>
 
+<!-- 
 <h1>Courses</h1>
 
-<!-- TODO: 
+TODO: 
 Add search
 Add view by
 Fix table...what goes into the controllers?
 Search
--->
+
+
 
 <ul id="details">
   <li>
@@ -52,43 +55,57 @@ Search
     <%= @major_name %>
   </li>
 </ul>
+-->
 
 <br>
 
-<h2> 2022-2023 </h2>
-<table class="table table-striped col-md-12" id="reqs">
+<!-- for each academic year -->
+<h2 class="a-year-title"> 2022 - 2023 </h2>
+<!-- for each semester in that academic year -->
+<table class="table col-md-6" id="reqs">
   <thead>
+    
     <tr>
-      <th style="border:none"> Fall 2022 </th>
-      <th style="border:none">
-        <button id="myButton" ><%= link_to "Add Courses", add_course_path(semester:"Fall 2022") %></button>
+      <th colspan="5" style="text-align: left; border: none;">
+        <div class="table-title">
+          <div>
+            <h3 class="sem-title" style="margin: 0;">Fall 2022</h3>
+          </div>
+          <div style="margin-left: auto;">
+            <button id="myButton" class="add-course-button">
+              <%= link_to "Add Courses", add_course_path(semester: "Fall 2022") %>
+            </button>
+          </div>
+        </div>
       </th>
     </tr>
-    <tr>
-      <th>Semester</th>
+    
+    <tr class="body-text">
+      <!-- <th>Semester</th> -->
       <th>Course</th>
-      <th>Requirements Filled</th>
-      <th>Taken</th>
+      <th>Requirements</th>
+      <!-- <th>Taken</th> -->
       <th>Action</th>
     </tr>
+
   </thead>
-  <tbody>
+  <tbody class="body-text">
     <% @schedule.each do |course| %>
       <tr>
-        <td>
+        <!-- <td>
           <%= course.semester %>
-        </td>
+        </td> -->
         <td>
           <%= course.courseTitle %>
         </td>
         <td>
           <%= course.reqLabel %>
         </td>
-        <td>
+        <!-- <td>
           <%= course.taken %>
-        </td>
-        <td>
-            <%= button_to "delete #{course.courseTitle}", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID %>
+        </td> -->
+        <td> <!-- #{course.courseTitle}-->
+              <%= button_to "delete", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID, class: 'delete-button' %>
         </td>
       </tr>
     <% end %>

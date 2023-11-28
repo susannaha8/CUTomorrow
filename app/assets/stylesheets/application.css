@@ -18,15 +18,253 @@
     border: none;
     color: black !important;
     background-color: transparent;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16pt;
+    font-weight: 200;
+    margin-right: 20px;
  }
 
- .navbar {
+ .nav-button:not(:last-child) {
+    margin-right: 20px;
+}
+
+ .nav-button a {
+    color: #4F758B;
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+.nav-button:hover a {
+    color: #EA736A; /* Set the desired hover color */
+}
+
+.navbar {
     position: relative;
  }
 .req {
-	background-color: lightblue;
+	background-color: #00843D;
+    color: white;
 }
 
 .course {
-	background-color: lightgray;
+	background-color: #EEEEEE;
+}
+
+.scaled-image {
+    max-width: 230px; /* Set the maximum width */
+    height: auto;     /* Maintain aspect ratio */
+}
+
+.table-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30pt;
+    font-weight: 600;
+    color: #4F758B;
+    text-align: center;
+    margin: 0;
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+.table-title h3 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4F758B;
+    font-size: 25pt;
+}
+
+.a-year-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28pt;
+    font-style: italic;
+    font-weight: 600;
+    color: #164734;
+    margin-bottom: 10px;
+}
+
+.body-text {
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15pt;
+    font-weight: 100 !important;
+}
+
+.body-text th {
+    font-weight: 600 !important;
+    background-color: #BFD8E9;
+    font-size: 13.5pt;
+    font-family: Helvetica, sans-serif;
+}
+
+.body-text td {
+    font-weight: 100 !important;
+    background-color: #EEEEEE;
+    font-family: Helvetica, sans-serif;
+    font-size: 13pt;
+}
+
+.add-course-button {
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #4F758B;
+}
+
+.add-course-button a {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
+
+.add-course-button:hover a {
+    text-decoration: none;
+}
+
+.add-course-button:hover {
+    background-color: #00843D; /* Set the desired hover color */
+}
+
+.delete-button {
+    border: 1px solid #EA736A;
+    border-radius: 10px;
+    color: #EA736A;
+    border-color: #EA736A;
+    background-color: transparent;
+}
+
+.delete-button a {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
+
+.delete-button:hover {
+    color: white;
+    border-color: white;
+    background-color: #EA736A;
+}
+
+.profile-name {
+    margin-top: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4F758B;
+    font-size: 25pt;
+    text-align: center;
+}
+
+.profile-body {
+    margin-top: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4F758B;
+    font-size: 18pt;
+    text-align: center;
+    margin-left: -35px;
+}
+
+.profile-button {
+    font-size: 18pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.profile-edit {
+    background-color: #4F758B;
+    border: none;
+    font-size: 16pt;
+}
+
+.profile-edit:hover {
+    background-color: #BFD8E9;
+    color: black;
+    border: none;
+    
+}
+
+.profile-back {
+    background-color: #00843D;
+    color: white;
+    border: none;
+    font-size: 16pt;
+}
+
+.profile-back:hover {
+    background-color: #164734;
+    color: white;
+    border: none;
+}
+
+.minor-table {
+    margin-left: 20px;
+}
+
+.major-table {
+    margin-left: -10px;
+}
+
+.major-table th, .minor-table th {
+    font-weight: 600 !important;
+    background-color: #BFD8E9;
+    font-size: 13.5pt;
+    font-family: Helvetica, sans-serif;
+    width: 100px;
+}
+
+.major-table td, .minor-table td {
+    font-weight: 100 !important;
+    background-color: #EEEEEE;
+    font-family: Helvetica, sans-serif;
+    font-size: 13pt;
+}
+
+.md-font-size {
+    font-size: 18pt;
+}
+
+.small-input {
+  width: 300px;
+  display: block;
+  margin-top: -5px; /* Optional: Add some top margin for spacing */
+}
+
+.form-group {
+  text-align: left; /* Align the labels to the left */
+  margin-top: -15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-button {
+    border: 1px solid #00843D;
+    border-radius: 10px;
+    color: #00843D;
+    border-color: #00843D;
+    background-color: transparent;
+}
+
+.add-button a {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
+
+.add-button:hover {
+    color: white;
+    border-color: white;
+    background-color: #00843D;
+    float: left;
 }

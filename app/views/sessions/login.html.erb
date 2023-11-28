@@ -1,12 +1,22 @@
-<h1> Login <h1>
 
+<h1 class="page-title"> Login <h1>
 
 <%= form_tag login_path, :method => :post do %>
-  <%= label :student, :email, 'email', :class => 'col-form-label' %>
-  <%= text_field_tag :email, "", class: 'form-control'  %>
-  <%= label :student, :password, 'password', :class => 'col-form-label' %>
-  <%= password_field_tag :password,"", class: 'form-control' %>
+  <div class="form-group">
+    <%= label :student, :email, 'email', :class => 'col-form-label  profile-name md-font-size' %>
+    <%= text_field_tag :email, "", class: 'form-control small-input'  %>
+  </div>
+  <div class="form-group">
+    <%= label :student, :password, 'password', :class => 'col-form-label  profile-name md-font-size' %>
+    <%= password_field_tag :password,"", class: 'form-control small-input' %>
+  </div>
   <br/>
-  <%= submit_tag 'Login', :class => 'btn btn-primary' %>
-  <%= link_to 'Sign Up', sign_up_path, :class => 'btn btn-secondary' %>
+  <div class="profile-button d-flex justify-content-center">
+    <div class="profile-button">
+        <%= submit_tag 'Login', :class => 'btn btn-primary profile-back' %>
+    </div>
+    <div class="profile-button">
+        <%= link_to 'Sign Up', sign_up_path, :class => 'btn btn-secondary profile-edit' %>
+    </div>
+  </div>
 <% end %>

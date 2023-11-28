@@ -12,9 +12,10 @@
 
       <%# These classes come from the Bootstrap CSS framework. %>
       <nav class="navbar navbar-expand-lg bg-white mb-3">
-        <h1 class="title">CUTomorrow!</h1>
+        <%= image_tag('logo.png', alt: 'CUTomorrow', class: 'scaled-image') %>
+        <!-- <h1 class="title">CUTomorrow!</h1> -->
           <div style="margin-left: auto;">
-            <%= link_to 'Schedules', schedule_path%>
+            <button class="nav-button" ><%= link_to 'Schedules', schedule_path%></button>
             <button class="nav-button" ><%= link_to "Profile", profile_path %></button>
             <button class="nav-button" ><%= link_to "Logout", logout_path %></button>
           </div>

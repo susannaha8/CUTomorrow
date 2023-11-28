@@ -53,8 +53,29 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )press "([^"]*)" on "([^"]*)"$/ do |button, string|
-  click_button(button)
+# When /^(?:|I )press "([^"]*)" on "([^"]*)"$/ do |button, string|
+#   click_button(button)
+# end
+
+
+And /^I press "delete" on "([^"]*)"$/ do |course_name|
+    # Find the row containing the course_name in the schedule table
+    row = find('table#reqs tbody tr', text: course_name)
+  
+    # Within that row, find the "delete" button and click it
+    within(row) do
+      click_button 'delete'
+    end
+end
+
+And /^I press "add" on "([^"]*)"$/ do |course_name|
+    # Find the row containing the course_name in the courses table
+    row = find('table#courses tbody tr', text: course_name)
+
+    # Within that row, find the "add" button and click it
+    within(row) do
+        click_button 'add'
+    end
 end
 
 When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|

@@ -21,9 +21,10 @@ Background: courses in schedule, login
   |1              | Computer Science| major |
 
   Given the following courses are in a Course table
-  | courseID| courseTitle | courseCode | prefixCode |
-  |    1    | Intro to CS | 1004       | COMS       |
-  |    2    | Fundamentals | 3827      | COMS       |
+  | courseID| courseTitle  | courseCode | prefixCode |
+  |    1    | Intro to CS  | 1004       | COMS       |
+  |    2    | Fundamentals | 3827       | COMS       |
+  |    3    | CS Theory    | 3124       | COMS       |
 
   Given the following requirements are in a Requirement table
   | reqID | reqLabel | major_minorID | courses   |
@@ -52,6 +53,11 @@ Scenario: add required course to existing schedule
 
 Scenario: delete course from existing schedule
   Given I am on the schedule page
+  And I follow "Add Courses" on "Fall 2022"
+  Then I should be on the Add Course page for "Fall 2022"
+  And I press "add Fundamentals" on add_course
+  Then I should be on the schedule page
+  And I should see "Fundamentals"
   And I press "delete" on "Intro to CS"
   And I should see "Course 'Intro to CS' deleted."
 

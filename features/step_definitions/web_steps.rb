@@ -69,12 +69,9 @@ And /^I press "delete" on "([^"]*)"$/ do |course_name|
 end
 
 And /^I press "add" on "([^"]*)"$/ do |course_name|
-    # Find the row containing the course_name in the courses table
-    row = find('table#courses tbody tr', text: course_name)
-
-    # Within that row, find the "add" button and click it
+    row = find('table#courses tr', text: course_name)
     within(row) do
-        click_button 'add'
+      click_button 'add'
     end
 end
 

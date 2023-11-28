@@ -1,44 +1,66 @@
 <!--  app/views/schedules/profile.html.erb -->
-<h2> Profile </h2>
+<h1 class="page-title"> Profile </h1>
 
-<ul id="profile" style="list-style-type: none">
-  <li>
-    Name:
+<ul id="profile" style="list-style-type: none" class="profile-body">
+  <li class="profile-name">
+    <!-- Name: -->
     <%= @student.firstName%> <%=@student.lastName %>
   </li>
   <li>
-    Uni:
+    <!-- Uni: -->
         <%= @student.uni %>
   </li>
   <li>
-    Standing:
+    <!-- Standing: -->
         <%= @student.standing %>
   </li>
-  <li>
-    Major 1:
-        <%= @major1 %> 
-  <li>
-  <li>
-    Major 2:
-        <%= @major2 %> 
-  <li>
-  <li>
-    Minor 1:
-        <%= @minor1 %> 
-  <li>
-    Minor 2:
-        <%= @minor2 %> 
-  </li>
-  <li>
-    Minor 3:
-        <%= @minor3 %> 
-  </li>
-
 </ul>
+<br>
+<div class="d-flex justify-content-center">
+  <table class="table major-table table col-md-4">
+    <tbody>
+      <tr>
+        <th >Major 1:</th>
+        <td><%= @major1 %></td>
+      </tr>
+      <tr>
+        <th >Major 2:</th>
+        <td><%= @major2 %></td>
+      </tr>
+    </tbody>
+  </table>
 
-<h3>Links:</h3>
 
-<div class="row">
-  <%= link_to 'Edit Profile', edit_profile_path, :class => 'btn btn-secondary' %>
-  <%= link_to 'Back to Schedules', schedule_path, :class => 'btn btn-primary col-2' %>
+  <table class="table minor-table table col-md-4">
+    <tbody>
+      <tr>
+        <th>Minor 1:</th>
+        <td><%= @minor1 %></td>
+      </tr>
+      <tr>
+        <th>Minor 2:</th>
+        <td><%= @minor2 %></td>
+      </tr>
+      <tr>
+        <th>Minor 3:</th>
+        <td><%= @minor3 %></td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
+
+<br>
+
+<!-- <h3>Links:</h3> -->
+
+<div class="profile-button d-flex justify-content-center">
+  <div class="profile-button">
+    <%= link_to 'Edit Profile', edit_profile_path, :class => 'btn btn-secondary profile-edit' %>
+  </div>
+  <div class="profile-button">
+    <%= link_to 'Back to Schedules', schedule_path, :class => 'btn btn-primary profile-back' %>
+  </div>
+</div>
+
+

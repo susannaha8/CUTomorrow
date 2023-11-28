@@ -1,18 +1,37 @@
-<h1> Sign Up <h1>
+<h1 class="page-title"> Sign Up <h1>
 
 
 <%= form_for(@student) do |f| %>
-  <%= f.label :firstName, 'First Name', :class => 'col-form-label' %>
-  <%= f.text_field :firstName, class: 'form-control'  %>
-  <%= f.label :lastName, 'Last Name', :class => 'col-form-label' %>
-  <%= f.text_field :lastName, class: 'form-control'  %>
-  <%= f.label :uni, 'uni', :class => 'col-form-label' %>
-  <%= f.text_field :uni, class: 'form-control'  %>
-  <%= f.label :email, 'email', :class => 'col-form-label' %>
-  <%= f.text_field :email, class: 'form-control'  %>
-  <%= f.label :password, 'password', :class => 'col-form-label' %>
-  <%= f.password_field :password, class: 'form-control'  %>
+  <div class="form-group">
+    <%= f.label :firstName, 'First Name', :class => 'col-form-label profile-name md-font-size' %>
+    <%= f.text_field :firstName, class: 'form-control small-input'  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lastName, 'Last Name', :class => 'col-form-label profile-name md-font-size' %>
+    <%= f.text_field :lastName, class: 'form-control small-input'  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :uni, 'uni', :class => 'col-form-label profile-name md-font-size' %>
+    <%= f.text_field :uni, class: 'form-control small-input'  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, 'email', :class => 'col-form-label profile-name md-font-size' %>
+    <%= f.text_field :email, class: 'form-control small-input'  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, 'password', :class => 'col-form-label profile-name md-font-size' %>
+    <%= f.password_field :password, class: 'form-control small-input'  %>
+  </div>
   <br/>
-  <%= submit_tag 'Sign Up', :class => 'btn btn-primary' %>
-  <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary' %>
+  <div class="profile-button d-flex justify-content-center">
+    <div class="profile-button">
+        <%= submit_tag 'Sign Up', :class => 'btn btn-primary profile-back' %>
+    </div>
+    <div class="profile-button">
+        <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary profile-edit' %>
+    </div>
+  </div>
+  
 <% end %>
+
+<div style="margin: 50px"></div>

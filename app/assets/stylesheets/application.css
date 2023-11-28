@@ -41,11 +41,12 @@
     position: relative;
  }
 .req {
-	background-color: lightblue;
+	background-color: #00843D;
+    color: white;
 }
 
 .course {
-	background-color: lightgray;
+	background-color: #EEEEEE;
 }
 
 .scaled-image {
@@ -245,4 +246,25 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.add-button {
+    border: 1px solid #00843D;
+    border-radius: 10px;
+    color: #00843D;
+    border-color: #00843D;
+    background-color: transparent;
+}
+
+.add-button a {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
+
+.add-button:hover {
+    color: white;
+    border-color: white;
+    background-color: #00843D;
+    float: left;
 }

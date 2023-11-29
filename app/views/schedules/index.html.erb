@@ -83,6 +83,7 @@ Search
     <tr class="body-text">
       <!-- <th>Semester</th> -->
       <th>Course</th>
+      <th>Course Code</th>
       <th>Requirements</th>
       <!-- <th>Taken</th> -->
       <th>Action</th>
@@ -97,6 +98,9 @@ Search
         </td> -->
         <td>
           <%= course.courseTitle %>
+        </td>
+        <td>
+          <%= course.prefixCode + " " + course.courseCode %>
         </td>
         <td>
           <%= course.reqLabel %>

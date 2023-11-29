@@ -5,6 +5,7 @@
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">
       <th>Course</th>
+      <th>Course Code</th>
       <th>Action</th>
     </tr>
     <% @courses_to_fulfill.each do |req, courses| %>
@@ -17,6 +18,9 @@
           <tr id="<%=course.courseTitle%>">
             <td class="course">
               <%= course.courseTitle %>
+            </td>
+            <td class="course">
+            <%= course.prefixCode + " " + course.courseCode %>
             </td>
             <td class="course">
               <!-- <%= button_to "add #{course.courseTitle}", :schedule => { :uni => @uni, :courseID => course.courseID, :semester => params[:semester], :reqID => req.reqID, :id => course.courseID}, :id => course.courseID, class: 'add-button' %> -->

@@ -39,6 +39,33 @@ requirements = Requirement.create([
 	{:major_minorID => 4, :divisionCode => "CC", :reqType => "major", :reqLabel => "Theatre Studio Praxis Courses", :courses => "THTR 2120|THTR 2421|THTR 3004|THTR 3200|THTR 3203|THTR 3300|THTR 3301|THTR 3401|THTR 3402|THTR 3403|THTR 3404|THTR 3405|THTR 3406|THTR 3210", :numCourses => 2},
 	{:major_minorID => 4, :divisionCode => "CC", :reqType => "major", :reqLabel => "Senior Thesis", :courses => "THTR 3997|THTR 3998", :numCourses => 1},
 	{:major_minorID => 4, :divisionCode => "CC", :reqType => "major", :reqLabel => "Senior Classes", :courses => "THTR 2422|THTR 2423|THTR 2424|THTR 2426|THTR 2427|THTR 2425", :numCourses => 2},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Foundations", :courses => "EESC 2100|EESC 2200", :numCourses => 2},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Mathematics Requirement", :courses => "MATH 1101", :numCourses => 1},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Science Requirement", :courses => "CHEM 1403|CHEM 1404|PHYS 1201|PHYS 1202", :numCourses => 3},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Capstone Experience", :courses => "EESC 3800|EESC 3901|EESC 3801", :numCourses => 1},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Breadth and Related Fields Requirement", :courses => "EESC 2100|EESC 2300|EESC 3010|EESC 3017|EESC 4050|EESC 4600|EESC 4917|EAEE 2002", :numCourses => 2},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Depth Requirement - Foundation", :courses => "EESC 3101|EESC 3201", :numCourses => 1},
+	{:major_minorID => 5, :divisionCode => "CC", :reqType => "major", :reqLabel => "Depth Requirement - Additional Courses", :courses => "EESC 4090|EESC 4113|EESC 4223|EESC 4230|EESC 4701|EESC 4887|EESC 4947|EESC 3015|EESC 3016|EESC 3200|EESC 4090|EESC 4113|EESC 4701|EESC 4885|EESC 4887|EESC 4926|EESC 4008|EESC 4920|EESC 4924|EESC 4925|EESC 4926|EESC 4230|EESC 4300|EESC 4937|EESC 4947|EESC 4949|EESC 3015|EESC 3025|EESC 4008|EESC 4330|EESC 4835|EESC GU4920|EESC 4924|EESC 4925|EESC 4937|EESC 4223|EESC 4550|EESC 4920|EESC 4924|EESC 4937", :numCourses => 3},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Foundations", :courses => "EESC 2100|EESC 2200|EESC 2300", :numCourses => 3},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Mathematics Requirement", :courses => "MATH 1101", :numCourses => 1},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Science Requirement", :courses => "CHEM 1403|CHEM 1404|PHYS 1201|PHYS 1202|EEEB 2001", :numCourses => 3},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Capstone Experience", :courses => "EESC 3800|EESC 3801", :numCourses => 1},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Senior Seminar", :courses => "EESC 3901", :numCourses => 1},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Breadth and Related Fields Requirement", :courses => "EESC 3017|EESC 4050|EESC 4600|EESC 4917|EESC 3010", :numCourses => 2},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Depth Requirement - Foundation", :courses => "EESC 3101|EESC 3201", :numCourses => 1},
+	{:major_minorID => 6, :divisionCode => "CC", :reqType => "major", :reqLabel => "Depth Requirement - Additional Courses", :courses => "EESC 4076|EESC 4480|EAEE 3221|EESC 3015|EESC 4885|EESC 4887|EESC 4924|EESC 4888|EESC 4926|EESC 4076|EESC 4835|EESC 4885|EESC 3025|EEAE 3221|EESC 4008|EESC 4330|EESC 4920|EESC 4050|EESC 4701|EEAE 2002", :numCourses => 3},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Foundations", :courses => "EESC 2100", :numCourses => 1},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Foundations - Additional Course", :courses => "EESC 1009|EESC 1030|EESC 1201|EESC 1600|EESC 4600|EESC 2200|EESC 2300|EESC 2330", :numCourses => 1},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Core - Paleoclimate Course", :courses => "EESC 4235|EESC 4330|EESC 4480|EESC 4920|EESC 4937", :numCourses => 1},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Core - Modern Climate Course", :courses => "EESC 3109|EESC 4008|EESC 4020|EESC 4040|EESC 4925|EESC 4930", :numCourses => 1},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Core - Additional Course", :courses => "EESC 3109|EESC 3101|EESC 3201|EESC 4220|EESC 4835|EESC 4885|EESC 4923|EESC 4924|EESC 4926|EESC 3400|EESC 4210|EESC 4223|EESC 4230|EESC 4887|EESC 4888", :numCourses => 1},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Climate Solutions, Justice, Policy, and Communication", :courses => "EESC 3045|ARCH 3120|EEAE 2002|EEAE 2100|EEAE 4001|EEAE 4002|EEAE 4006|EEAE 4300|EEAE 4302|EEAE 4301|EEAE 4305|CIEE 3250|MECE 4211|SDEV 4250|ANTH 3932|ANTH 3861|ARCH 3400|ECON 3039|ECON 3040|ECON 2257|ECON 4750|POLS 3648|POLS 4814|POLS 4863|SDEV 3355|SDEV 3360", :numCourses => 1},
+	{:major_minorID => 7, :divisionCode => "CC", :reqType => "major", :reqLabel => "Climate System Capstone", :courses => "EESC 3XXX|EESC 3901|EESC 3800", :numCourses => 1},
+	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Language Requirement", :courses => "CHNS 3003|CHNS 3004|CHNS 3005|CHNS 3006|JPNS 3005|JPNS 3006|KORN 3005|KORN 3006|TIBT 3611|TIBT 3612|VIET 3103", :numCourses => 2},
+	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Introductory Course", :courses => "AHUM 1400", :numCourses => 1},
+	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Additional Introductory Course", :courses => "ASCE 1359|ASCE 1361|ASCE 1363|ASCE 1365|ASCE 1367", :numCourses => 2},
+	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Methodology Course", :courses => "EAAS 3990", :numCourses => 1},
+	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Electives", :courses => "EALAC XXXX|AMEC XXXX", :numCourses => 4} # not certain classes
 
 ])
 
@@ -47,7 +74,12 @@ majors = Major.create([
 	{:name => "Computer Science", :mtype => "major"},
 	{:name => "Creative Writing", :mtype => "major"},
 	{:name => "Dance", :mtype => "major"},
-	{:name => "Drama and Theatre Arts", :mtype => "major"}
+	{:name => "Drama and Theatre Arts", :mtype => "major"},
+	{:name => "Drama and Theatre Arts", :mtype => "major"},
+	{:name => "Earth Science", :mtype => "major"},
+	{:name => "Environmental Science", :mtype => "major"},
+	{:name => "Climate System Science", :mtype => "major"},
+	{:name => "East Asian Studies", :mtype => "major"}
 ])
 
 student = Student.create({:firstName => "Susannah", :lastName => "Abrams", :major1 => 1, :uni => "sma2243", :email => "sma2243@columbia.edu", :password => "test"})

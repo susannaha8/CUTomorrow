@@ -76,13 +76,14 @@ Search
 <!-- for each academic year -->
 
 
-<% @semesters.each do |semester| %>
 
   <!-- <h2 class="a-year-title"> 2022 - 2023 </h2> -->
 
   <div class="semester-tables-container">
 
     <div class="d-flex justify-content-between">
+
+    <% @semesters.each do |semester| %>
 
       <table class="table semester-table col-md-5">
         <thead>
@@ -94,9 +95,14 @@ Search
                   <h3 class="sem-title" style="margin: 0;"><%= semester.semester%></h3>
                 </div>
                 <div style="margin-left: auto;">
-                  <button id="myButton" class="add-course-button">
+                  <button id="myButton" class="add-semester-button">
                     <%= link_to "Add Courses", add_course_path(semester: semester.semester) %>
                   </button>
+                </div>
+                <div style="margin-left: auto;">
+                <button id="myButton" class="delete-semester-button">
+                  <%= button_to "Delete Semester",  delete_semester_path(semester: semester.semester) %>
+                </button>
                 </div>
               </div>
             </th>
@@ -135,12 +141,10 @@ Search
           <% end %>
         </tbody>
       </table>
-
+      <% end %>
     </div>
 
   </div>
-
-<% end %>
 
 
 <br>

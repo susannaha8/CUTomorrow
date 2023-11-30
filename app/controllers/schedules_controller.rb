@@ -106,6 +106,30 @@ class SchedulesController < ApplicationController
     redirect_to schedule_path
   end
 
+  def delete_semester
+    # puts "I HERE!!!!!!"
+
+    @uni = (Student.find_by_id(session[:student_id])).uni
+    @semester = params[:semester]
+
+    @schedule = Schedule.get_full_schedule().where(uni: @uni).where(semester: @semester)
+    
+
+    @schedule.each do |course| 
+      @course_to_delete = Schedule.find(course.id)
+      @course_to_delete.destroy
+    end
+
+    @semester_to_delete = Schedule.get_semesters().where(uni: @uni, semester: @semester)[0]
+    # puts "HEREEEE " << @semester_to_delete[0].to_s
+    @semester_to_delete.destroy
+
+    redirect_to schedule_path
+
+  end
+
+
+
   private
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.

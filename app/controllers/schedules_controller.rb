@@ -52,11 +52,27 @@ class SchedulesController < ApplicationController
       # puts "YEAR   " << year.to_s.split("-").to_s
       @text = year.to_s.split("-")
 
-      # puts 
-      
 
-      Schedule.create(:uni => @uni, :semester => "Fall " + @text[0])   
-      Schedule.create(:uni => @uni, :semester => "Spring " + @text[1])  
+      
+      # @current_semester= Schedule.get_semesters().where(uni: @uni, semester: @semester)[0]
+      @fall_semester= Schedule.get_semesters().where(uni: @uni, semester: "Fall " + @text[0])[0]
+      @spring_semester = Schedule.get_semesters().where(uni: @uni, semester: "Spring " + @text[1])[0]
+
+      puts "FALL SEM " << @fall_semester.to_s
+      puts "SPRING SEM" << @spring_semester.to_s
+
+      if @fall_semester
+        flash[:notice] = "Semester '#{@fall_semester.semester}' already added."
+      else
+        Schedule.create(:uni => @uni, :semester => "Fall " + @text[0])
+      end
+
+      if @spring_semester
+        flash[:notice] = "Semester '#{@spring_semester.semester}' already added."
+      else 
+        Schedule.create(:uni => @uni, :semester => "Spring " + @text[1])  
+      end
+
     end
 
  
@@ -136,32 +152,6 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:schedID, :uni, :courseID, :semester, :reqID, :taken)
   end
-
-
-  # def add_semester_to_schedule(academic_year, semester)
-  #   @uni = (Student.find_by_id(session[:student_id])).uni
-  #   @major = (Student.find_by_id(session[:student_id])).major1
-  #   @requirements = Requirement.get_requirements_by_major(@major)
-
-  #   # Loop through requirements and add courses to the schedule
-  #   @requirements.each do |requirement|
-  #     courses = Course.get_courses_by_requirement(requirement)
-  #     courses.each do |course|
-  #       schedule_params = {
-  #         uni: @uni,
-  #         courseID: course.courseID,
-  #         semester: "#{semester} #{academic_year}",  # Example: "Fall 2022"
-  #         reqID: requirement.reqID,
-  #         taken: false
-  #       }
-
-  #       # Check if the course is already in the schedule
-  #       unless Schedule.exists?(uni: @uni, courseID: course.courseID, semester: "#{semester} #{academic_year}")
-  #         Schedule.create!(schedule_params)
-  #       end
-  #     end
-  #   end
-  # end
 
 end
 

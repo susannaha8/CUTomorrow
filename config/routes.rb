@@ -20,6 +20,11 @@ Rails.application.routes.draw do
 
   get "/add_course/:semester", to: "schedules#add_course", as: "add_course"
   post "/add_course/:semester", to: "schedules#create", as: "create_schedule"
+  
+  put "/add_academic_year/", to: "schedules#add_academic_year", as: "add_academic_year"
+  # post "/add_academic_year/", to: "schedules#create", as: "create_schedule"
+  
+  
   #get '/courses', to: "courses#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

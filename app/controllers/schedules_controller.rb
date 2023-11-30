@@ -8,7 +8,16 @@ class SchedulesController < ApplicationController
     @uni = (Student.find_by_id(session[:student_id])).uni
     @major = Major.find_by_major_minorID(@majorID)
     @major_name = @majorID ? @major.name : ""
-    @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
+    @schedule = Schedule.get_full_schedule().where(uni: @uni).where.not(course: nil) #schedule specific to student
+
+    @semesters = Schedule.get_semesters().where(uni: @uni)
+    @years = [
+      { id: 1, name: "2020-2021" },
+      { id: 2, name: "2021-2022" },
+      { id: 3, name: "2022-2023" },
+      { id: 4, name: "2023-2024" },
+    ]
+
   end
 
 #   def new
@@ -28,6 +37,39 @@ class SchedulesController < ApplicationController
     @requirements.each {|i| @courses_to_fulfill[i]=(Course.get_courses_by_requirement(i))}
     #(todo: filter through schedule table)
   end
+
+  def add_academic_year
+    # need to parse the academic year into 2 semesters (fall spring)
+    @academic_years = []
+    @academic_years.append(params[:year])
+    @uni = (Student.find_by_id(session[:student_id])).uni
+
+    puts "AY" << @academic_years.to_s
+
+
+
+    @academic_years.each do |year|
+      # puts "YEAR   " << year.to_s.split("-").to_s
+      @text = year.to_s.split("-")
+
+      # puts 
+      
+
+      Schedule.create(:uni => @uni, :semester => "Fall " + @text[0])   
+      Schedule.create(:uni => @uni, :semester => "Spring " + @text[1])  
+    end
+
+ 
+    
+    # # Add fall semester
+    # add_semester_to_schedule(@selected_academic_year, 'Fall')
+
+    # # Add spring semester
+    # add_semester_to_schedule(@selected_academic_year, 'Spring')
+
+    redirect_to schedule_path
+  end
+
 
   def create
     # puts "Ello " << session[:student_id].to_s
@@ -70,6 +112,32 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:schedID, :uni, :courseID, :semester, :reqID, :taken)
   end
+
+
+  # def add_semester_to_schedule(academic_year, semester)
+  #   @uni = (Student.find_by_id(session[:student_id])).uni
+  #   @major = (Student.find_by_id(session[:student_id])).major1
+  #   @requirements = Requirement.get_requirements_by_major(@major)
+
+  #   # Loop through requirements and add courses to the schedule
+  #   @requirements.each do |requirement|
+  #     courses = Course.get_courses_by_requirement(requirement)
+  #     courses.each do |course|
+  #       schedule_params = {
+  #         uni: @uni,
+  #         courseID: course.courseID,
+  #         semester: "#{semester} #{academic_year}",  # Example: "Fall 2022"
+  #         reqID: requirement.reqID,
+  #         taken: false
+  #       }
+
+  #       # Check if the course is already in the schedule
+  #       unless Schedule.exists?(uni: @uni, courseID: course.courseID, semester: "#{semester} #{academic_year}")
+  #         Schedule.create!(schedule_params)
+  #       end
+  #     end
+  #   end
+  # end
 
 end
 

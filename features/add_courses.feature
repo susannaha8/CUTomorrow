@@ -46,7 +46,7 @@ Scenario: add required course to existing schedule
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Fundamentals" on add_course
+  And I press "add" on "Fundamentals"
   Then I should be on the schedule page
   And I should see "Fundamentals"
 
@@ -55,7 +55,7 @@ Scenario: delete course from existing schedule
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Fundamentals" on add_course
+  And I press "add" on "Fundamentals"
   Then I should be on the schedule page
   And I should see "Fundamentals"
   And I press "delete" on "Intro to CS"
@@ -66,7 +66,7 @@ Scenario: add a course that already exists
   Given I am on the schedule page
   And I follow "Add Courses" on "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Intro to CS" on add_course
+  And I press "add" on "Intro to CS"
   Then I should see "Course 'Intro to CS' already added."
 
 

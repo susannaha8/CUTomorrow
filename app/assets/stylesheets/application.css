@@ -268,3 +268,15 @@ form {
     background-color: #00843D;
     float: left;
 }
+
+.d-flex{
+    flex-wrap: wrap;
+}
+
+.col-md-6{
+    max-width:49%
+}
+
+.semester-table{
+    margin-right: 5px
+}

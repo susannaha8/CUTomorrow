@@ -4,4 +4,7 @@ class Schedule < ActiveRecord::Base
 	def self.get_full_schedule()
 		Schedule.joins(:course, :requirement).select("schedules.* , courses.*, requirements.*")
 	end
+	def self.get_semesters()
+		Schedule.where(course: nil)
+	end
 end

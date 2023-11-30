@@ -61,29 +61,22 @@ Search
 
 <%= form_tag add_academic_year_path, :method => :put do %>
   <div style="margin-left: auto;">
-    <label for="year">Select Academic Year:</label>
+    <label for="year">Select Semester:</label>
     <select name="year" id="Year">
-      <% @years.each do |year| %>
-        <option value="<%= year[:name] %>"><%= year[:name] %></option>
+      <% @options.each do |option| %>
+        <option value="<%= option[:season] + " " + option[:year] %>"><%= option[:season] + " " + option[:year] %></option>
       <% end %>
     </select>
     <button id="myButton" class="add-academic-year-button">
-      <%= submit_tag "Add Academic Year", :class => 'btn btn-primary profile-back'%>
+      <%= submit_tag "Add Semester", :class => 'btn btn-primary profile-back'%>
     </button>
   </div>
 <% end %>
 
-<!-- for each academic year -->
-
-
-
-  <!-- <h2 class="a-year-title"> 2022 - 2023 </h2> -->
 
     <div class="d-flex justify-content-between">
 
     <% @semesters.each do |semester| %>
-
-      <!-- <h1 class="a-year-title"> semester.semester </h1> -->
 
       <table class="table semester-table col-md-6">
         <thead>

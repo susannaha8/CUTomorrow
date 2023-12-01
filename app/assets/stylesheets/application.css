@@ -280,3 +280,10 @@ form {
 .semester-table{
     margin-right: 5px
 }
+
+.pagination{
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+}

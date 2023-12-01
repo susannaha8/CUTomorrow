@@ -36,7 +36,7 @@ class SchedulesController < ApplicationController
   def all_courses
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
-    @courses = Course.all
+    @courses = Course.paginate(page: params[:page])
   end
 
   def add_academic_year

@@ -23,6 +23,7 @@ end
 #	:uni => "sma2243", :courseID => 1, :reqID => 1, :semester => "F23", :taken => false
 #}])
 requirements = Requirement.create([
+	{:major_minorID => 0, :divisionCode => nil, :reqType => nil, :reqLabel => nil, :courses => "", :numCourses => 0},
 	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Calculus 3/ Multivariable Calculus", :courses => "MATH 1201|MATH 1205|APMA 2000", :numCourses => 1},
 	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Linear Algebra", :courses => "COMS 3251|APMA 3101|APMA 2101|MATH 2010|MATH 2015", :numCourses => 1},
 	{:major_minorID => 1, :divisionCode => "CC", :reqType => "major", :reqLabel => "Probability", :courses => "STAT 1201|STAT 4001|IEOR 3658|MATH 2015", :numCourses => 1},

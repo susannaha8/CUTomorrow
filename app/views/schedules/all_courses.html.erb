@@ -1,12 +1,12 @@
 <h1 class="page-title"> All Courses </h1>
 
 <h2 class="profile-name"><em><%= @semester %></em></h2>
-
 <%= form_tag all_courses_search_path, method: "GET" do %>
   <%= label_tag "Search by Course Code" %>
   <%= text_field_tag :search_by_title, params[:search_by_title] %>
   <%= submit_tag "Search" %>
 <% end %>
+<button class="float-left m-4 back-button"> <%= link_to "<- Add Course by Requirement", add_course_path(semester: @semester) %> </button>
 
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">
@@ -19,11 +19,11 @@
             <td class="course">
               <%= course.courseTitle %>
             </td>
-	    <td class="course">
-	    <%= course.prefixCode + " "+ course.courseCode %>
-	  	</td>
+        <td class="course">
+        <%= course.prefixCode + " "+ course.courseCode %>
+        </td>
             <td class="course">
-              <%= button_to "add", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: nil, id: course.courseID }}, class: 'add-button' %>
+              <%= button_to "add", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: 44, id: course.courseID }}, class: 'add-button' %>
             </td>
           </tr>
     <% end %>

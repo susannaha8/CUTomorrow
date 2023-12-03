@@ -65,7 +65,14 @@ requirements = Requirement.create([
 	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Introductory Course", :courses => "AHUM 1400", :numCourses => 1},
 	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Additional Introductory Course", :courses => "ASCE 1359|ASCE 1361|ASCE 1363|ASCE 1365|ASCE 1367", :numCourses => 2},
 	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Methodology Course", :courses => "EAAS 3990", :numCourses => 1},
-	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Electives", :courses => "EALAC XXXX|AMEC XXXX", :numCourses => 4} # not certain classes
+	{:major_minorID => 8, :divisionCode => "CC", :reqType => "major", :reqLabel => "Electives", :courses => "EALAC XXXX|AMEC XXXX", :numCourses => 4}, # not certain classes
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Introductory Environmental Biology", :courses => "EEEB 2001|EEEB 2002", :numCourses => 2},
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Environmental Science", :courses => "EESC 2100|EESC 2200", :numCourses => 2},
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Chemistry Requirement", :courses => "CHEM 1403|CHEM 1404", :numCourses => 2},
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Physics Requirement", :courses => "PHYS 1201", :numCourses => 1},
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Statistics Requirement", :courses => "EEEB 3005|BIOL 2286|STAT 1101|STAT 1201", :numCourses => 1},
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Calculus Requirement", :courses => "MATH 1101|MATH 1102|MATH 1201|MATH 1202", :numCourses => 1},
+	{:major_minorID => 9, :divisionCode => "CC", :reqType => "major", :reqLabel => "Thesis REsearch Seminar", :courses => "EEEB 3991|EEEB 3992", :numCourses => 2}
 
 ])
 
@@ -79,7 +86,8 @@ majors = Major.create([
 	{:name => "Earth Science", :mtype => "major"},
 	{:name => "Environmental Science", :mtype => "major"},
 	{:name => "Climate System Science", :mtype => "major"},
-	{:name => "East Asian Studies", :mtype => "major"}
+	{:name => "East Asian Studies", :mtype => "major"},
+	{:name => "Environmental Biology", :mtype => "major"}
 ])
 
 student = Student.create({:firstName => "Susannah", :lastName => "Abrams", :major1 => 1, :uni => "sma2243", :email => "sma2243@columbia.edu", :password => "test"})

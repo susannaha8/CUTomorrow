@@ -37,7 +37,12 @@ class SchedulesController < ApplicationController
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
     @courses = Course.paginate(page: params[:page])
+    if params[:search_by_title] != ""
+      @courses = @courses.where("courseCode like ?", 
+      "%#{params[:search_by_title]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
+    end
   end
+
 
   def add_academic_year
     # need to parse the academic year into 2 semesters (fall spring)

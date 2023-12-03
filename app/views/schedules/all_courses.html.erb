@@ -1,6 +1,13 @@
 <h1 class="page-title"> All Courses </h1>
 
 <h2 class="profile-name"><em><%= @semester %></em></h2>
+
+<%= form_tag all_courses_search_path, method: "GET" do %>
+  <%= label_tag "Search by Course Code" %>
+  <%= text_field_tag :search_by_title, params[:search_by_title] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">
       <th>Course</th>

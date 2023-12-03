@@ -25,8 +25,7 @@ Rails.application.routes.draw do
   post "/schedule", to: "schedules#delete_semester", as: "delete_semester"
   # post "/add_academic_year/", to: "schedules#create", as: "create_schedule"
   
-  
-
+  get "/all_courses/:semester", to: "schedules#all_courses", as: "all_courses_search"
   get "/all_courses/:semester", to: "schedules#all_courses", as: "all_courses"
   post "/all_courses/:semester", to: "schedules#create", as: "create_schedule_from_all"
   #get '/courses', to: "courses#index"

@@ -72,4 +72,3 @@ Scenario: add a course that already exists
   Then I should be on the Add Course page for "Fall 2022"
   And I press "add" on "Intro to CS"
   Then I should see "Course 'Intro to CS' already added."
-

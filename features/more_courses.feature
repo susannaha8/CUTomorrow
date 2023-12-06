@@ -1,0 +1,1 @@
+Feature: add courses as an (undecided, double) major

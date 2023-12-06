@@ -35,6 +35,21 @@ Given /I login with email (.*) and password (.*)/ do |email, password|
   click_button("Login")
 end
 
+
+And /^I press "([^"]*)" on "([^"]*)"$/ do |action, course_name| #for add and delete course
+  row = find("[id='#{course_name}']")
+  within(row) do
+    click_button(action)
+  end
+end
+
+When /^(?:|I )follow "([^"]*)" on semester "([^"]*)"$/ do |link, string|
+  sem = find("[id='#{string}']")
+  within(sem) do
+    click_link(link)
+  end
+end
+
 # Given /the following requirements are in the requirements table/ do |requirement_table|
 #   requirement_table.hashes.each do |req|
 #     Requirement.create req

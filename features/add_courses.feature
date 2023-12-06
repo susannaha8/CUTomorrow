@@ -8,13 +8,17 @@ Feature: add a course
 Background: courses in schedule, login
 
   Given the following schedules are in a Schedule table:
-  | schedID |   uni   | courseID | semester | reqID | taken |
-  |    1    | sma2243 |    1     |   S23    |   2   | true  |
-  |    2    | sma2243 |    5     |   F23    |   2   | false |
-  |    3    | sma2243 |    3     |   S24    |   3   | false |
-  |    4    | sma2243 |    4     |   S24    |   4   | false |
+  | schedID |   uni   | courseID | semester         | reqID | taken |
+  |    1    | sma2243 |    1     |   Spring 2023    |   2   | true  |
+  |    2    | sma2243 |    5     |   Fall 2023      |   2   | false |
+  |    3    | sma2243 |    3     |   Spring 2024    |   3   | false |
+  |    4    | sma2243 |    4     |   Spring 2024    |   4   | false |
+  |    5    | sma2243 |          |   Spring 2023   |       |      |
+  |    6    | sma2243 |          |   Spring 2024   |       |      |
+  |    7    | sma2243 |          |   Fall 2022     |       |      |
 
-  Then 4 seed courses should exist
+
+  Then 7 seed courses should exist
 
   Given the following majors are in a Major table
   | major_minorID | name            | mtype |
@@ -44,18 +48,18 @@ Background: courses in schedule, login
 
 Scenario: add required course to existing schedule
   Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
+  And I follow "Add Courses" on semester "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Fundamentals" on add_course
+  And I press "add" on "Fundamentals"
   Then I should be on the schedule page
   And I should see "Fundamentals"
 
 
 Scenario: delete course from existing schedule
   Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
+  And I follow "Add Courses" on semester "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Fundamentals" on add_course
+  And I press "add" on "Fundamentals"
   Then I should be on the schedule page
   And I should see "Fundamentals"
   And I press "delete" on "Intro to CS"
@@ -64,9 +68,8 @@ Scenario: delete course from existing schedule
 
 Scenario: add a course that already exists
   Given I am on the schedule page
-  And I follow "Add Courses" on "Fall 2022"
+  And I follow "Add Courses" on semester "Fall 2022"
   Then I should be on the Add Course page for "Fall 2022"
-  And I press "add Intro to CS" on add_course
+  And I press "add" on "Intro to CS"
   Then I should see "Course 'Intro to CS' already added."
-
 

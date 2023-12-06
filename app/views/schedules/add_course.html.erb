@@ -17,7 +17,7 @@
           </td>
         </tr>
         <% courses.each do |course| %>
-          <tr>
+          <tr id="<%= course.courseTitle %>">
             <td class="course">
               <%= course.courseTitle %>
             </td>

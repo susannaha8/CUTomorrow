@@ -58,46 +58,14 @@ end
 # end
 
 
-And /^I press "delete" on "([^"]*)"$/ do |course_name|
-    # Find the row containing the course_name in the schedule table
-    row = find('table#reqs tbody tr', text: course_name)
-  
-    # Within that row, find the "delete" button and click it
-    within(row) do
-      click_button 'delete'
-    end
-end
-
-And /^I press "add" on "([^"]*)"$/ do |course_name|
-    row = find('table#courses tr', text: course_name)
-    within(row) do
-      click_button 'add'
-    end
-end
-
 When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|
-  click_link(link)
-end
-
-When /^(?:|I )follow "([^"]*)"$/ do |link|
     click_link(link)
 end
 
-When /^(?:|I )press "([^"]*)" on add_course$/ do |link|
-#   save_and_open_page
-  #ADDED
-  click_button(link)
-  #visit schedule_path
 
-end
-
-When /^(?:|I )press "([^"]*)" on schedule page$/ do |link|
-  #ADDED
-#   save_and_open_page
-  click_button(link)
-  #visit schedule_path
-
-end
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+    click_link(link)
+end 
 
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|

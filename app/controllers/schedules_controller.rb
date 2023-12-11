@@ -1,14 +1,13 @@
 class SchedulesController < ApplicationController
 
-  before_action :authorized, only: [:index, :add_course]
-  # THIS IS WHERE WE STARTED
+  before_action :authorized, only: [:index, :add_course, :all_courses]
 
   def index
     @majorID = (Student.find_by_id(session[:student_id])).major1 
     @uni = (Student.find_by_id(session[:student_id])).uni
     @major = Major.find_by_major_minorID(@majorID)
     @major_name = @majorID ? @major.name : ""
-    @schedule = Schedule.get_full_schedule().where(uni: @uni).where.not(course: nil) #schedule specific to student
+    @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
 
     @semesters = Schedule.get_semesters().where(uni: @uni)
     @years = [
@@ -20,12 +19,9 @@ class SchedulesController < ApplicationController
 
   end
 
-#   def new
-#     # default: render 'new' template
-#   end
-
+  #ask: repeating @uni variable
+  #add_course and all_courses in courses controller
   def add_course
-   # @display = Schedule.where(taken:false)
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
     # puts "SEM!!!! " << @semester
@@ -35,8 +31,18 @@ class SchedulesController < ApplicationController
     @requirements = Requirement.get_requirements_by_major(@major)
     @courses_to_fulfill = {} #hash of requirements and courses to fulfill
     @requirements.each {|i| @courses_to_fulfill[i]=(Course.get_courses_by_requirement(i))}
-    #(todo: filter through schedule table)
   end
+
+  def all_courses
+    @uni = (Student.find_by_id(session[:student_id])).uni
+    @semester = params[:semester]
+    @courses = Course.paginate(page: params[:page])
+    if params[:search_by_title] != ""
+      @courses = @courses.where("courseCode like ?", 
+      "%#{params[:search_by_title]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
+    end
+  end
+
 
   def add_academic_year
     # need to parse the academic year into 2 semesters (fall spring)
@@ -88,8 +94,6 @@ class SchedulesController < ApplicationController
 
 
   def create
-    # puts "Ello " << session[:student_id].to_s
-
     @uni = (Student.find_by_id(session[:student_id])).uni
     @my_courses = Schedule.where(uni: @uni)
     @course_ids = @my_courses.pluck(:courseID).map(&:to_s)
@@ -105,13 +109,6 @@ class SchedulesController < ApplicationController
       redirect_to schedule_path
     end
   end
-
-#   def update
-#     @schedule = Schedule.find(params[:schedID])
-#     @schedule.update_attributes!(schedule_params)
-#     flash[:notice] = "Schedule #{@schedule.schedID} was successfully updated."
-#     redirect_to schedule_path(@schedule)
-#   end
 
   def destroy
     @id = params[:schedID]

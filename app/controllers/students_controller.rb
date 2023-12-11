@@ -8,7 +8,6 @@ class StudentsController < ApplicationController
 
 
 	def create
-
 		if Student.find_by_email(student_params[:email])
 			flash[:notice] = "Email already exists!"
 			redirect_to sign_up_path

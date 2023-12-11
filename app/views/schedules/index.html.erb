@@ -85,7 +85,7 @@ Search
 
       <!-- <h1 class="a-year-title"> semester.semester </h1> -->
 
-      <table class="table semester-table col-md-6">
+      <table class="table semester-table col-md-6" id="<%= semester.semester %>">
         <thead>
           
           <tr>
@@ -121,7 +121,7 @@ Search
         <tbody class="body-text">
           <% @schedule.each do |course| %>
               <% if course.semester == semester.semester %>
-                <tr>
+                <tr id="<%= course.courseTitle %>">
                   <!-- <td>
                     <%= course.semester %>
                   </td> -->
@@ -132,7 +132,7 @@ Search
                   <%= course.prefixCode + " " + course.courseCode %>
                   </td>
                   <td>
-                    <%= course.reqLabel %>
+                    <%= course.reqLabel ? course.reqLabel : "" %>
                   </td>
                   <!-- <td>
                     <%= course.taken %>

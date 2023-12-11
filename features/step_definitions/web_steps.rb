@@ -57,6 +57,7 @@ end
 #   click_button(button)
 # end
 
+
 When /^(?:|I )follow "([^"]*)" on "([^"]*)"$/ do |link, string|
     click_link(link)
 end

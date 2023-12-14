@@ -13,6 +13,8 @@ Background: data in profile
   |       1       | Computer Science | Major  |
   |       2       |     English      | Major  |
   |       3       |    Mathematics   | Minor  |
+  |       4       |       Dance      | Minor  |
+  |       5       |   Earth Science  | Minor  |
 
   Given the following students are in a Student table
   | id | uni     | email                | password| major1 | standing  |
@@ -35,6 +37,8 @@ Scenario: update profile
   And I select "Spring 2024" from "Standing"
   And I select "English" from "Major 2"
   And I select "Mathematics" from "Minor 1"
+  And I select "Dance" from "Minor 2"
+  And I select "Earth Science" from "Minor 3"
   And I press "Update Profile"
   Then I should be on the profile page
   And I should see "Profile was successfully updated."

@@ -2,13 +2,23 @@
 
 <h2 class="profile-name"><em><%= @semester %></em></h2>
 <%= form_tag all_courses_search_path, method: "GET" do %>
-  <%= label_tag "Search by Course Code" %>
-  <%= text_field_tag :search_by_title, params[:search_by_title] %>
 
-  <%= label_tag "Search by Course Name" %>
-  <%= text_field_tag :search_by_name, params[:search_by_name] %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= label_tag "Search by Course Name", nil, class: 'col-form-label profile-name md-font-size' %>
+      <%= text_field_tag :search_by_name, params[:search_by_name], class: 'form-control small-input' %>
+    </div>
 
-  <%= submit_tag "Search" %>
+    <div class="form-group col-md-6">
+      <%= label_tag "Search by Course Code", nil, class: 'col-form-label profile-name md-font-size' %>
+      <%= text_field_tag :search_by_title, params[:search_by_title], class: 'form-control small-input' %>
+    </div>
+  </div>
+
+  <button id="searchButton", class="search-button">
+      <%= submit_tag "Search", :class => 'btn btn-primary profile-back'%>
+  </button>
+
 <% end %>
 <button class="float-left m-4 back-button"> <%= link_to "<- Add Course by Requirement", add_course_path(semester: @semester) %> </button>
 

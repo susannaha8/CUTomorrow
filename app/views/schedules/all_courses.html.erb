@@ -14,8 +14,12 @@
 
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">
-      <th>Course</th>
-      <th>Course Code</th>
+      <th>
+        <%= link_to 'Course', all_courses_path({sort_by: 'courseTitle'}), id: 'courseTitle_header', class: ('bg-warning hilite' if @sort_by == 'courseTitle') %>
+      </th>
+      <th>
+        <%= link_to 'Course Code', all_courses_path({sort_by: 'courseCode'}), id: 'courseCode_header', class: ('bg-warning hilite' if @sort_by == 'courseCode') %>
+      </th>
       <th>Action</th>
     </tr>
     <% @courses.each do |course| %>

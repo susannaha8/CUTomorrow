@@ -44,6 +44,11 @@ class SchedulesController < ApplicationController
     if params[:search_by_name].present?
       @courses = @courses.where("courseTitle like ?", "%#{params[:search_by_name]}%").paginate(page: params[:page])
     end
+
+    if params[:sort_by].present?
+      @courses = @courses.order(params[:sort_by])
+    end
+
   end
 
 

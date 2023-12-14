@@ -41,6 +41,9 @@ class SchedulesController < ApplicationController
       @courses = @courses.where("courseCode like ?", 
       "%#{params[:search_by_title]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
     end
+    if params[:search_by_name].present?
+      @courses = @courses.where("courseTitle like ?", "%#{params[:search_by_name]}%").paginate(page: params[:page])
+    end
   end
 
 

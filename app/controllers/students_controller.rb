@@ -3,6 +3,13 @@ class StudentsController < ApplicationController
 	before_action :authorized, only: [:profile, :edit_profile]
 
 	def new
+        @major_minor_options = Major.all
+        @school = [
+			{ id: 1, name: 'Barnard College' },
+			{ id: 2, name: 'Columbia College' },
+			{ id: 3, name: 'SEAS' },
+            { id: 4, name: 'GS' }
+		]
 		@student = Student.new
 	end
 

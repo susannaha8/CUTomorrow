@@ -51,4 +51,31 @@ Scenario: check for all courses
     And I follow "Add Courses" on semester "Fall 2022"
     Then I should be on the Add Course page for "Fall 2022"
     And I follow "All Courses ->"
+    Then I should be on the All Courses page for "Fall 2022"
     Then I should see "Search by course code"
+    And I should see "Search by course name"
+
+Scenario: search by course name
+  Given I am on the All Courses page for "Fall 2022"
+  And I fill in "search_by_course_name" with "CS"
+  And I press "Search"
+  Then I should see "Intro to CS"
+  And I should see "CS Theory"
+
+Scenario: search by course code
+  Given I am on the All Courses page for "Fall 2022"
+  And I fill in "search_by_course_code" with "1004"
+  And I press "Search"
+  Then I should see "Intro to CS"
+
+Scenario: sort by course name
+  Given I am on the All Courses page for "Fall 2022"
+  When I follow "Course" 
+  Then I should see "CS Theory" before "Fundamentals"
+  Then I should see "Fundamentals" before "Intro to CS"
+
+Scenario: sort by course code
+  Given I am on the All Courses page for "Fall 2022"
+  When I follow "Course" 
+  Then I should see "Intro to CS" before "CS Theory"
+  Then I should see "CS Theory" before "Fundamentals"

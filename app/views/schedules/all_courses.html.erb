@@ -20,7 +20,9 @@
   </button>
 
 <% end %>
-<button class="float-left m-4 back-button"> <%= link_to "<- Add Course by Requirement", add_course_path(semester: @semester) %> </button>
+<button class="float-left m-4 back-button"> 
+  <%= link_to "<- Add Course by Requirement", add_course_path(semester: @semester) %> 
+</button>
 
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">

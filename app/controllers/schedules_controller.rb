@@ -1,14 +1,13 @@
 class SchedulesController < ApplicationController
 
-  before_action :authorized, only: [:index, :add_course]
-  # THIS IS WHERE WE STARTED
+  before_action :authorized, only: [:index, :add_course, :all_courses]
 
   def index
     @majorID = (Student.find_by_id(session[:student_id])).major1 
     @uni = (Student.find_by_id(session[:student_id])).uni
     @major = Major.find_by_major_minorID(@majorID)
     @major_name = @majorID ? @major.name : ""
-    @schedule = Schedule.get_full_schedule().where(uni: @uni).where.not(course: nil) #schedule specific to student
+    @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
 
     @semesters = Schedule.get_semesters().where(uni: @uni)
     @years = [2020, 2021, 2022, 2023, 2024, 2025]
@@ -26,6 +25,17 @@ class SchedulesController < ApplicationController
     @courses_to_fulfill = {} #hash of requirements and courses to fulfill
     @requirements.each {|i| @courses_to_fulfill[i]=(Course.get_courses_by_requirement(i))}
   end
+
+  def all_courses
+    @uni = (Student.find_by_id(session[:student_id])).uni
+    @semester = params[:semester]
+    @courses = Course.paginate(page: params[:page])
+    if params[:search_by_title] != ""
+      @courses = @courses.where("courseCode like ?", 
+      "%#{params[:search_by_title]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
+    end
+  end
+
 
   def add_academic_year
 

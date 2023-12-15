@@ -1,7 +1,9 @@
 <!--Find me in app/views/courses/add_course.html.erb-->
 <h1 class="page-title"> Add Course </h1>
 
-<h2 class="profile-name"> Requirements for <em><%= @semester %></em></h2>
+<h2 class="profile-name"> Requirements for <em><%= @semester %></em></h2> 
+
+<button class="float-right m-4 back-button"> <%= link_to "All Courses ->", all_courses_path(semester: @semester) %> </button>
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">
       <th>Course</th>
@@ -15,13 +17,13 @@
           </td>
         </tr>
         <% courses.each do |course| %>
-          <tr id="<%=course.courseTitle%>">
+          <tr id="<%= course.courseTitle %>">
             <td class="course">
               <%= course.courseTitle %>
             </td>
             <td class="course">
             <%= course.prefixCode + " " + course.courseCode %>
-            </td>
+          </td>
             <td class="course">
               <%= button_to "add", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: req.reqID, id: course.courseID }, id: course.courseID }, class: 'add-button' %>
             </td>

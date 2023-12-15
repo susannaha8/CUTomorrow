@@ -14,6 +14,24 @@
     <%= f.label :uni, 'uni', :class => 'col-form-label profile-name md-font-size' %>
     <%= f.text_field :uni, class: 'form-control small-input'  %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :school, 'school', :class => 'col-form-label profile-name md-font-size' %>
+    <select name='student[school]' id="School" class= 'form-control small-input'>
+      <% @school.each do |school| %>
+        <option value="<%= school[:id] %>"><%= school[:name] %></option>
+      <% end %>
+    </select>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label :major1, 'major', :class => 'col-form-label profile-name md-font-size' %>
+    <select name='student[major1]' id="Major 1" class= 'form-control small-input'>
+      <% @major_minor_options.each do |major| %>
+        <option value="<%= major[:id] %>"><%= major[:name] %></option>
+      <% end %>
+    </select>
+  </div>  
   <div class="form-group">
     <%= f.label :email, 'email', :class => 'col-form-label profile-name md-font-size' %>
     <%= f.text_field :email, class: 'form-control small-input'  %>

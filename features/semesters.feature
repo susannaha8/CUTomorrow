@@ -1,0 +1,1 @@
+Feature: add and remove semesters

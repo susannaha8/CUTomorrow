@@ -83,7 +83,12 @@ majors = Major.create([
 	{:name => "East Asian Studies", :mtype => "major"}
 ])
 
-student = Student.create({:firstName => "Susannah", :lastName => "Abrams", :major1 => 1, :uni => "sma2243", :email => "sma2243@columbia.edu", :password => "test"})
+student = Student.create([
+	{:firstName => "Susannah", :lastName => "Abrams", :major1 => 1, :uni => "sma2243", :email => "sma2243@columbia.edu", :password => "test"},
+	{:firstName => "Claudia", :lastName => "Lihar", :major1 => 2, :uni => "cl4178", :email => "cl4178@barnard.edu", :password => "test2"},
+	{:firstName => "Megan", :lastName => "Jen", :major1 => 3, :uni => "msj2156", :email => "msj2256@barnard.edu", :password => "test3"}					
+						
+])
 
 # Coursereq.create([
 # 	{:reqID => 2, :courseID => 1}, {:reqID => 1, :courseID => 2}, {:reqID => 1, :courseID => 3}

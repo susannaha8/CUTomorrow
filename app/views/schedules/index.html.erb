@@ -1,4 +1,4 @@
-<!--Find me in app/views/courses/index.html.erb-->
+<!--Find me in app/views/courses/index.html.erb d-flex justify-content-between-->
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -38,25 +38,6 @@
 
 <h1 class="page-title">My Courses</h1>
 
-<!-- 
-<h1>Courses</h1>
-
-TODO: 
-Add search
-Add view by
-Fix table...what goes into the controllers?
-Search
-
-
-
-<ul id="details">
-  <li>
-    Major:
-    <%= @major_name %>
-  </li>
-</ul>
--->
-
 <br>
 
 <%= form_tag add_academic_year_path, :method => :put do %>
@@ -74,28 +55,31 @@ Search
 <% end %>
 
 
-    <div class="d-flex justify-content-between">
+<div class="">
 
-    <% @semesters.each do |semester| %>
+    <% @ay_hash.each do |year, semesters| %>
 
+    <h3 class="sem-title" style="margin: 0;"><%= year %></h3>
 
-      <table class="table semester-table col-md-6" id="<%= semester.semester %>">
+      <% semesters.each do |semester| %>
+
+      <table class="table semester-table col-md-6" id="<%= semester %>">
         <thead>
           
           <tr>
             <th colspan="5" style="text-align: left; border: none;">
               <div class="table-title">
                 <div>
-                  <h3 class="sem-title" style="margin: 0;"><%= semester.semester%></h3>
+                  <h3 class="sem-title" style="margin: 0;"><%= semester %></h3>
                 </div>
                 <div style="margin-left: auto;">
                   <button id="myButton" class="add-semester-button">
-                    <%= link_to "Add Courses", add_course_path(semester: semester.semester) %>
+                    <%= link_to "Add Courses", add_course_path(semester: semester) %>
                   </button>
                 </div>
                 <div style="margin-left: auto;">
                 <button id="myButton" class="delete-semester-button">
-                  <%= button_to "Delete Semester",  delete_semester_path(semester: semester.semester) %>
+                  <%= button_to "Delete Semester",  delete_semester_path(semester: semester) %>
                 </button>
                 </div>
               </div>
@@ -103,18 +87,16 @@ Search
           </tr>
           
           <tr class="body-text">
-            <!-- <th>Semester</th> -->
             <th>Course</th>
             <th>Course Code</th>
             <th>Requirements</th>
-            <!-- <th>Taken</th> -->
             <th>Action</th>
           </tr>
 
         </thead>
         <tbody class="body-text">
           <% @schedule.each do |course| %>
-              <% if course.semester == semester.semester %>
+              <% if course.semester == semester %>
                 <tr id="<%= course.courseTitle %>">
                   <!-- <td>
                     <%= course.semester %>
@@ -128,10 +110,7 @@ Search
                   <td>
                     <%= course.reqLabel ? course.reqLabel : "" %>
                   </td>
-                  <!-- <td>
-                    <%= course.taken %>
-                  </td> -->
-                  <td> <!-- #{course.courseTitle}-->
+                  <td> 
                         <%= button_to "delete", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID, class: 'delete-button' %>
                   </td>
                 </tr>
@@ -140,43 +119,7 @@ Search
         </tbody>
       </table>
       <% end %>
-    </div>
-
-
-
-<br>
-<!--
-<h2> Schedule </h2>
-<table class="table table-striped col-md-12" id="courses">
-  <thead>
-    <tr>
-      <th>Semester</th>
-      <th>Course</th>
-      <th>Requirements Filled</th>
-      <th>Taken</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @schedule.each do |course| %>
-      <tr>
-        <td>
-          <%= course.semester %>
-        </td>
-        <td>
-          <%= course.courseID %>
-        </td>
-        <td>
-          <%= course.reqID %>
-        </td>
-        <td>
-          <%= course.taken %>
-        </td>
-        <td>
-            <%= link_to 'Remove Class', destroy_schedule_path(:schedID => course.schedID), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
-        </td>
-      </tr>
     <% end %>
-  </tbody>
-</table>
--->
+</div>
+
+

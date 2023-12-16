@@ -9,10 +9,36 @@ class SchedulesController < ApplicationController
     @major_name = @majorID ? @major.name : ""
     @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
 
-    @semesters = Schedule.get_semesters().where(uni: @uni)
+    #display options for semesters to add
     @years = [2020, 2021, 2022, 2023, 2024, 2025]
     @options = []
-    @years.each {|i| @options.append({:season => 'Fall', :year => i.to_s}) && @options.append({:season => 'Spring', :year => i.to_s})}
+    @years.each {|i| @options.append({:season => 'Fall', :year => i.to_s}) && @options.append({:season => 'Spring', :year => (i+1).to_s})}
+
+
+    #retrieve semesters from db and put in academic_year dictionary
+    @semesters = Schedule.distinct.pluck(:semester) #array
+    #@semesters = Schedule.get_semesters().where(uni: @uni)
+
+    @ay_hash = Hash.new { |h,k| h[k] = [] }
+
+    #find the academic year for the semester
+    for sem in @semesters do
+      @season = sem.split(" ")[0]
+      @year = sem.split(" ")[1].to_i
+      if (@season == "Fall")
+        @ay = @year
+      else
+        @ay = @year - 1
+      end
+
+      #add the semester to the academic year hash
+      @ay_name = @ay.to_s + " - " + (@ay + 1).to_s
+      @ay_hash[@ay_name] << sem
+    end
+
+    #sort chronologically
+    @ay_hash = @ay_hash.transform_values { |value| value.sort }
+    @ay_hash = @ay_hash.sort_by { |key| key }.to_h
 
   end
 
@@ -41,15 +67,6 @@ class SchedulesController < ApplicationController
 
     @sem = params[:year]
     @uni = (Student.find_by_id(session[:student_id])).uni
-
-    #get string for academic year
-    @season = @sem.split(" ")[0]
-    @year = @sem.split(" ")[1].to_i
-    if (@season == "Fall")
-      @academic_year_str = @year.to_s + " " + (@year + 1).to_s
-    else
-      @academic_year_str = (@year - 1).to_s + " " + @year.to_s
-    end
 
     #check if semester is already added. if no, add
     @mysem = Schedule.get_semesters().where(uni: @uni, semester: @sem)[0]

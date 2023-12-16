@@ -23,7 +23,7 @@
         <%= course.prefixCode + " "+ course.courseCode %>
         </td>
             <td class="course">
-              <%= button_to "add", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: 44, id: course.courseID }}, class: 'add-button' %>
+              <%= button_to "add", { schedule: { uni: @uni, courseID: course.courseID, semester: params[:semester], reqID: 1, id: course.courseID }}, class: 'add-button' %>
             </td>
           </tr>
     <% end %>

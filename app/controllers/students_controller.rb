@@ -24,6 +24,9 @@ class StudentsController < ApplicationController
 		else
 			@student = Student.new(student_params)
 			if !student_params[:email].empty? && @student.save
+				#add default semesters
+				Schedule.create(:uni => student_params[:uni], :semester => "Fall 2023")
+				Schedule.create(:uni => student_params[:uni], :semester => "Spring 2024")
 				flash[:notice] = "Profile created."
 				redirect_to login_path
 			else

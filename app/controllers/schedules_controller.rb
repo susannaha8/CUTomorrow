@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
 
 
     #retrieve semesters from db and put in academic_year dictionary
-    @semesters = Schedule.distinct.pluck(:semester) #array
+    @semesters = Schedule.distinct.where(uni: @uni).pluck(:semester) #array
     #@semesters = Schedule.get_semesters().where(uni: @uni)
 
     @ay_hash = Hash.new { |h,k| h[k] = [] }

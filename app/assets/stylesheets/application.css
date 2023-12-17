@@ -305,14 +305,57 @@ form {
     padding: 0;
     margin: 0;
 }
-/* 
-.back-button {
 
-    border: none;
-    outline: none;
-    background-color: #0c0c0d;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
+.back-button {
+    border: 1px solid #4F758B; 
     border-radius: 10px;
-} */
+    color: #4F758B;
+    background-color: transparent;
+    padding: 8px 12px;
+    margin: 0;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.back-button:hover {
+    color: white;
+    background-color: #4F758B;
+    border-color: white;
+    text-decoration: none;
+}
+
+.back-button a {
+    color: #4F758B;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
+
+.back-button:hover a {
+    color: white;
+    text-decoration: none;
+}
+
+label[for="year"] {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    color: #4F758B;
+    margin-right: 10px; 
+}
+
+select#Year {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    color: #4F758B;
+    border: 1px solid #4F758B; 
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #EEEEEE; 
+}
+
+select#Year option {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    color: #4F758B;
+}

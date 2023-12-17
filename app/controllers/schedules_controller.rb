@@ -9,24 +9,43 @@ class SchedulesController < ApplicationController
     @major_name = @majorID ? @major.name : ""
     @schedule = Schedule.get_full_schedule().where(uni: @uni) #schedule specific to student
 
-    @semesters = Schedule.get_semesters().where(uni: @uni)
-    @years = [
-      { id: 1, name: "2020-2021" },
-      { id: 2, name: "2021-2022" },
-      { id: 3, name: "2022-2023" },
-      { id: 4, name: "2023-2024" },
-    ]
+    #display options for semesters to add
+    @years = [2020, 2021, 2022, 2023, 2024, 2025]
+    @options = []
+    @years.each {|i| @options.append({:season => 'Fall', :year => i.to_s}) && @options.append({:season => 'Spring', :year => (i+1).to_s})}
+
+
+    #retrieve semesters from db and put in academic_year dictionary
+    @semesters = Schedule.distinct.where(uni: @uni).pluck(:semester) #array
+    #@semesters = Schedule.get_semesters().where(uni: @uni)
+
+    @ay_hash = Hash.new { |h,k| h[k] = [] }
+
+    #find the academic year for the semester
+    for sem in @semesters do
+      @season = sem.split(" ")[0]
+      @year = sem.split(" ")[1].to_i
+      if (@season == "Fall")
+        @ay = @year
+      else
+        @ay = @year - 1
+      end
+
+      #add the semester to the academic year hash
+      @ay_name = @ay.to_s + " - " + (@ay + 1).to_s
+      @ay_hash[@ay_name] << sem
+    end
+
+    #sort chronologically
+    @ay_hash = @ay_hash.transform_values { |value| value.sort }
+    @ay_hash = @ay_hash.sort_by { |key| key }.to_h
 
   end
 
-  #ask: repeating @uni variable
-  #add_course and all_courses in courses controller
+
   def add_course
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
-    # puts "SEM!!!! " << @semester
-    # so the sem is marked by whichever one you click on in the view. correct
-
     @major = (Student.find_by_id(session[:student_id])).major1
     @requirements = Requirement.get_requirements_by_major(@major)
     @courses_to_fulfill = {} #hash of requirements and courses to fulfill
@@ -54,49 +73,18 @@ class SchedulesController < ApplicationController
 
 
   def add_academic_year
-    # need to parse the academic year into 2 semesters (fall spring)
-    @academic_years = []
-    @academic_years.append(params[:year])
+
+    @sem = params[:year]
     @uni = (Student.find_by_id(session[:student_id])).uni
 
-    puts "AY" << @academic_years.to_s
+    #check if semester is already added. if no, add
+    @mysem = Schedule.get_semesters().where(uni: @uni, semester: @sem)[0]
 
-
-
-    @academic_years.each do |year|
-      # puts "YEAR   " << year.to_s.split("-").to_s
-      @text = year.to_s.split("-")
-
-
-      
-      # @current_semester= Schedule.get_semesters().where(uni: @uni, semester: @semester)[0]
-      @fall_semester= Schedule.get_semesters().where(uni: @uni, semester: "Fall " + @text[0])[0]
-      @spring_semester = Schedule.get_semesters().where(uni: @uni, semester: "Spring " + @text[1])[0]
-
-      puts "FALL SEM " << @fall_semester.to_s
-      puts "SPRING SEM" << @spring_semester.to_s
-
-      if @fall_semester
-        flash[:notice] = "Semester '#{@fall_semester.semester}' already added."
-      else
-        Schedule.create(:uni => @uni, :semester => "Fall " + @text[0])
-      end
-
-      if @spring_semester
-        flash[:notice] = "Semester '#{@spring_semester.semester}' already added."
-      else 
-        Schedule.create(:uni => @uni, :semester => "Spring " + @text[1])  
-      end
-
+    if @mysem
+      flash[:notice] = "Semester '#{@mysem.semester}' already added."
+    else
+      Schedule.create(:uni => @uni, :semester => @sem)
     end
-
- 
-    
-    # # Add fall semester
-    # add_semester_to_schedule(@selected_academic_year, 'Fall')
-
-    # # Add spring semester
-    # add_semester_to_schedule(@selected_academic_year, 'Spring')
 
     redirect_to schedule_path
   end
@@ -111,9 +99,7 @@ class SchedulesController < ApplicationController
       flash[:notice] = "Course '#{Course.find(@course_id_to_check).courseTitle}' already added."
       redirect_to add_course_path
     else
-      puts "111111111111 Create action params: #{schedule_params}"
       @schedule = Schedule.create!(schedule_params)
-      puts "2222 ELLOOOOOO!!!!! " << schedule_params.to_s
       flash[:notice] = "Course #{Course.find(schedule_params[:courseID]).courseTitle} was successfully added."
       redirect_to schedule_path
     end
@@ -129,11 +115,8 @@ class SchedulesController < ApplicationController
   end
 
   def delete_semester
-    # puts "I HERE!!!!!!"
-
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
-
     @schedule = Schedule.get_full_schedule().where(uni: @uni).where(semester: @semester)
     
 
@@ -143,7 +126,6 @@ class SchedulesController < ApplicationController
     end
 
     @semester_to_delete = Schedule.get_semesters().where(uni: @uni, semester: @semester)[0]
-    # puts "HEREEEE " << @semester_to_delete[0].to_s
     @semester_to_delete.destroy
 
     redirect_to schedule_path

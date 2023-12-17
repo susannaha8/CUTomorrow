@@ -10,15 +10,10 @@ Background: courses in schedule, login
   Given the following schedules are in a Schedule table:
   | schedID |   uni   | courseID | semester         | reqID | taken |
   |    1    | sma2243 |    1     |   Spring 2024    |   2   | true  |
-  |    2    | sma2243 |    5     |   Fall 2023      |   2   | false |
-  |    3    | sma2243 |    3     |   Spring 2024    |   3   | false |
-  |    4    | sma2243 |    4     |   Spring 2024    |   4   | false |
-  |    5    | sma2243 |          |   Spring 2023   |       |      |
   |    6    | sma2243 |          |   Spring 2024   |       |      |
-  |    7    | sma2243 |          |   Fall 2022     |       |      |
 
 
-  Then 7 seed courses should exist
+  Then 2 seed courses should exist
 
   Given the following majors are in a Major table
   | major_minorID | name            | mtype |
@@ -46,27 +41,27 @@ Background: courses in schedule, login
 
   Given I login with email sma2243@columbia.edu and password test
 
-Scenario: Add an academic year
+Scenario: Add a semester
   Given I am on the schedule page
-  And I select "2021-2022" from "Year"
-  And I press "Add Academic Year"
+  And I select "Fall 2021" from "Year"
+  And I press "Add Semester"
   Then I should see "Fall 2021"
+  And I should see "2021 - 2022"
 
-Scenario: Add an existing academic year and delete a semester
+Scenario: Add an existing semester and delete a semester
   Given I am on the schedule page
-  And I select "2021-2022" from "Year"
-  And I press "Add Academic Year"
-  Then I should see "Fall 2021"
-  And I select "2021-2022" from "Year"
-  And I press "Add Academic Year"
+  And I select "Spring 2022" from "Year"
+  And I press "Add Semester"
+  Then I should see "Spring 2022"
+  And I select "Spring 2022" from "Year"
+  And I press "Add Semester"
   Then I should see "Semester 'Spring 2022' already added."
-  And I press "Delete Semester" on "Spring 2022"
-  And I select "2021-2022" from "Year"
-  And I press "Add Academic Year"
-  Then I should see "Semester 'Fall 2021' already added."
 
-Scenario: Delete a full schedule
+Scenario: Delete a full semester
   Given I am on the schedule page
-  Then I should see "Intro to CS"
+  Then I should see "Spring 2024"
+  And I should see "2023 - 2024"
+  And I should see "Intro to CS"
   And I press "Delete Semester" on "Spring 2024"
   Then I should not see "Intro to CS"
+  And I should not see "2023 - 2024"

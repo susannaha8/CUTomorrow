@@ -22,7 +22,7 @@ Scenario: log in with correct email and password
   And I fill in "password" with "test"
   And I press "Login"
   Then I should be on the schedule page
-  And I should see "Select Academic Year"
+  And I should see "Select Semester"
 
 Scenario: log in with incorrect email
   Given I am on the login page

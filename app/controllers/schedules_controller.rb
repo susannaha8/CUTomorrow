@@ -99,6 +99,13 @@ class SchedulesController < ApplicationController
       flash[:notice] = "Course '#{Course.find(@course_id_to_check).courseTitle}' already added."
       redirect_to add_course_path
     else
+      #if from all-courses page, check if it fulfills a major req. if yes, change the schedule_params
+      # if (schedule_params[:reqID] == 1)
+      #   req = Coursereqs.where(courseID == schedule_params[:courseID])
+      #   if(req)
+      #     schedule_params[:reqID] = req.first.reqID
+      #   end
+      # end
       @schedule = Schedule.create!(schedule_params)
       flash[:notice] = "Course #{Course.find(schedule_params[:courseID]).courseTitle} was successfully added."
       redirect_to schedule_path

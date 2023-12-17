@@ -12,7 +12,6 @@ Background: courses in schedule, login
   |    1    | sma2243 |    1     |   Spring 2024    |   2   | true  |
   |    6    | sma2243 |          |   Spring 2024   |       |      |
 
-
   Then 2 seed courses should exist
 
   Given the following majors are in a Major table

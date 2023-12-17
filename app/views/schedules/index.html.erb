@@ -1,4 +1,4 @@
-<!--Find me in app/views/courses/index.html.erb d-flex justify-content-between-->
+<!--Find me in app/views/courses/index.html.erb -->
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -58,11 +58,10 @@
 <div class="">
 
     <% @ay_hash.each do |year, semesters| %>
-
-    <h3 class="sem-title" style="margin: 0;"><%= year %></h3>
-
+    <br />
+    <h3 class="a-year-title" style="margin: 0;"><%= year %></h3>
+      <div class="d-flex justify-content-between">
       <% semesters.each do |semester| %>
-
       <table class="table semester-table col-md-6" id="<%= semester %>">
         <thead>
           
@@ -119,6 +118,7 @@
         </tbody>
       </table>
       <% end %>
+      </div>
     <% end %>
 </div>
 

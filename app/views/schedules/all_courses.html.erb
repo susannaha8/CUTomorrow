@@ -2,16 +2,36 @@
 
 <h2 class="profile-name"><em><%= @semester %></em></h2>
 <%= form_tag all_courses_search_path, method: "GET" do %>
-  <%= label_tag "Search by Course Code" %>
-  <%= text_field_tag :search_by_title, params[:search_by_title] %>
-  <%= submit_tag "Search" %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= label_tag "Search by course name", nil, class: 'col-form-label profile-name md-font-size' %>
+      <%= text_field_tag :search_by_course_name, params[:search_by_course_name], class: 'form-control small-input' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= label_tag "Search by course code", nil, class: 'col-form-label profile-name md-font-size' %>
+      <%= text_field_tag :search_by_course_code, params[:search_by_course_code], class: 'form-control small-input' %>
+    </div>
+  </div>
+
+  <button id="searchButton", class="search-button">
+      <%= submit_tag "Search", :class => 'btn btn-primary profile-back'%>
+  </button>
+
 <% end %>
-<button class="float-left m-4 back-button"> <%= link_to "<- Add Course by Requirement", add_course_path(semester: @semester) %> </button>
+<button class="float-left m-4 back-button"> 
+  <%= link_to "<- Add Course by Requirement", add_course_path(semester: @semester) %> 
+</button>
 
 <table class="table table-striped col-md-12" id="courses">
     <tr id = "test" class="body-text">
-      <th>Course</th>
-      <th>Course Code</th>
+      <th>
+        <%= link_to 'Course', all_courses_path({sort_by: 'courseTitle'}), id: 'courseTitle_header', class: ('bg-warning hilite' if @sort_by == 'courseTitle') %>
+      </th>
+      <th>
+        <%= link_to 'Course Code', all_courses_path({sort_by: 'courseCode'}), id: 'courseCode_header', class: ('bg-warning hilite' if @sort_by == 'courseCode') %>
+      </th>
       <th>Action</th>
     </tr>
     <% @courses.each do |course| %>

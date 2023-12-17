@@ -23,6 +23,9 @@ module NavigationHelpers
     when /^the Add Course page for "(.*)"$/  then
       semester = $1
       add_course_path(semester: semester)
+    when /^the All Courses page for "(.*)"$/i
+      semester = $1
+      all_courses_path(semester: semester)
     when /^I follow "+" on "(.*)"$/ then
       schedule_path
     # Add more mappings here.

@@ -48,8 +48,8 @@ class StudentsController < ApplicationController
 		# @major1 = @student.major1 ? Major.find(@student.major1).name : ""
 		if @student.major1.present?
 			@major1 = Major.find(@student.major1).name
-		else
-			@major1 = "" 
+		# else
+		# 	@major1 = "" 
 		end
 		if @student.major2.present?
 			@major2 = Major.find(@student.major2).name

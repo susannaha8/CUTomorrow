@@ -287,3 +287,32 @@ form {
     text-decoration: none;
     color: #333;
 }
+
+.add-academic-year-button {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.delete-semester-button {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-button {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+/* 
+.back-button {
+
+    border: none;
+    outline: none;
+    background-color: #0c0c0d;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+} */

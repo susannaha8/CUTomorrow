@@ -96,6 +96,9 @@ Scenario: signing up with incomplete information
   Then I should be on the sign up page
   Then I should see "Error! Information incomplete!"
 
-
-Scenario: (optional) log in and log out and check the persisting courses
+Scenario: log in after session expired
+  Given I login with email sma2243@columbia.edu and password test
+  Then I should be on the schedule page
+  And I wait for 1500 minutes and go to the login page
+  Then I should see "Session has expired. Please log in again."
 

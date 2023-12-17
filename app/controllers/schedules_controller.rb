@@ -37,10 +37,19 @@ class SchedulesController < ApplicationController
     @uni = (Student.find_by_id(session[:student_id])).uni
     @semester = params[:semester]
     @courses = Course.paginate(page: params[:page])
-    if params[:search_by_title] != ""
+
+    if params[:search_by_course_code] != ""
       @courses = @courses.where("courseCode like ?", 
-      "%#{params[:search_by_title]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
+      "%#{params[:search_by_course_code]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
     end
+    if params[:search_by_course_name].present?
+      @courses = @courses.where("courseTitle like ?", "%#{params[:search_by_course_name]}%").paginate(page: params[:page])
+    end
+
+    if params[:sort_by].present?
+      @courses = @courses.order(params[:sort_by])
+    end
+
   end
 
 

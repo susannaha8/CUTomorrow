@@ -74,7 +74,12 @@ class SchedulesController < ApplicationController
     end
 
     if params[:sort_by].present?
-      @courses = @courses.order(params[:sort_by]).paginate(page: params[:page])
+      if params[:sort_by] == "courseCode"
+        @courses = @courses.order(:courseCode)
+      end
+      if params[:sort_by] == "courseTitle"
+        @courses = @courses.order(:courseTitle)
+      end
     end
 
   end

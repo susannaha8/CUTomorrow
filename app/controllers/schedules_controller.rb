@@ -57,16 +57,24 @@ class SchedulesController < ApplicationController
     @semester = params[:semester]
     @courses = Course.paginate(page: params[:page])
 
-    if params[:search_by_course_code] != ""
-      @courses = @courses.where("courseCode like ?", 
-      "%#{params[:search_by_course_code]}%").paginate(page: params[:page]) #is this safe against sql injection? not a post, so I think so
+    if params[:search_by_course_code].present?
+      @courses = @courses.where(:courseCode => 
+      params[:search_by_course_code]).paginate(page: params[:page])
     end
     if params[:search_by_course_name].present?
-      @courses = @courses.where("courseTitle like ?", "%#{params[:search_by_course_name]}%").paginate(page: params[:page])
+      #@courses = @courses.where(params[:search_by_course_name].match(:courseTitle)).paginate(page: params[:page])
+      # Create an Arel table for the Course model
+      courses_table = @courses.arel_table
+
+      # Create an Arel predicate for case-insensitive matching of the search term within the courseTitle column
+      search_predicate = courses_table[:courseTitle].matches("%#{params[:search_by_course_name]}%")
+
+      # Use the Arel predicate in the where clause with ILIKE for PostgreSQL
+      @courses = @courses.where(search_predicate).paginate(page: params[:page])
     end
 
     if params[:sort_by].present?
-      @courses = @courses.order(params[:sort_by])
+      @courses = @courses.order(params[:sort_by]).paginate(page: params[:page])
     end
 
   end

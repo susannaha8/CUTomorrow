@@ -31,6 +31,10 @@ group :test do
 end
 group :production do
   gem 'pg', '~>0.21'
+  gem 'coffee-rails', '~> 4.1.0'
+  gem 'bcrypt', '~> 3.1.7'
+  gem 'will_paginate', '~> 4.0'
+  gem 'will_paginate-bootstrap4'
 end
 
 # Gems used only for assets and not required

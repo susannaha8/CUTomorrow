@@ -14,7 +14,7 @@ class SchedulesController < ApplicationController
     @options = []
     @years.each {|i| @options.append({:season => 'Fall', :year => i.to_s}) && @options.append({:season => 'Spring', :year => (i+1).to_s})}
 
-
+    @req_labels = Requirement.get_requirement_labels_by_major(@major)
     #retrieve semesters from db and put in academic_year dictionary
     @semesters = Schedule.distinct.where(uni: @uni).pluck(:semester) #array
     #@semesters = Schedule.get_semesters().where(uni: @uni)

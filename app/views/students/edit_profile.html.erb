@@ -31,48 +31,13 @@
   </select>
   <br>
 
-  <%= label :student, :major1, 'Major 1: ', :class => 'col-form-label profile-name md-font-size' %>
-  <select name='student[major1]' id="Major 1">
+  <%= label :student, :major1, 'Major: ', :class => 'col-form-label profile-name md-font-size' %>
+  <select name='student[major1]' id="Major">
     <% @major_minor_options.each do |major| %>
       <option value="<%= major[:id] %>"><%= major[:name] %></option>
     <% end %>
   </select>
   <br>
-
-  <%= label :student, :major2, 'Major 2: ', :class => 'col-form-label profile-name md-font-size'  %>
-  <select name='student[major2]' id="Major 2">
-  <option value="<%= "" %>"><%= "" %></option>
-    <% @major_minor_options.each do |major| %>
-      <option value="<%= major[:id] %>"><%= major[:name] %></option>
-    <% end %>
-  </select>
-  <br>
-
-  <%= label :student, :minor1, 'Minor 1: ', :class => 'col-form-label profile-name md-font-size'  %>
-  <select name='student[minor1]' id="Minor 1">
-  <option value="<%= "" %>"><%= "" %></option>
-    <% @major_minor_options.each do |minor| %>
-      <option value="<%= minor[:id] %>"><%= minor[:name] %></option>
-    <% end %>
-  </select>
-  <br>
-
-  <%= label :student, :minor2, 'Minor 2: ', :class => 'col-form-label profile-name md-font-size'  %>
-  <select name='student[minor2]' id="Minor 2">
-  <option value="<%= "" %>"><%= "" %></option>
-    <% @major_minor_options.each do |minor| %>
-      <option value="<%= minor[:id] %>"><%= minor[:name] %></option>
-    <% end %>
-  </select>
-  <br>
-
-  <%= label :student, :minor3, 'Minor 3: ', :class => 'col-form-label profile-name md-font-size'  %>
-  <select name='student[minor3]' id="Minor 3">
-  <option value="<%= "" %>"><%= "" %></option>
-    <% @major_minor_options.each do |minor| %>
-      <option value="<%= minor[:id] %>"><%= minor[:name] %></option>
-    <% end %>
-  </select>
   <br/>
   <div class="profile-button d-flex justify-content-center">
     <div class="profile-button">

@@ -107,7 +107,9 @@
                   <%= course.prefixCode + " " + course.courseCode %>
                   </td>
                   <td>
-                    <%= course.reqLabel ? course.reqLabel : "" %>
+                    <% if @req_labels.include?(course.reqLabel) %>
+                      <%= course.reqLabel ? course.reqLabel : "" %>
+                    <% end %>
                   </td>
                   <td> 
                         <%= button_to "delete", destroy_schedule_path(:schedID => course.schedID), method: :delete, :schedID => course.schedID, class: 'delete-button' %>
